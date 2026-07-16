@@ -8,12 +8,6 @@
 
   <style>
     * {
-      header img {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    object-fit: cover;
-    }
 
     body {
       margin: 0;
@@ -23,38 +17,52 @@
     }
 
     header {
-      background: #111;
-      color: white;
-      padding: 15px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    background: #111;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,.25);
+}
 
     header img {
-      width: 60px;
-      height: 60px;
-      object-fit: contain;
-    }
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+}
 
     header h1 {
-      margin: 0;
-      font-size: 25px;
-    }
+    margin: 0;
+    font-size: 30px;
+    font-weight: 700;
+}
 
     nav {
-      background: #d60000;
-      padding: 12px;
-      overflow-x: auto;
-      white-space: nowrap;
-    }
+    background: linear-gradient(90deg,#c40000,#ff0000);
+    padding: 14px 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+    position: sticky;
+    top: 100px;
+    z-index: 999;
+}
 
     nav a {
-      color: white;
-      text-decoration: none;
-      margin-right: 20px;
-      font-weight: bold;
-    }
+    color: white;
+    text-decoration: none;
+    margin-right: 25px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+nav a:hover{
+    color:#ffd700;
+}
 
     .breaking {
       background: white;
@@ -67,13 +75,36 @@
       padding: 15px;
     }
 
-    .news-card {
-      background: white;
-      margin-bottom: 20px;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 3px 10px #ccc;
-    }
+    .news-card:hover{
+transform:translateY(-5px);
+transition:.3s;
+box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+.news-card h3{
+font-size:22px;
+padding:15px;
+}
+
+.news-card p{
+padding:0 15px 15px;
+line-height:1.6;
+}
+
+.read-more{
+display:inline-block;
+margin:0 15px 15px;
+padding:8px 15px;
+background:#d60000;
+color:#fff;
+text-decoration:none;
+border-radius:6px;
+font-weight:bold;
+}
+
+.read-more:hover{
+background:#111;
+}
 
     .news-image {
     width: 100%;
@@ -104,6 +135,27 @@
       text-align: center;
       padding: 20px;
     }
+      .breaking-bar{
+display:flex;
+align-items:center;
+background:#fff;
+border-top:3px solid #d60000;
+border-bottom:3px solid #d60000;
+padding:8px 0;
+}
+
+.breaking-title{
+background:#d60000;
+color:#fff;
+padding:8px 15px;
+font-weight:bold;
+margin-right:10px;
+}
+
+.breaking-bar marquee{
+font-weight:bold;
+color:#111;
+}
   </style>
 </head>
 
@@ -128,6 +180,17 @@
   <a href="about.html">আমাৰ বিষয়ে</a>
   <a href="contact.html">যোগাযোগ</a>
 </nav>
+  <div class="breaking-bar">
+
+<span class="breaking-title">🔴 BREAKING</span>
+
+<marquee scrollamount="5">
+
+Press Express Assam লৈ আপোনাক স্বাগতম • অসমৰ শেহতীয়া খবৰ • ভাৰত • বিশ্ব • খেল • মনোৰঞ্জন • ব্যৱসায় • Technology
+
+</marquee>
+
+</div>
 
 <main>
   <h2>শেহতীয়া বাতৰি</h2>
