@@ -1374,7 +1374,19 @@ return;
 allNews = result.data || [];
 
 filterNews();
+const sharedId = new URLSearchParams(window.location.search).get("news");
 
+if(sharedId){
+
+  const sharedArticle = allNews.find(
+    article => String(article.id) === String(sharedId)
+  );
+
+  if(sharedArticle){
+    showDetails(sharedArticle);
+  }
+
+}
 }
 
 
@@ -1633,7 +1645,56 @@ area.appendChild(text);
 document
 .getElementById("detailsModal")
 .classList.add("show");
+const share = document.createElement("div");
 
+share.style.cssText =
+"display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;";
+
+const shareBtn = document.createElement("button");
+
+shareBtn.textContent = "📤 Share";
+
+shareBtn.style.cssText =
+"background:#d7193f;color:white;border:0;padding:10px 18px;border-radius:8px;font-size:15px;";
+
+shareBtn.onclick = async () => {
+
+const shareUrl =
+window.location.origin +
+window.location.pathname +
+"?news=" +
+encodeURIComponent(article.id);
+
+const shareText =
+(article.title || "Press Express Assam") +
+"\n\n" +
+shareUrl;
+
+if(navigator.share){
+
+try{
+
+await navigator.share({
+title: article.title || "Press Express Assam",
+text: article.title || "",
+url: shareUrl
+});
+
+}catch(e){}
+
+}else{
+
+await navigator.clipboard.writeText(shareUrl);
+
+alert("✅ News link Copy হৈছে");
+
+}
+
+};
+
+share.appendChild(shareBtn);
+
+area.appendChild(share);
 }
 
 
