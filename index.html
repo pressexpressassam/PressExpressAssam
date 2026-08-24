@@ -1102,7 +1102,54 @@ btn.textContent = "Publish News";
 
 }
 
+/* LATEST NEWS TICKER */
 
+async function loadLatestNews(){
+
+  if(!db){
+    if(!connect()) return;
+  }
+
+  const ticker =
+    document.getElementById("latestScroll");
+
+  if(!ticker) return;
+
+  const result =
+    await db
+    .from("articles")
+    .select("id,title,created_at")
+    .eq("published",true)
+    .order("created_at",{ascending:false})
+    .limit(10);
+
+  if(result.error){
+    ticker.innerHTML =
+      "<span>📰 শেহতীয়া খবৰ লোড হোৱা নাই।</span>";
+    return;
+  }
+
+  ticker.innerHTML = "";
+
+  if(!result.data || !result.data.length){
+    ticker.innerHTML =
+      "<span>📰 এতিয়ালৈ কোনো খবৰ প্ৰকাশ হোৱা নাই।</span>";
+    return;
+  }
+
+  result.data.forEach(function(article){
+
+    const span =
+      document.createElement("span");
+
+    span.textContent =
+      "📰 " + article.title;
+
+    ticker.appendChild(span);
+
+  });
+
+}
 /* LOAD NEWS */
 
 async function loadNews(){
@@ -1508,7 +1555,6 @@ box.appendChild(item);
 
 /* EDIT */
 
-/* EDIT */
 
 async function editNews(article){
 
