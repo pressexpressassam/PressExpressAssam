@@ -482,7 +482,60 @@ font-size:24px;
   background: #b91430;
   transform: translateY(-1px);
 }
-</style>
+.latest-news{
+  width:94%;
+  max-width:1200px;
+  margin:15px auto;
+  display:flex;
+  align-items:center;
+  background:#fff;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+  border:1px solid #eee;
+}
+
+.latest-title{
+  background:#d7193f;
+  color:#fff;
+  font-weight:bold;
+  padding:13px 18px;
+  white-space:nowrap;
+}
+
+.latest-scroll{
+  display:flex;
+  gap:50px;
+  padding:12px 20px;
+  overflow:hidden;
+  white-space:nowrap;
+  flex:1;
+}
+
+.latest-scroll span{
+  font-size:15px;
+  color:#222;
+}
+
+@media(max-width:700px){
+  .latest-news{
+    width:94%;
+  }
+
+  .latest-title{
+    padding:11px 12px;
+    font-size:14px;
+  }
+
+  .latest-scroll{
+    gap:30px;
+    padding:10px 15px;
+  }
+
+  .latest-scroll span{
+    font-size:13px;
+  }
+}</style>
 </head>
 
 <body>
@@ -508,7 +561,14 @@ font-size:24px;
 
 </div>
 </header>
-
+<div class="latest-news">
+  <div class="latest-title">📰 শেহতীয়া খবৰ</div>
+  <div class="latest-scroll">
+    <span>অসমৰ গুৰুত্বপূৰ্ণ খবৰ এতিয়া Press Express Assam-ত</span>
+    <span>দেশ-বিদেশৰ শেহতীয়া সংবাদ জানিবলৈ আমাৰ সৈতে থাকক</span>
+    <span>সত্য, নিৰপেক্ষ আৰু দায়িত্বশীল সংবাদ</span>
+  </div>
+</div>
 
 <section class="hero">
 
