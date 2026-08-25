@@ -1795,9 +1795,12 @@ shareBtn.onclick = async () => {
 
 const shareUrl =
 window.location.origin +
-window.location.pathname +
-"?news=" +
-encodeURIComponent(article.id);
+"/api/share?title=" +
+encodeURIComponent(article.title || "Press Express Assam") +
+"&image=" +
+encodeURIComponent(article.image || "https://pressexpressassam.github.io/PressExpressAssam/logo2.png") +
+"&url=" +
+encodeURIComponent(window.location.origin + "/?news=" + article.id);
 
 const shareText =
 (article.title || "Press Express Assam") +
