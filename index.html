@@ -1798,7 +1798,13 @@ window.location.origin +
 "/api/share?title=" +
 encodeURIComponent(article.title || "Press Express Assam") +
 "&image=" +
-encodeURIComponent(article.image || "https://pressexpressassam.github.io/PressExpressAssam/logo2.png") +
+encodeURIComponent(
+  article.image ||
+  article.image_url ||
+  article.photo ||
+  article.imageUrl ||
+  ""
+)
 "&url=" +
 encodeURIComponent(window.location.origin + "/?news=" + article.id);
 
