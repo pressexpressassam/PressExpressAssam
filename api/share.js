@@ -7,9 +7,11 @@ export default function handler(req, res) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
 
-  const safeImage = image
-    ? String(image).replace(/"/g, "&quot;")
-    : "https://pressexpressassam.github.io/PressExpressAssam/logo2.png";
+  const proxyImage = image
+  ? `${req.headers["x-forwarded-proto"] || "https"}://${req.headers.host}/api/image?url=${encodeURIComponent(image)}`
+  : "";
+
+const safeImage = proxyImage.replace(/"/g, "&quot;");
 
   const safeUrl = url
     ? String(url).replace(/"/g, "&quot;")
