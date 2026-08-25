@@ -765,7 +765,73 @@ input,textarea,select{
   background:#fff !important;
   color:#111 !important;
 }
-}</style>
+/* ===== ADMIN PANEL DESIGN ===== */
+
+#adminModal .box{
+  max-width:720px;
+  width:100%;
+  background:#fff;
+  border-radius:20px;
+  padding:24px;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+#adminModal h2{
+  font-size:26px;
+  margin:0 0 5px;
+}
+
+#adminModal label{
+  display:block;
+  font-weight:700;
+  margin:18px 0 7px;
+}
+
+#adminModal input,
+#adminModal select,
+#adminModal textarea{
+  width:100%;
+  box-sizing:border-box;
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:13px;
+  font-size:15px;
+  background:#fafafa;
+}
+
+#adminModal textarea{
+  min-height:180px;
+}
+
+#adminModal input:focus,
+#adminModal select:focus,
+#adminModal textarea:focus{
+  border-color:#d71936;
+  outline:none;
+  box-shadow:0 0 0 3px rgba(215,25,54,.10);
+}
+
+#adminModal input[type="file"]{
+  padding:10px;
+}
+
+#adminModal button{
+  border-radius:10px;
+  font-weight:700;
+}
+
+#adminModal hr{
+  margin:28px 0;
+  border:0;
+  border-top:1px solid #eee;
+}
+
+@media(max-width:700px){
+  #adminModal .box{
+    width:calc(100% - 20px);
+    padding:18px;
+  }
+}}</style>
   <meta property="og:title" content="Press Express Assam">
 <meta property="og:description" content="সত্য, নিৰপেক্ষ আৰু দায়িত্বশীল সংবাদ">
 <meta property="og:image" content="https://pressexpressassam.github.io/PressExpressAssam/logo2.png">
