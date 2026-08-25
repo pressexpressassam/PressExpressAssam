@@ -7,17 +7,31 @@ export default function handler(req, res) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
 
-  const proxyImage = image
-  ? `${req.headers["x-forwarded-proto"] || "https"}://${req.headers.host}/api/image?url=${encodeURIComponent(image)}`
-  : "";
+  const siteUrl =
+    url
+      ? String(url)
+      : "https://press-express-assam-ryfd.vercel.app/";
 
-const safeImage = proxyImage.replace(/"/g, "&quot;");
+  const imageUrl =
+    image
+      ? String(image)
+      : "https://pressexpressassam.github.io/PressExpressAssam/logo2.png";
 
-  const safeUrl = url
-    ? String(url).replace(/"/g, "&quot;")
-    : "https://press-express-assam-ryfd.vercel.app/";
+  const origin =
+    `${req.headers["x-forwarded-proto"] || "https"}://${req.headers["x-forwarded-host"] || req.headers.host}`;
 
-  res.setHeader("Content-Type", "text/html; charset=utf-8");
+  const proxyImage =
+    `${origin}/api/image?url=${encodeURIComponent(imageUrl)}`;
+
+  res.setHeader(
+    "Content-Type",
+    "text/html; charset=utf-8"
+  );
+
+  res.setHeader(
+    "Cache-Control",
+    "no-store, no-cache, must-revalidate, proxy-revalidate"
+  );
 
   res.status(200).send(`
 <!DOCTYPE html>
@@ -30,15 +44,20 @@ const safeImage = proxyImage.replace(/"/g, "&quot;");
 <meta property="og:type" content="article">
 <meta property="og:title" content="${safeTitle}">
 <meta property="og:description" content="সত্য, নিৰপেক্ষ আৰু দায়িত্বশীল সংবাদ">
-<meta property="og:image" content="${safeImage}">
-<meta property="og:url" content="${safeUrl}">
+<meta property="og:image" content="${proxyImage}">
+<meta property="og:image:secure_url" content="${proxyImage}">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="${siteUrl}">
 <meta property="og:site_name" content="Press Express Assam">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${safeTitle}">
-<meta name="twitter:image" content="${safeImage}">
+<meta name="twitter:image" content="${proxyImage}">
 
-<meta http-equiv="refresh" content="0;url=${safeUrl}">
+<meta http-equiv="refresh" content="0;url=${siteUrl}">
+
 </head>
 
 <body>
@@ -46,5 +65,5 @@ const safeImage = proxyImage.replace(/"/g, "&quot;");
 <p>${safeTitle}</p>
 </body>
 </html>
-  `);
+`);
 }
