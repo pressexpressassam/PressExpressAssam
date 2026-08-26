@@ -1692,7 +1692,13 @@ function renderVideoSection(data){
       const id = url.split("shorts/")[1].split("?")[0];
       url = "https://www.youtube.com/embed/" + id;
     }
+else if(url.includes("facebook.com/")){
 
+  url =
+    "https://www.facebook.com/plugins/video.php?href=" +
+    encodeURIComponent(url) +
+    "&show_text=false";
+}
     const box = document.createElement("div");
 
     box.style.background = "#fff";
