@@ -1075,7 +1075,17 @@ accept="image/*"
 id="content"
 placeholder="খবৰৰ সম্পূৰ্ণ বিৱৰণ লিখক"
 ></textarea>
+<label>🎥 Video URL</label>
 
+<input
+  type="url"
+  id="videoUrl"
+  placeholder="YouTube Video URL (ঐচ্ছিক)"
+>
+
+<small style="display:block;color:#777;margin-top:5px">
+  উদাহৰণ: https://www.youtube.com/watch?v=XXXXXXXX
+</small>
 
 <div
 id="status"
@@ -1274,7 +1284,9 @@ document.getElementById("imageFile")
 const content =
 document.getElementById("content")
 .value.trim();
-
+const videoUrl =
+document.getElementById("videoUrl")
+.value.trim();
 
 if(!title){
 
@@ -1367,7 +1379,7 @@ excerpt:excerpt,
 content:content,
 image_url:imageUrl,
 published:true
-
+video_url:videoUrl,
 });
 
 
