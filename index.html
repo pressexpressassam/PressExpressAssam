@@ -1838,9 +1838,166 @@ alert("✅ News link Copy হৈছে");
 share.appendChild(shareBtn);
 
 area.appendChild(share);
+  renderVideoAndComments(article, area);
 }
 
+async function renderVideoAndComments(article, area) {
 
+  if (article.video_url) {
+
+    const videoBox = document.createElement("div");
+    videoBox.style.marginTop = "25px";
+
+    const videoTitle = document.createElement("h2");
+    videoTitle.textContent = "🎥 Video News";
+    videoBox.appendChild(videoTitle);
+
+    const video = document.createElement("iframe");
+
+    let videoUrl = article.video_url;
+
+    if (videoUrl.includes("youtube.com/watch?v=")) {
+      const id = new URL(videoUrl).searchParams.get("v");
+      videoUrl = "https://www.youtube.com/embed/" + id;
+    }
+
+    if (videoUrl.includes("youtu.be/")) {
+      const id = videoUrl.split("youtu.be/")[1].split("?")[0];
+      videoUrl = "https://www.youtube.com/embed/" + id;
+    }
+
+    video.src = videoUrl;
+    video.width = "100%";
+    video.height = "315";
+    video.style.border = "0";
+    video.style.borderRadius = "12px";
+    video.allowFullscreen = true;
+
+    videoBox.appendChild(video);
+    area.appendChild(videoBox);
+  }
+
+  const commentBox = document.createElement("section");
+  commentBox.style.marginTop = "30px";
+
+  const commentTitle = document.createElement("h2");
+  commentTitle.textContent = "💬 মন্তব্য";
+  commentBox.appendChild(commentTitle);
+
+  const nameInput = document.createElement("input");
+  nameInput.placeholder = "আপোনাৰ নাম";
+  nameInput.style.width = "100%";
+  nameInput.style.padding = "12px";
+  nameInput.style.marginBottom = "10px";
+  nameInput.style.boxSizing = "border-box";
+
+  const commentInput = document.createElement("textarea");
+  commentInput.placeholder = "আপোনাৰ মন্তব্য লিখক...";
+  commentInput.rows = 4;
+  commentInput.style.width = "100%";
+  commentInput.style.padding = "12px";
+  commentInput.style.boxSizing = "border-box";
+
+  const submitButton = document.createElement("button");
+  submitButton.textContent = "💬 মন্তব্য পঠিয়াওক";
+  submitButton.style.marginTop = "10px";
+  submitButton.style.padding = "12px 18px";
+  submitButton.style.cursor = "pointer";
+
+  const commentsList = document.createElement("div");
+  commentsList.style.marginTop = "20px";
+
+  commentBox.appendChild(nameInput);
+  commentBox.appendChild(commentInput);
+  commentBox.appendChild(submitButton);
+  commentBox.appendChild(commentsList);
+
+  area.appendChild(commentBox);
+
+  async function loadComments() {
+
+    commentsList.innerHTML = "মন্তব্য লোড হৈ আছে...";
+
+    const { data, error } = await db
+      .from("comments")
+      .select("*")
+      .eq("article_id", article.id)
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      commentsList.textContent = "মন্তব্য লোড কৰিব পৰা নগ'ল।";
+      return;
+    }
+
+    commentsList.innerHTML = "";
+
+    if (!data || data.length === 0) {
+      commentsList.textContent = "এতিয়ালৈ কোনো মন্তব্য নাই।";
+      return;
+    }
+
+    data.forEach(item => {
+
+      const comment = document.createElement("div");
+
+      comment.style.padding = "12px";
+      comment.style.marginBottom = "10px";
+      comment.style.borderRadius = "10px";
+      comment.style.background = "#f5f5f5";
+
+      const name = document.createElement("strong");
+      name.textContent = item.name || "Anonymous";
+
+      const text = document.createElement("p");
+      text.textContent = item.comment || "";
+
+      const date = document.createElement("small");
+      date.textContent = new Date(item.created_at).toLocaleString("as-IN");
+
+      comment.appendChild(name);
+      comment.appendChild(text);
+      comment.appendChild(date);
+
+      commentsList.appendChild(comment);
+    });
+  }
+
+  submitButton.onclick = async () => {
+
+    const name = nameInput.value.trim();
+    const comment = commentInput.value.trim();
+
+    if (!name || !comment) {
+      alert("অনুগ্ৰহ কৰি নাম আৰু মন্তব্য দুয়োটা লিখক।");
+      return;
+    }
+
+    submitButton.disabled = true;
+    submitButton.textContent = "পঠিওৱা হৈছে...";
+
+    const { error } = await db
+      .from("comments")
+      .insert({
+        article_id: article.id,
+        name: name,
+        comment: comment
+      });
+
+    if (error) {
+      console.error(error);
+      alert("মন্তব্য পঠিয়াব পৰা নগ'ল।");
+    } else {
+      nameInput.value = "";
+      commentInput.value = "";
+      await loadComments();
+    }
+
+    submitButton.disabled = false;
+    submitButton.textContent = "💬 মন্তব্য পঠিয়াওক";
+  };
+
+  await loadComments();
+}
 /* ADMIN LIST */
 
 async function loadAdminNews(){
