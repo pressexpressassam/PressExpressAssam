@@ -3111,7 +3111,10 @@ body.appendChild(
    ========================================================= */
 
 async function showDetails(article){
+
   /* INCREMENT VIEW COUNTER */
+
+  let newViewCount = null;
 
   if(
     db &&
@@ -3128,7 +3131,7 @@ async function showDetails(article){
 
     if(!viewResult.error){
 
-      article.views =
+      newViewCount =
         Number(viewResult.data || 0);
 
     }else{
@@ -3137,9 +3140,12 @@ async function showDetails(article){
         "View count error:",
         viewResult.error
       );
-
     }
   }
+
+
+  /* GET FULL NEWS */
+
   if(
     db &&
     article.id
@@ -3149,7 +3155,10 @@ async function showDetails(article){
       await db
         .from("articles")
         .select("*")
-        .eq("id",article.id)
+        .eq(
+          "id",
+          article.id
+        )
         .single();
 
 
@@ -3161,10 +3170,16 @@ async function showDetails(article){
       article =
         fullResult.data;
     }
+  }
 
-if(!viewResult.error){
-  article.views = viewResult.data;
-}
+
+  /* UPDATE VIEW COUNT */
+
+  if(newViewCount !== null){
+
+    article.views =
+      newViewCount;
+  }
 
 
   const area =
@@ -3215,15 +3230,23 @@ if(!viewResult.error){
     ).toLocaleString(
       "as-IN"
     );
-const views =
-  document.createElement("span");
 
-views.className = "views";
 
-views.textContent =
-  "👁️ " +
-  Number(article.views || 0) +
-  " views";
+  /* VIEWS */
+
+  const views =
+    document.createElement(
+      "span"
+    );
+
+  views.className =
+    "views";
+
+  views.textContent =
+    "👁️ " +
+    Number(article.views || 0) +
+    " views";
+
 
   /* IMAGE */
 
@@ -3235,7 +3258,6 @@ views.textContent =
   image.src =
     article.image_url ||
     "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80";
-
 
   image.alt =
     article.title ||
@@ -3253,6 +3275,8 @@ views.textContent =
     article.content || "";
 
 
+  /* APPEND */
+
   area.appendChild(
     category
   );
@@ -3264,9 +3288,11 @@ views.textContent =
   area.appendChild(
     time
   );
-area.appendChild(
-  views
-);
+
+  area.appendChild(
+    views
+  );
+
   area.appendChild(
     image
   );
@@ -3282,7 +3308,6 @@ area.appendChild(
     document.createElement(
       "div"
     );
-
 
   reporterBox.style.cssText =
     "display:flex;flex-direction:column;gap:6px;margin-top:18px;padding:14px;background:#f5f5f5;border-left:4px solid #d71936;border-radius:8px;";
@@ -3360,6 +3385,8 @@ area.appendChild(
   );
 
 
+  /* SHOW MODAL */
+
   document
     .getElementById(
       "detailsModal"
@@ -3368,6 +3395,7 @@ area.appendChild(
       "show"
     );
 }
+  
 
 
 /* =========================================================
