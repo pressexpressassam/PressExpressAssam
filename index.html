@@ -1362,7 +1362,56 @@ footer a:hover{
   text-decoration:underline;
 }
 
+/* =========================================================
+   NEWS IMAGE GALLERY
+   ========================================================= */
 
+.news-gallery{
+  margin-top:25px;
+  padding-top:18px;
+  border-top:1px solid #ddd;
+}
+
+.news-gallery h2{
+  font-size:22px;
+  margin-bottom:12px;
+}
+
+.gallery-images{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.gallery-images img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  border-radius:10px;
+  cursor:pointer;
+  transition:.25s ease;
+}
+
+.gallery-images img:hover{
+  transform:scale(1.03);
+}
+
+
+/* MOBILE GALLERY */
+
+@media(max-width:700px){
+
+  .gallery-images{
+    grid-template-columns:
+      repeat(2,1fr);
+    gap:8px;
+  }
+
+  .gallery-images img{
+    height:120px;
+  }
+
+}
 /* =========================================================
    MOBILE
    ========================================================= */
@@ -2139,10 +2188,21 @@ footer a:hover{
     </label>
 
     <input
-      type="file"
-      id="imageFile"
-      accept="image/*"
-    >
+  type="file"
+  id="imageFile"
+  accept="image/*"
+  multiple
+>
+
+<small
+  style="
+    display:block;
+    color:#777;
+    margin-top:5px;
+  "
+>
+  ফোনৰ Gallery-ৰ পৰা একাধিক ছবি বাছনি কৰিব পাৰিব
+</small>
 
     <small
       style="
@@ -2449,10 +2509,12 @@ async function publishNews(){
     document.getElementById("category").value;
 
 
-  const imageFile =
+  const imageFiles =
+  Array.from(
     document
       .getElementById("imageFile")
-      .files[0];
+      .files
+  );
 
 
   const content =
@@ -2527,58 +2589,66 @@ async function publishNews(){
 
 
     let imageUrl = null;
+let galleryUrls = [];
 
+/* IMAGE GALLERY UPLOAD */
 
-    /* IMAGE UPLOAD */
+if(imageFiles.length){
 
-    if(imageFile){
+  for(const imageFile of imageFiles){
 
-      const fileExt =
-        imageFile.name
-          .split(".")
-          .pop();
+    const fileExt =
+      imageFile.name
+        .split(".")
+        .pop();
 
+    const fileName =
+      Date.now() +
+      "-" +
+      Math.random()
+        .toString(36)
+        .substring(2,8) +
+      "." +
+      fileExt;
 
-      const fileName =
-        Date.now() +
-        "." +
-        fileExt;
-
-
-      const uploadResult =
-        await db
-          .storage
-          .from("news-images")
-          .upload(
-            fileName,
-            imageFile
-          );
-
-
-      if(uploadResult.error){
-
-        showStatus(
-          "ছবি Upload হোৱা নাই: " +
-          uploadResult.error.message
+    const uploadResult =
+      await db
+        .storage
+        .from("news-images")
+        .upload(
+          fileName,
+          imageFile
         );
 
-        return;
-      }
+    if(uploadResult.error){
 
+      showStatus(
+        "ছবি Upload হোৱা নাই: " +
+        uploadResult.error.message
+      );
 
-      const publicResult =
-        db
-          .storage
-          .from("news-images")
-          .getPublicUrl(
-            fileName
-          );
-
-
-      imageUrl =
-        publicResult.data.publicUrl;
+      return;
     }
 
+    const publicResult =
+      db
+        .storage
+        .from("news-images")
+        .getPublicUrl(
+          fileName
+        );
+
+    const url =
+      publicResult.data.publicUrl;
+
+    galleryUrls.push(url);
+  }
+
+  /* FIRST IMAGE = MAIN IMAGE */
+
+  imageUrl =
+    galleryUrls[0] || null;
+}
 
     /* INSERT */
 
@@ -2597,7 +2667,9 @@ async function publishNews(){
 
           image_url:imageUrl,
 
-          published:true,
+gallery_urls:galleryUrls,
+
+published:true,
 
           video_url:videoUrl,
 
@@ -3287,7 +3359,72 @@ async function showDetails(article){
   area.appendChild(
     image
   );
+/* IMAGE GALLERY */
 
+if(
+  Array.isArray(article.gallery_urls) &&
+  article.gallery_urls.length > 1
+){
+
+  const galleryBox =
+    document.createElement("div");
+
+  galleryBox.className =
+    "news-gallery";
+
+  const galleryTitle =
+    document.createElement("h2");
+
+  galleryTitle.textContent =
+    "📸 ছবিৰ Gallery";
+
+  galleryBox.appendChild(
+    galleryTitle
+  );
+
+  const gallery =
+    document.createElement("div");
+
+  gallery.className =
+    "gallery-images";
+
+  article.gallery_urls.forEach(
+    function(url){
+
+      const galleryImage =
+        document.createElement("img");
+
+      galleryImage.src = url;
+
+      galleryImage.alt =
+        article.title || "News Image";
+
+      galleryImage.loading =
+        "lazy";
+
+      galleryImage.onclick =
+        function(){
+
+          window.open(
+            url,
+            "_blank"
+          );
+        };
+
+      gallery.appendChild(
+        galleryImage
+      );
+    }
+  );
+
+  galleryBox.appendChild(
+    gallery
+  );
+
+  area.appendChild(
+    galleryBox
+  );
+}
   area.appendChild(
     text
   );
