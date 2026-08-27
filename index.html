@@ -639,7 +639,13 @@ nav a:hover{
   transform:scale(1.03);
 }
 
-
+.views{
+  display:inline-block;
+  margin-left:10px;
+  color:#777;
+  font-size:13px;
+  font-weight:600;
+}
 /* NEWS BODY */
 
 .newsBody{
@@ -3008,7 +3014,18 @@ function createNewsCard(article){
     ).toLocaleString(
       "as-IN"
     );
+const views =
+  document.createElement(
+    "span"
+  );
 
+views.className =
+  "views";
+
+views.textContent =
+  "👁️ " +
+  Number(article.views || 0) +
+  " views";
 
   const title =
     document.createElement(
@@ -3058,7 +3075,9 @@ function createNewsCard(article){
   body.appendChild(
     date
   );
-
+body.appendChild(
+    views
+  );
   body.appendChild(
     title
   );
@@ -3092,7 +3111,35 @@ function createNewsCard(article){
    ========================================================= */
 
 async function showDetails(article){
+  /* INCREMENT VIEW COUNTER */
 
+  if(
+    db &&
+    article.id
+  ){
+
+    const viewResult =
+      await db.rpc(
+        "increment_article_views",
+        {
+          article_id: article.id
+        }
+      );
+
+    if(!viewResult.error){
+
+      article.views =
+        Number(viewResult.data || 0);
+
+    }else{
+
+      console.log(
+        "View count error:",
+        viewResult.error
+      );
+
+    }
+  }
   if(
     db &&
     article.id
@@ -3165,7 +3212,15 @@ async function showDetails(article){
     ).toLocaleString(
       "as-IN"
     );
+const views =
+  document.createElement("span");
 
+views.className = "views";
+
+views.textContent =
+  "👁️ " +
+  Number(article.views || 0) +
+  " views";
 
   /* IMAGE */
 
@@ -3206,7 +3261,9 @@ async function showDetails(article){
   area.appendChild(
     time
   );
-
+area.appendChild(
+  views
+);
   area.appendChild(
     image
   );
