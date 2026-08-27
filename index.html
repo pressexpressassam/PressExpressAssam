@@ -1268,6 +1268,269 @@ header{
     margin-left:auto !important;
   }
 }
+  /* =================================================
+   PRESS EXPRESS ASSAM
+   FINAL HEADER FIX
+   ================================================= */
+
+/* HEADER */
+header{
+  width:100% !important;
+  background:#ffffff !important;
+  border-bottom:1px solid #e5e5e5 !important;
+  position:sticky !important;
+  top:0 !important;
+  z-index:9999 !important;
+}
+
+.header{
+  width:94% !important;
+  max-width:1400px !important;
+  min-height:78px !important;
+  height:auto !important;
+  margin:0 auto !important;
+  padding:8px 0 !important;
+
+  display:flex !important;
+  flex-direction:row !important;
+  flex-wrap:nowrap !important;
+  align-items:center !important;
+
+  gap:14px !important;
+  box-sizing:border-box !important;
+}
+
+/* VERY IMPORTANT:
+   logo wrapper will no longer hold the layout */
+.header .logo{
+  display:contents !important;
+}
+
+/* LOGO */
+.header .logo img{
+  flex:0 0 auto !important;
+
+  width:125px !important;
+  height:62px !important;
+
+  display:block !important;
+  object-fit:contain !important;
+
+  margin:0 !important;
+  padding:0 !important;
+}
+
+/* SOCIAL BUTTONS */
+.header .social-buttons{
+  flex:0 0 auto !important;
+
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+
+  gap:6px !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+
+.header .social-buttons a{
+  flex:0 0 auto !important;
+
+  width:32px !important;
+  height:32px !important;
+
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+
+  border-radius:50% !important;
+
+  text-decoration:none !important;
+  font-size:15px !important;
+
+  box-shadow:0 2px 6px rgba(0,0,0,.15) !important;
+}
+
+/* SOCIAL COLOURS */
+.header .social-facebook{
+  background:#1877f2 !important;
+  color:#fff !important;
+}
+
+.header .social-whatsapp{
+  background:#25d366 !important;
+  color:#fff !important;
+}
+
+.header .social-instagram{
+  background:linear-gradient(
+    45deg,
+    #feda75,
+    #d62976,
+    #962fbf,
+    #4f5bd5
+  ) !important;
+  color:#fff !important;
+}
+
+.header .social-youtube{
+  background:#ff0000 !important;
+  color:#fff !important;
+}
+
+/* NAV */
+.header nav{
+  flex:1 1 auto !important;
+  min-width:0 !important;
+
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  justify-content:flex-end !important;
+
+  gap:18px !important;
+
+  margin:0 !important;
+  padding:0 !important;
+
+  white-space:nowrap !important;
+  overflow:hidden !important;
+}
+
+.header nav a{
+  flex:0 0 auto !important;
+
+  color:#222 !important;
+  text-decoration:none !important;
+
+  font-size:17px !important;
+  font-weight:700 !important;
+
+  margin:0 !important;
+  padding:0 !important;
+}
+
+.header nav a:hover{
+  color:#d71936 !important;
+}
+
+/* LIVE */
+.header .live{
+  flex:0 0 auto !important;
+
+  position:static !important;
+
+  background:#d71936 !important;
+  color:#fff !important;
+
+  padding:10px 15px !important;
+
+  border-radius:8px !important;
+
+  font-size:15px !important;
+  font-weight:800 !important;
+
+  white-space:nowrap !important;
+  text-decoration:none !important;
+
+  margin:0 !important;
+}
+
+.header .live:hover{
+  background:#b9152d !important;
+}
+
+
+/* =================================================
+   MOBILE
+   ================================================= */
+
+@media(max-width:700px){
+
+  header{
+    position:sticky !important;
+    top:0 !important;
+  }
+
+  .header{
+    width:96% !important;
+
+    min-height:70px !important;
+
+    padding:6px 0 !important;
+
+    display:flex !important;
+    flex-direction:row !important;
+    flex-wrap:wrap !important;
+
+    align-items:center !important;
+
+    gap:6px !important;
+  }
+
+  /* LOGO */
+  .header .logo img{
+    width:70px !important;
+    height:52px !important;
+  }
+
+  /* SOCIAL */
+  .header .social-buttons{
+    gap:4px !important;
+  }
+
+  .header .social-buttons a{
+    width:28px !important;
+    height:28px !important;
+
+    font-size:13px !important;
+  }
+
+  /* LIVE */
+  .header .live{
+    margin-left:auto !important;
+
+    padding:8px 12px !important;
+
+    font-size:14px !important;
+  }
+
+  /* MENU GOES TO SECOND ROW */
+  .header nav{
+    order:10 !important;
+
+    flex:1 0 100% !important;
+
+    width:100% !important;
+    min-width:100% !important;
+
+    display:flex !important;
+
+    justify-content:flex-start !important;
+
+    gap:20px !important;
+
+    overflow-x:auto !important;
+    overflow-y:hidden !important;
+
+    padding:3px 2px 5px !important;
+
+    white-space:nowrap !important;
+
+    scrollbar-width:none !important;
+  }
+
+  .header nav::-webkit-scrollbar{
+    display:none !important;
+  }
+
+  .header nav a{
+    flex:0 0 auto !important;
+
+    font-size:15px !important;
+  }
+
+}
 </style>
   <meta property="og:title" content="Press Express Assam">
 <meta property="og:description" content="সত্য, নিৰপেক্ষ আৰু দায়িত্বশীল সংবাদ">
@@ -2455,7 +2718,9 @@ encodeURIComponent(
   ""
 ) +
 "&url=" +
-encodeURIComponent(window.location.origin + "/?news=" + article.id);
+encodeURIComponent(
+  window.location.origin + "/?news=" + article.id
+);
 
 const shareText =
 (article.title || "Press Express Assam") +
