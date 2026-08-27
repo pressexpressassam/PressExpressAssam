@@ -1829,7 +1829,27 @@ area.appendChild(time);
 area.appendChild(image);
 
 area.appendChild(text);
+const reporterBox = document.createElement("div");
 
+reporterBox.style.cssText =
+"display:flex;flex-direction:column;gap:6px;margin-top:18px;padding:14px;background:#f5f5f5;border-left:4px solid #d71936;border-radius:8px;";
+
+if(article.reporter_name){
+  const name = document.createElement("div");
+  name.textContent = "🧑‍💼 সাংবাদিক: " + article.reporter_name;
+  name.style.fontWeight = "700";
+  reporterBox.appendChild(name);
+}
+
+if(article.reporter_phone){
+  const phone = document.createElement("div");
+  phone.textContent = "📞 যোগাযোগ: " + article.reporter_phone;
+  reporterBox.appendChild(phone);
+}
+
+if(article.reporter_name || article.reporter_phone){
+  area.appendChild(reporterBox);
+}
 
 document
 .getElementById("detailsModal")
