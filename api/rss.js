@@ -38,7 +38,8 @@ export default async function handler(req, res) {
         "";
 
       const link =
-        `https://press-express-assam-ryfd.vercel.app/?news=${encodeURIComponent(article.id)}`;
+        const link =
+  `https://press-express-assam-ryfd.vercel.app/news/${encodeURIComponent(article.id)}`;
 
       return `
         <item>
