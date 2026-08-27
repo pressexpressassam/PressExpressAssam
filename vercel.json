@@ -6,7 +6,7 @@
     },
     {
       "source": "/news/:id",
-      "destination": "/api/news?id=:id"
+      "destination": "/api/share?id=:id"
     }
   ]
 }
