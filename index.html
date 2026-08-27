@@ -1774,6 +1774,21 @@ grid.appendChild(card);
 
 async function showDetails(article){
 
+if(db && article.id){
+
+const fullResult =
+await db
+.from("articles")
+.select("*")
+.eq("id", article.id)
+.single();
+
+if(!fullResult.error && fullResult.data){
+article = fullResult.data;
+}
+
+}
+
 const area =
 document.getElementById("detailsArea");
 
