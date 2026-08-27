@@ -1772,7 +1772,7 @@ grid.appendChild(card);
 
 /* FULL NEWS */
 
-function showDetails(article){
+async function showDetails(article){
 
 const area =
 document.getElementById("detailsArea");
@@ -1850,7 +1850,97 @@ if(article.reporter_phone){
 if(article.reporter_name || article.reporter_phone){
   area.appendChild(reporterBox);
 }
+/* RELATED NEWS */
 
+const relatedBox = document.createElement("div");
+
+relatedBox.style.cssText =
+"margin-top:25px;padding-top:18px;border-top:1px solid #ddd;";
+
+const relatedTitle = document.createElement("h2");
+
+relatedTitle.textContent = "🔗 সম্পৰ্কিত বাতৰি";
+
+relatedBox.appendChild(relatedTitle);
+
+const relatedResult =
+await db
+.from("articles")
+.select("id,title,category,image_url,created_at")
+.eq("category", article.category)
+.neq("id", article.id)
+.order("created_at",{ascending:false})
+.limit(5);
+
+if(!relatedResult.error && relatedResult.data?.length){
+
+relatedResult.data.forEach(item => {
+
+const relatedCard = document.createElement("div");
+
+relatedCard.style.cssText =
+"padding:12px;margin:10px 0;background:#f7f7f7;border-radius:10px;cursor:pointer;border:1px solid #ddd;";
+
+const relatedImage = document.createElement("img");
+
+relatedImage.src =
+item.image_url ||
+"https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=500&q=80";
+
+relatedImage.style.cssText =
+"width:100%;height:120px;object-fit:cover;border-radius:8px;";
+
+const relatedHeading = document.createElement("h3");
+
+relatedHeading.textContent =
+item.title || "বাতৰি";
+
+relatedHeading.style.cssText =
+"margin:8px 0 4px;font-size:18px;";
+
+const relatedDate = document.createElement("small");
+
+relatedDate.textContent =
+new Date(item.created_at).toLocaleString("as-IN");
+
+relatedDate.style.color = "#888";
+
+relatedCard.appendChild(relatedImage);
+relatedCard.appendChild(relatedHeading);
+relatedCard.appendChild(relatedDate);
+
+relatedCard.onclick = () => {
+
+document
+.getElementById("detailsModal")
+.classList.remove("show");
+
+setTimeout(() => {
+
+showDetails(item);
+
+},150);
+
+};
+
+relatedBox.appendChild(relatedCard);
+
+});
+
+}else{
+
+const noRelated = document.createElement("p");
+
+noRelated.textContent =
+"এই বাতৰিৰ সৈতে সম্পৰ্কিত আন বাতৰি নাই।";
+
+noRelated.style.color = "#888";
+
+relatedBox.appendChild(noRelated);
+
+}
+
+area.appendChild(relatedBox);
 document
 .getElementById("detailsModal")
 .classList.add("show");
