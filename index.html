@@ -1047,6 +1047,227 @@ input,textarea,select{
     white-space:nowrap !important;
   }
 }
+  /* FINAL HEADER ALIGNMENT */
+.header{
+  display:grid !important;
+  grid-template-columns:190px 170px 1fr auto !important;
+  align-items:center !important;
+  gap:10px !important;
+  width:94% !important;
+  max-width:1400px !important;
+  min-height:72px !important;
+  height:auto !important;
+  margin:0 auto !important;
+  padding:8px 0 !important;
+  box-sizing:border-box !important;
+}
+
+.header .logo{
+  margin:0 !important;
+}
+
+.header .social-buttons{
+  display:flex !important;
+  align-items:center !important;
+  gap:6px !important;
+  margin:0 !important;
+}
+
+.header nav{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-end !important;
+  gap:22px !important;
+  margin:0 !important;
+  white-space:nowrap !important;
+}
+
+.header nav a{
+  flex:0 0 auto !important;
+  margin:0 !important;
+}
+
+.header .live{
+  position:static !important;
+  margin:0 !important;
+  white-space:nowrap !important;
+}
+  /* ===== PRESS EXPRESS ASSAM - FINAL CLEAN HEADER ===== */
+
+header{
+  background:#fff !important;
+  border-bottom:1px solid #e5e5e5 !important;
+  position:sticky !important;
+  top:0 !important;
+  z-index:1000 !important;
+}
+
+.header{
+  width:94% !important;
+  max-width:1400px !important;
+  min-height:82px !important;
+  height:auto !important;
+  margin:0 auto !important;
+  padding:8px 0 !important;
+
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  gap:18px !important;
+
+  box-sizing:border-box !important;
+}
+
+/* LOGO */
+.header .logo{
+  flex:0 0 auto !important;
+  width:auto !important;
+  margin:0 !important;
+  padding:0 !important;
+  display:flex !important;
+  align-items:center !important;
+}
+
+.header .logo img{
+  width:125px !important;
+  height:62px !important;
+  object-fit:contain !important;
+  display:block !important;
+}
+
+/* SOCIAL ICONS */
+.header .social-buttons{
+  flex:0 0 auto !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:7px !important;
+  margin:0 !important;
+}
+
+.header .social-buttons a{
+  width:34px !important;
+  height:34px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  border-radius:50% !important;
+  font-size:16px !important;
+  box-shadow:0 2px 6px rgba(0,0,0,.15) !important;
+}
+
+/* NAVIGATION */
+.header nav{
+  flex:1 1 auto !important;
+  min-width:0 !important;
+
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-end !important;
+
+  gap:20px !important;
+  margin:0 !important;
+  padding:0 !important;
+
+  white-space:nowrap !important;
+  overflow:hidden !important;
+}
+
+.header nav a{
+  flex:0 0 auto !important;
+  margin:0 !important;
+  color:#222 !important;
+  font-size:17px !important;
+  font-weight:700 !important;
+  text-decoration:none !important;
+}
+
+/* LIVE BUTTON */
+.header .live{
+  flex:0 0 auto !important;
+  position:static !important;
+  margin:0 !important;
+
+  background:#d71936 !important;
+  color:#fff !important;
+
+  padding:11px 16px !important;
+  border-radius:8px !important;
+
+  font-size:15px !important;
+  font-weight:800 !important;
+  white-space:nowrap !important;
+  text-decoration:none !important;
+}
+
+/* HOVER */
+.header nav a:hover{
+  color:#d71936 !important;
+}
+
+.header .live:hover{
+  background:#b9152d !important;
+}
+
+
+/* ===== MOBILE HEADER ===== */
+
+@media(max-width:700px){
+
+  .header{
+    width:96% !important;
+    min-height:70px !important;
+    padding:6px 0 !important;
+
+    display:flex !important;
+    flex-wrap:wrap !important;
+    justify-content:flex-start !important;
+    gap:7px !important;
+  }
+
+  .header .logo img{
+    width:75px !important;
+    height:52px !important;
+  }
+
+  .header .social-buttons{
+    gap:4px !important;
+  }
+
+  .header .social-buttons a{
+    width:28px !important;
+    height:28px !important;
+    font-size:13px !important;
+  }
+
+  .header nav{
+    order:3 !important;
+    flex:1 0 100% !important;
+
+    justify-content:flex-start !important;
+    gap:18px !important;
+
+    overflow-x:auto !important;
+    overflow-y:hidden !important;
+
+    padding:3px 2px 5px !important;
+
+    scrollbar-width:none !important;
+  }
+
+  .header nav::-webkit-scrollbar{
+    display:none !important;
+  }
+
+  .header nav a{
+    font-size:15px !important;
+  }
+
+  .header .live{
+    padding:8px 12px !important;
+    font-size:14px !important;
+    margin-left:auto !important;
+  }
+}
 </style>
   <meta property="og:title" content="Press Express Assam">
 <meta property="og:description" content="সত্য, নিৰপেক্ষ আৰু দায়িত্বশীল সংবাদ">
@@ -2232,7 +2453,7 @@ encodeURIComponent(
   article.photo ||
   article.imageUrl ||
   ""
-)
+) +
 "&url=" +
 encodeURIComponent(window.location.origin + "/?news=" + article.id);
 
