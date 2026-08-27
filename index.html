@@ -3161,7 +3161,10 @@ async function showDetails(article){
       article =
         fullResult.data;
     }
-  }
+
+if(!viewResult.error){
+  article.views = viewResult.data;
+}
 
 
   const area =
