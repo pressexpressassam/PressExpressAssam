@@ -906,7 +906,60 @@ input,textarea,select{
   .related-news-small .related-news-item small{
     font-size:9px !important;
   }
-}}}}</style>
+/* SOCIAL MEDIA BUTTONS */
+.social-buttons{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin-left:12px;
+}
+
+.social-buttons a{
+  width:34px;
+  height:34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  text-decoration:none;
+  color:#fff;
+  font-size:16px;
+  font-weight:bold;
+  transition:.2s;
+}
+
+.social-buttons a:hover{
+  transform:scale(1.08);
+}
+
+.social-facebook{
+  background:#1877F2;
+}
+
+.social-whatsapp{
+  background:#25D366;
+}
+
+.social-youtube{
+  background:#FF0000;
+}
+
+.social-instagram{
+  background:linear-gradient(45deg,#feda75,#d62976,#4f5bd5);
+}
+
+@media(max-width:700px){
+  .social-buttons{
+    gap:4px;
+    margin-left:5px;
+  }
+
+  .social-buttons a{
+    width:28px;
+    height:28px;
+    font-size:13px;
+  }
+}</style>
   <meta property="og:title" content="Press Express Assam">
 <meta property="og:description" content="সত্য, নিৰপেক্ষ আৰু দায়িত্বশীল সংবাদ">
 <meta property="og:image" content="https://pressexpressassam.github.io/PressExpressAssam/logo2.png">
@@ -929,6 +982,12 @@ input,textarea,select{
          alt="Press Express Assam"
          style="width:190px;height:55px;object-fit:contain;">
   </div>
+<div class="social-buttons">
+  <a href="#" class="social-facebook" target="_blank">f</a>
+  <a href="#" class="social-whatsapp" target="_blank">☎</a>
+  <a href="#" class="social-instagram" target="_blank">◎</a>
+  <a href="#" class="social-youtube" target="_blank">▶</a>
+</div>
 
   <nav>
     <a href="#">হোম</a>
