@@ -908,57 +908,58 @@ input,textarea,select{
   }
 /* SOCIAL MEDIA BUTTONS */
 .social-buttons{
-  display:flex !important;
-  align-items:center !important;
-  gap:8px !important;
-  margin-left:15px !important;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-left:20px;
 }
 
 .social-buttons a{
-  width:34px !important;
-  height:34px !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  border-radius:50% !important;
-  color:#fff !important;
-  text-decoration:none !important;
-  font-size:17px !important;
-  font-weight:bold !important;
-  box-sizing:border-box !important;
-  box-shadow:0 2px 6px rgba(0,0,0,.18) !important;
+  width:34px;
+  height:34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  text-decoration:none;
+  color:#fff;
+  font-size:16px;
+  font-weight:bold;
+  transition:0.2s;
+  box-shadow:0 2px 6px rgba(0,0,0,0.15);
 }
 
 .social-buttons a:hover{
-  transform:scale(1.08);
+  transform:scale(1.12);
 }
 
 .social-facebook{
-  background:#1877F2 !important;
+  background:#1877f2 !important;
 }
 
 .social-whatsapp{
-  background:#25D366 !important;
+  background:#25d366 !important;
 }
 
 .social-instagram{
-  background:linear-gradient(45deg,#FEDA75,#D62976,#4F5BD5) !important;
+  background:linear-gradient(45deg,#feda75,#d62976,#962fbf,#4f5bd5) !important;
 }
 
 .social-youtube{
-  background:#FF0000 !important;
+  background:#ff0000 !important;
 }
 
+/* MOBILE */
 @media(max-width:700px){
   .social-buttons{
-    gap:5px !important;
-    margin-left:6px !important;
+    gap:5px;
+    margin-left:6px;
   }
 
   .social-buttons a{
-    width:30px !important;
-    height:30px !important;
-    font-size:14px !important;
+    width:30px;
+    height:30px;
+    font-size:14px;
   }
 }
 </style>
@@ -972,6 +973,7 @@ input,textarea,select{
 <meta name="twitter:title" content="Press Express Assam">
 <meta name="twitter:description" content="সত্য, নিৰপেক্ষ আৰু দায়িত্বশীল সংবাদ">
 <meta name="twitter:image" content="https://pressexpressassam.github.io/PressExpressAssam/logo2.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
@@ -983,12 +985,36 @@ input,textarea,select{
     <img src="logo2.png"
          alt="Press Express Assam"
          style="width:190px;height:55px;object-fit:contain;">
-  </div>
-<div class="social-buttons">
-  <a href="#" class="social-facebook" target="_blank">f</a>
-  <a href="#" class="social-whatsapp" target="_blank">☎</a>
-  <a href="#" class="social-instagram" target="_blank">◎</a>
-  <a href="#" class="social-youtube" target="_blank">▶</a>
+  <div class="social-buttons">
+
+  <a href="https://www.facebook.com/"
+     class="social-facebook"
+     target="_blank"
+     aria-label="Facebook">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+
+  <a href="https://wa.me/"
+     class="social-whatsapp"
+     target="_blank"
+     aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <a href="https://www.instagram.com/"
+     class="social-instagram"
+     target="_blank"
+     aria-label="Instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+
+  <a href="https://www.youtube.com/"
+     class="social-youtube"
+     target="_blank"
+     aria-label="YouTube">
+    <i class="fab fa-youtube"></i>
+  </a>
+
 </div>
 
   <nav>
