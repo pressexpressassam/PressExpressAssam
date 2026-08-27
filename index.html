@@ -1692,6 +1692,19 @@ footer a:hover{
 
 </style>
 
+<!-- ONE SIGNAL PUSH NOTIFICATION -->
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "53152aa9-7fe5-4e39-9c7c-a2b93a9a9973"
+    });
+  });
+</script>
+
 </head>
 
 
