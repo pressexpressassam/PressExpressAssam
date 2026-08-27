@@ -3141,24 +3141,15 @@ async function showDetails(article){
         viewResult.error
       );
     }
-  }
 
 
-  /* GET FULL NEWS */
-
-  if(
-    db &&
-    article.id
-  ){
+    /* LOAD FULL NEWS */
 
     const fullResult =
       await db
         .from("articles")
         .select("*")
-        .eq(
-          "id",
-          article.id
-        )
+        .eq("id",article.id)
         .single();
 
 
@@ -3170,15 +3161,15 @@ async function showDetails(article){
       article =
         fullResult.data;
     }
-  }
 
 
-  /* UPDATE VIEW COUNT */
+    /* KEEP UPDATED VIEW COUNT */
 
-  if(newViewCount !== null){
+    if(newViewCount !== null){
 
-    article.views =
-      newViewCount;
+      article.views =
+        newViewCount;
+    }
   }
 
 
