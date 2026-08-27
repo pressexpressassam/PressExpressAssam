@@ -1322,7 +1322,13 @@ document.getElementById("content")
 const videoUrl =
 document.getElementById("videoUrl")
 .value.trim();
+const reporterName =
+document.getElementById("reporterName")
+.value.trim();
 
+const reporterPhone =
+document.getElementById("reporterPhone")
+.value.trim();
 if(!title){
 
 showStatus("শিৰোনাম লিখক।");
@@ -1415,6 +1421,8 @@ content:content,
 image_url:imageUrl,
 published:true,
 video_url:videoUrl,
+  reporter_name:reporterName,
+reporter_phone:reporterPhone,
 });
 
 
