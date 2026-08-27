@@ -1932,18 +1932,18 @@ if(!relatedResult.error && relatedResult.data?.length){
 relatedResult.data.forEach(item => {
 
 const relatedCard = document.createElement("div");
-
+relatedCard.className = "related-news-item";
 relatedCard.style.cssText =
-"padding:12px;margin:10px 0;background:#f7f7f7;border-radius:10px;cursor:pointer;border:1px solid #ddd;";
+"padding:7px;margin:6px 0;background:#fff;border-radius:8px;cursor:pointer;border:1px solid #eee;";
 
 const relatedImage = document.createElement("img");
-
+relatedImage.className = "related-news-image";
 relatedImage.src =
 item.image_url ||
 "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=500&q=80";
 
 relatedImage.style.cssText =
-"width:100%;height:120px;object-fit:cover;border-radius:8px;";
+"width:70px;height:50px;object-fit:cover;border-radius:6px;flex:0 0 70px;";
 
 const relatedHeading = document.createElement("h3");
 
@@ -1951,14 +1951,14 @@ relatedHeading.textContent =
 item.title || "বাতৰি";
 
 relatedHeading.style.cssText =
-"margin:8px 0 4px;font-size:18px;";
+"margin:0 0 2px;font-size:14px;line-height:1.3;";
 
 const relatedDate = document.createElement("small");
 
 relatedDate.textContent =
 new Date(item.created_at).toLocaleString("as-IN");
 
-relatedDate.style.color = "#888";
+relatedDate.style.fontSize = "10px";
 
 relatedCard.appendChild(relatedImage);
 relatedCard.appendChild(relatedHeading);
