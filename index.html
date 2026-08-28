@@ -1,2966 +1,779 @@
 <!DOCTYPE html>
 <html lang="as">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
-
-<meta name="robots"
-      content="index,follow">
-
-<meta name="description"
-      content="Press Express Assam — অসমৰ স্থানীয়, গুৱাহাটী, ভাৰত, বিশ্ব, ব্যৱসায়, খেল আৰু বিনোদনৰ শেহতীয়া সংবাদ।">
-
-<meta name="theme-color"
-      content="#c8102e">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Press Express Assam — অসমৰ স্থানীয়, ৰাজ্যিক, ভাৰতীয় আৰু আন্তঃৰাষ্ট্ৰীয় শেহতীয়া সংবাদ।">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#c8102e">
 <title>Press Express Assam — অসমৰ শেহতীয়া খবৰ</title>
 
-<link rel="preconnect"
-      href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Assamese:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet">
-
-
 <style>
-
-/* =========================================================
-   PRESS EXPRESS ASSAM
-   COMPLETE ONE FILE NEWS PORTAL
-========================================================= */
-
-:root{
-  --red:#c8102e;
-  --red-dark:#a90d27;
-  --black:#10141b;
-  --dark:#171d26;
-  --text:#171a20;
-  --muted:#707780;
-  --bg:#f4f6f8;
-  --white:#ffffff;
-  --border:#e4e7eb;
-  --shadow:0 8px 30px rgba(16,24,32,.08);
-  --radius:18px;
-}
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:"Noto Sans Assamese",Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.6;
-}
-
-button,
-input,
-textarea,
-select{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-img{
-  display:block;
-  max-width:100%;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-
-/* =========================================================
-   TOP BAR
-========================================================= */
-
-.topbar{
-  background:var(--black);
-  color:#fff;
-  height:34px;
-  display:flex;
-  align-items:center;
-}
-
-.topbar-inner{
-  width:min(1200px,94%);
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-size:12px;
-}
-
-.topbar-right{
-  opacity:.9;
-}
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-.header{
-  background:#fff;
-  border-bottom:1px solid var(--border);
-  position:sticky;
-  top:0;
-  z-index:50;
-}
-
-.header-main{
-  width:min(1200px,94%);
-  margin:auto;
-  min-height:92px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  min-width:0;
-}
-
-.logo{
-  width:62px;
-  height:62px;
-  border:3px solid var(--red);
-  border-radius:50%;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  color:var(--red);
-  background:#fff;
-  flex:none;
-}
-
-.logo-p{
-  font-family:Georgia,serif;
-  font-size:31px;
-  line-height:25px;
-  font-weight:bold;
-}
-
-.logo-press{
-  font-size:8px;
-  font-weight:800;
-  letter-spacing:1px;
-}
-
-.brand-text h1{
-  font-size:26px;
-  font-weight:800;
-  line-height:1.1;
-  white-space:nowrap;
-}
-
-.brand-text h1 span{
-  color:var(--red);
-}
-
-.brand-text p{
-  color:#8a8f96;
-  font-size:12px;
-  margin-top:4px;
-}
-
-.live-btn{
-  border:0;
-  background:var(--red);
-  color:#fff;
-  padding:12px 19px;
-  border-radius:10px;
-  font-weight:800;
-  box-shadow:0 7px 20px rgba(200,16,46,.22);
-}
-
-.live-btn:hover{
-  background:var(--red-dark);
-}
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-.nav{
-  background:#fff;
-  border-top:1px solid #f1f2f3;
-}
-
-.nav-inner{
-  width:min(1200px,94%);
-  margin:auto;
-  display:flex;
-  align-items:center;
-  gap:4px;
-  overflow-x:auto;
-  scrollbar-width:none;
-}
-
-.nav-inner::-webkit-scrollbar{
-  display:none;
-}
-
-.nav button{
-  background:none;
-  border:0;
-  padding:13px 16px;
-  font-weight:700;
-  white-space:nowrap;
-  color:#282c32;
-  border-bottom:3px solid transparent;
-}
-
-.nav button:hover,
-.nav button.active{
-  color:var(--red);
-  border-bottom-color:var(--red);
-}
-
-
-/* =========================================================
-   BREAKING BAR
-========================================================= */
-
-.breaking{
-  height:45px;
-  background:#fff;
-  border-bottom:1px solid var(--border);
-  display:flex;
-  overflow:hidden;
-}
-
-.breaking-label{
-  flex:none;
-  background:var(--red);
-  color:#fff;
-  padding:10px 26px;
-  font-weight:800;
-  min-width:150px;
-  text-align:center;
-}
-
-.breaking-text{
-  display:flex;
-  align-items:center;
-  padding-left:20px;
-  white-space:nowrap;
-  color:#555b63;
-  font-size:14px;
-}
-
-
-/* =========================================================
-   MAIN
-========================================================= */
-
-.container{
-  width:min(1200px,94%);
-  margin:0 auto;
-}
-
-.search-box{
-  margin-top:30px;
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:20px;
-  padding:18px;
-  box-shadow:var(--shadow);
-}
-
-.search-wrap{
-  position:relative;
-}
-
-.search-wrap input{
-  width:100%;
-  height:56px;
-  border:1px solid #dfe3e7;
-  border-radius:14px;
-  padding:0 52px 0 20px;
-  outline:none;
-  font-size:15px;
-  background:#fff;
-}
-
-.search-wrap input:focus{
-  border-color:var(--red);
-  box-shadow:0 0 0 3px rgba(200,16,46,.08);
-}
-
-.search-icon{
-  position:absolute;
-  right:19px;
-  top:50%;
-  transform:translateY(-50%);
-  color:#7d848c;
-  font-size:20px;
-}
-
-.categories{
-  display:flex;
-  gap:10px;
-  overflow-x:auto;
-  margin-top:15px;
-  padding-bottom:2px;
-  scrollbar-width:none;
-}
-
-.categories::-webkit-scrollbar{
-  display:none;
-}
-
-.category{
-  flex:none;
-  background:#fff;
-  border:1px solid #dfe3e7;
-  border-radius:30px;
-  padding:9px 20px;
-  color:#25292f;
-  font-weight:700;
-}
-
-.category:hover{
-  border-color:var(--red);
-  color:var(--red);
-}
-
-.category.active{
-  background:var(--red);
-  color:#fff;
-  border-color:var(--red);
-}
-
-
-/* =========================================================
-   SECTION TITLE
-========================================================= */
-
-.section-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin:38px 0 16px;
-}
-
-.section-title{
-  border-left:5px solid var(--red);
-  padding-left:14px;
-  font-size:28px;
-  line-height:1.2;
-  font-weight:800;
-}
-
-.section-small{
-  color:#858b92;
-  font-size:13px;
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero{
-  position:relative;
-  min-height:490px;
-  border-radius:22px;
-  overflow:hidden;
-  background:var(--dark);
-  box-shadow:var(--shadow);
-}
-
-.hero-image{
-  width:100%;
-  height:490px;
-  object-fit:cover;
-}
-
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(
-      to top,
-      rgba(0,0,0,.94) 0%,
-      rgba(0,0,0,.35) 55%,
-      rgba(0,0,0,.05) 100%
-    );
-}
-
-.hero-content{
-  position:absolute;
-  left:36px;
-  right:36px;
-  bottom:32px;
-  z-index:2;
-  color:#fff;
-}
-
-.badge{
-  display:inline-block;
-  background:var(--red);
-  color:#fff;
-  border-radius:6px;
-  padding:5px 11px;
-  font-size:12px;
-  font-weight:800;
-  margin-bottom:13px;
-}
-
-.hero h2{
-  font-size:36px;
-  line-height:1.25;
-  max-width:900px;
-  margin-bottom:12px;
-}
-
-.hero p{
-  color:#d9dde2;
-  max-width:850px;
-  font-size:15px;
-}
-
-.meta{
-  color:#8b9198;
-  font-size:12px;
-  margin-top:14px;
-}
-
-.hero .meta{
-  color:#d0d4d8;
-}
-
-
-/* =========================================================
-   SIDE NEWS
-========================================================= */
-
-.hero-grid{
-  display:grid;
-  grid-template-columns:2fr 1fr;
-  gap:20px;
-}
-
-.side-news{
-  display:grid;
-  grid-template-rows:1fr 1fr;
-  gap:20px;
-}
-
-.side-card{
-  background:#fff;
-  border-radius:18px;
-  overflow:hidden;
-  border:1px solid var(--border);
-  box-shadow:var(--shadow);
-  display:flex;
-  min-height:0;
-}
-
-.side-card img{
-  width:45%;
-  object-fit:cover;
-}
-
-.side-content{
-  padding:18px;
-}
-
-.side-content .badge{
-  font-size:10px;
-  margin-bottom:8px;
-}
-
-.side-content h3{
-  font-size:18px;
-  line-height:1.35;
-}
-
-
-/* =========================================================
-   NEWS GRID
-========================================================= */
-
-.news-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
-  margin-bottom:50px;
-}
-
-.news-card{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow:var(--shadow);
-  transition:.2s ease;
-}
-
-.news-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 15px 35px rgba(16,24,32,.12);
-}
-
-.news-image{
-  width:100%;
-  height:220px;
-  object-fit:cover;
-  background:#121821;
-}
-
-.news-body{
-  padding:20px;
-}
-
-.news-body .badge{
-  font-size:10px;
-  margin-bottom:10px;
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--red:#c8102e;--dark:#10161f;--bg:#f4f6f8;--muted:#69727d;--line:#e2e5e9;--white:#fff;--shadow:0 12px 35px rgba(15,23,42,.08);--radius:18px}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Noto Sans Assamese","Noto Sans",sans-serif;background:var(--bg);color:#171b22}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+
+.top{background:var(--dark);color:#fff;padding:7px 4%;font-size:12px;display:flex;justify-content:space-between}
+.header{background:#fff;border-bottom:1px solid var(--line)}
+.head{max-width:1200px;margin:auto;padding:18px 20px;display:flex;align-items:center;gap:18px}
+.logo{width:64px;height:64px;border:3px solid var(--red);border-radius:50%;display:grid;place-items:center;color:var(--red);font-family:Georgia,serif;font-weight:800;font-size:30px;line-height:.7}
+.logo small{display:block;font:700 8px Arial;letter-spacing:1px}
+.brand{flex:1}
+.brand h1{font-size:25px;line-height:1.05}
+.brand h1 span{color:var(--red)}
+.brand p{color:#9299a2;font-size:12px;margin-top:5px}
+.live{background:var(--red);color:#fff;border:0;border-radius:10px;padding:13px 19px;font-weight:800;box-shadow:0 7px 18px #c8102e33}
+.live i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#fff;margin-right:7px}
+
+.nav{background:#fff;border-bottom:1px solid var(--line);overflow:auto}
+.navin{max-width:1200px;margin:auto;display:flex;gap:4px;padding:0 20px}
+.nav button{border:0;background:transparent;padding:14px 18px;font-weight:750;white-space:nowrap;color:#242a32}
+.nav button.active{color:var(--red);border-bottom:3px solid var(--red)}
+
+.ticker{background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center}
+.breaking{background:var(--red);color:#fff;padding:14px 30px;font-weight:800;min-width:155px;text-align:center}
+.tickerText{padding:0 22px;white-space:nowrap;overflow:hidden;color:#59616b;font-weight:600}
+
+.wrap{max-width:1200px;margin:auto;padding:30px 20px}
+.searchbox{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--shadow);margin-bottom:32px}
+.search{position:relative}
+.search input{width:100%;padding:17px 45px 17px 20px;border:1px solid var(--line);border-radius:14px;outline:0}
+.search input:focus{border-color:var(--red)}
+.search span{position:absolute;right:18px;top:15px;font-size:20px;color:#7b838d}
+
+.cats{display:flex;gap:9px;overflow:auto;padding-top:13px}
+.cat{border:1px solid var(--line);background:#fff;border-radius:30px;padding:9px 18px;white-space:nowrap}
+.cat.active{background:var(--red);color:#fff;border-color:var(--red)}
+
+.sectionhead{display:flex;align-items:center;justify-content:space-between;margin:25px 0 14px}
+.sectionhead h2{font-size:28px;border-left:5px solid var(--red);padding-left:14px}
+.sectionhead span{color:#8a919a;font-size:13px}
+
+.hero{display:grid;grid-template-columns:1.65fr 1fr;gap:20px;margin-bottom:30px}
+.heroCard{min-height:410px;border-radius:22px;overflow:hidden;position:relative;background:linear-gradient(135deg,#111923,#030507);box-shadow:var(--shadow);color:#fff;padding:34px;display:flex;align-items:flex-end}
+.heroCard:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 20%,#c8102e99,transparent 38%),linear-gradient(125deg,transparent 45%,#c8102e38 46%,transparent 48%)}
+.heroContent{position:relative;z-index:2;max-width:850px}
+.tag{display:inline-block;background:var(--red);color:#fff;border-radius:7px;padding:7px 12px;font-size:12px;font-weight:800;margin-bottom:13px}
+.heroContent h2{font-size:clamp(28px,4vw,47px);line-height:1.13;margin-bottom:12px}
+.heroContent p{color:#d6dbe1;line-height:1.7}
+.meta{color:#aeb6c0;font-size:12px;margin-top:15px}
+
+.side{display:grid;gap:20px}
+.sideCard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:25px;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:center}
+.sideCard .tag{align-self:flex-start}
+.sideCard h3{font-size:20px;line-height:1.4}
+.sideCard p{color:var(--muted);font-size:13px;line-height:1.6;margin-top:8px}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);transition:.2s}
+.card:hover{transform:translateY(-3px)}
+.pic{height:190px;background:linear-gradient(135deg,#121a25,#05070b);position:relative;overflow:hidden}
+.pic:before{content:"";position:absolute;width:300px;height:300px;border-radius:50%;right:-80px;top:-130px;background:#c8102e66;filter:blur(10px)}
+.pic:after{content:"PRESS EXPRESS";position:absolute;left:20px;bottom:20px;color:#ffffff14;font-size:25px;font-weight:900;letter-spacing:1px}
+.picText{position:absolute;z-index:2;left:20px;right:20px;bottom:20px;color:#fff;font-weight:800;font-size:19px;line-height:1.25}
+
+.body{padding:20px}
+.body .tag{font-size:10px;padding:5px 9px;margin:0 0 10px}
+.body h3{font-size:20px;line-height:1.4}
+.body p{color:var(--muted);font-size:13px;line-height:1.6;margin-top:8px}
+.body .meta{margin-top:12px}
+
+.empty{background:#fff;border:1px dashed #c9ced5;border-radius:18px;padding:45px;text-align:center;color:var(--muted)}
+
+.footer{background:#0e141c;color:#d8dde4;margin-top:45px}
+.foot{max-width:1200px;margin:auto;padding:40px 20px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:35px}
+.foot h2{color:#fff}
+.foot h2 span{color:var(--red)}
+.foot p,.foot a{display:block;color:#9ea7b2;font-size:13px;line-height:1.8;margin-top:9px}
+.copy{border-top:1px solid #252c35;max-width:1200px;margin:auto;padding:16px 20px;color:#7f8995;font-size:12px}
+
+.adminBtn{position:fixed;right:18px;bottom:18px;border:0;background:var(--red);color:#fff;border-radius:30px;padding:13px 19px;font-weight:800;box-shadow:0 10px 28px #c8102e55;z-index:20}
+
+.modal{display:none;position:fixed;inset:0;background:#0009;z-index:50;padding:18px;overflow:auto}
+.modal.show{display:block}
+.panel{max-width:720px;background:#fff;border-radius:20px;margin:30px auto;padding:24px;box-shadow:0 25px 70px #0005}
+.panelHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.close{border:0;background:#eef0f3;border-radius:50%;width:36px;height:36px;font-size:20px}
+.form{display:grid;gap:12px}
+.form input,.form textarea,.form select{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px;outline:0}
+.form textarea{min-height:100px;resize:vertical}
+.primary{border:0;background:var(--red);color:#fff;padding:13px;border-radius:10px;font-weight:800}
+.danger{border:0;background:#333;color:#fff;padding:10px 13px;border-radius:8px}
+.adminList{margin-top:22px;display:grid;gap:10px}
+.adminItem{border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;gap:10px;justify-content:space-between;align-items:center}
+
+.reader{max-width:850px}
+.reader .heroCard{min-height:350px}
+.reader p{line-height:1.9;color:#4e5660;margin-top:15px}
+.share{display:flex;gap:8px;margin-top:15px}
+.share button{border:0;background:#fff;padding:10px 15px;border-radius:9px;font-weight:700}
+
+@media(max-width:850px){
+.head{padding:14px}
+.logo{width:54px;height:54px;font-size:25px}
+.brand h1{font-size:20px}
+.live{padding:10px 13px}
+.hero{grid-template-columns:1fr}
+.grid{grid-template-columns:repeat(2,1fr)}
+.foot{grid-template-columns:1fr 1fr}
+.heroCard{min-height:360px}
+}
+
+@media(max-width:560px){
+.top{font-size:10px}
+.tickerText{font-size:12px}
+.breaking{min-width:125px;padding:12px 14px}
+.wrap{padding:20px 12px}
+.grid{grid-template-columns:1fr}
+.heroCard{padding:22px;min-height:350px}
+.heroContent h2{font-size:30px}
+.sectionhead h2{font-size:23px}
+.foot{grid-template-columns:1fr}
+.sideCard{padding:20px}
 }
-
-.news-body h3{
-  font-size:20px;
-  line-height:1.4;
-  margin-bottom:8px;
-}
-
-.news-body p{
-  color:#777d84;
-  font-size:13px;
-}
-
-.empty{
-  grid-column:1/-1;
-  background:#fff;
-  border-radius:18px;
-  padding:60px 20px;
-  text-align:center;
-  color:#777;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.footer{
-  background:var(--black);
-  color:#fff;
-  margin-top:60px;
-}
-
-.footer-inner{
-  width:min(1200px,94%);
-  margin:auto;
-  padding:45px 0 20px;
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  gap:45px;
-}
-
-.footer-brand{
-  font-size:25px;
-  font-weight:800;
-}
-
-.footer-brand span{
-  color:var(--red);
-}
-
-.footer p{
-  color:#9da4ad;
-  font-size:13px;
-  margin-top:10px;
-}
-
-.footer h4{
-  font-size:15px;
-  margin-bottom:12px;
-}
-
-.footer-links{
-  display:flex;
-  flex-direction:column;
-  gap:7px;
-}
-
-.footer-links button{
-  border:0;
-  background:none;
-  color:#aeb5bd;
-  text-align:left;
-  padding:0;
-}
-
-.footer-links button:hover{
-  color:#fff;
-}
-
-.copyright{
-  width:min(1200px,94%);
-  margin:auto;
-  border-top:1px solid #29303a;
-  padding:17px 0;
-  color:#777f89;
-  font-size:12px;
-  display:flex;
-  justify-content:space-between;
-}
-
-
-/* =========================================================
-   ADMIN BUTTON
-========================================================= */
-
-.admin-float{
-  position:fixed;
-  right:22px;
-  bottom:22px;
-  z-index:80;
-  border:0;
-  background:var(--red);
-  color:#fff;
-  padding:13px 20px;
-  border-radius:30px;
-  font-weight:800;
-  box-shadow:0 10px 30px rgba(200,16,46,.28);
-}
-
-.admin-float:hover{
-  background:var(--red-dark);
-}
-
-
-/* =========================================================
-   MODAL
-========================================================= */
-
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.65);
-  z-index:100;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
-
-.modal.show{
-  display:flex;
-}
-
-.modal-box{
-  width:min(720px,100%);
-  max-height:92vh;
-  overflow-y:auto;
-  background:#fff;
-  border-radius:22px;
-  box-shadow:0 25px 80px rgba(0,0,0,.3);
-}
-
-.modal-head{
-  padding:20px 22px;
-  border-bottom:1px solid var(--border);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.modal-head h2{
-  font-size:20px;
-}
-
-.close{
-  border:0;
-  background:#f0f2f4;
-  width:38px;
-  height:38px;
-  border-radius:50%;
-  font-size:20px;
-}
-
-.modal-body{
-  padding:22px;
-}
-
-.login-box{
-  max-width:400px;
-  margin:auto;
-}
-
-.form-group{
-  margin-bottom:16px;
-}
-
-.form-group label{
-  display:block;
-  font-weight:700;
-  font-size:13px;
-  margin-bottom:7px;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select{
-  width:100%;
-  border:1px solid #dce1e5;
-  border-radius:11px;
-  padding:12px 13px;
-  outline:none;
-  background:#fff;
-}
-
-.form-group textarea{
-  min-height:120px;
-  resize:vertical;
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus{
-  border-color:var(--red);
-}
-
-.primary{
-  width:100%;
-  border:0;
-  background:var(--red);
-  color:#fff;
-  padding:13px;
-  border-radius:11px;
-  font-weight:800;
-}
-
-.primary:hover{
-  background:var(--red-dark);
-}
-
-.admin-panel{
-  display:none;
-}
-
-.admin-note{
-  background:#fff6f7;
-  border:1px solid #ffd8de;
-  color:#8e2638;
-  padding:12px;
-  border-radius:10px;
-  font-size:12px;
-  margin-bottom:18px;
-}
-
-.admin-list{
-  margin-top:25px;
-}
-
-.admin-list h3{
-  font-size:16px;
-  margin-bottom:10px;
-}
-
-.admin-item{
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:12px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:10px;
-}
-
-.admin-item-title{
-  font-size:13px;
-  font-weight:700;
-}
-
-.admin-item-meta{
-  color:#888;
-  font-size:11px;
-  margin-top:3px;
-}
-
-.delete-btn{
-  flex:none;
-  border:0;
-  background:#fbe7eb;
-  color:#b20f2c;
-  padding:7px 11px;
-  border-radius:8px;
-  font-weight:700;
-  font-size:11px;
-}
-
-
-/* =========================================================
-   SHARE BUTTONS
-========================================================= */
-
-.share-row{
-  display:flex;
-  gap:8px;
-  margin-top:14px;
-}
-
-.share-btn{
-  border:0;
-  background:#fff;
-  color:#222;
-  border-radius:8px;
-  padding:8px 12px;
-  font-size:12px;
-  font-weight:700;
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media(max-width:900px){
-
-  .header-main{
-    min-height:78px;
-  }
-
-  .logo{
-    width:54px;
-    height:54px;
-  }
-
-  .logo-p{
-    font-size:27px;
-  }
-
-  .brand-text h1{
-    font-size:21px;
-  }
-
-  .brand-text p{
-    font-size:10px;
-  }
-
-  .hero-grid{
-    grid-template-columns:1fr;
-  }
-
-  .side-news{
-    grid-template-columns:1fr 1fr;
-    grid-template-rows:auto;
-  }
-
-  .side-card{
-    min-height:150px;
-  }
-
-  .news-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .footer-inner{
-    grid-template-columns:1fr 1fr;
-  }
-
-}
-
-
-@media(max-width:650px){
-
-  .topbar-inner{
-    font-size:10px;
-  }
-
-  .topbar-right{
-    display:none;
-  }
-
-  .header-main{
-    min-height:74px;
-  }
-
-  .brand{
-    gap:9px;
-  }
-
-  .logo{
-    width:48px;
-    height:48px;
-    border-width:2px;
-  }
-
-  .logo-p{
-    font-size:24px;
-  }
-
-  .logo-press{
-    font-size:6px;
-  }
-
-  .brand-text h1{
-    font-size:18px;
-  }
-
-  .brand-text p{
-    font-size:9px;
-  }
-
-  .live-btn{
-    padding:9px 12px;
-    font-size:11px;
-  }
-
-  .nav button{
-    padding:10px 12px;
-    font-size:12px;
-  }
-
-  .breaking{
-    height:42px;
-  }
-
-  .breaking-label{
-    min-width:108px;
-    padding:10px 12px;
-    font-size:12px;
-  }
-
-  .breaking-text{
-    font-size:11px;
-    padding-left:12px;
-  }
-
-  .container{
-    width:92%;
-  }
-
-  .search-box{
-    margin-top:18px;
-    padding:13px;
-    border-radius:16px;
-  }
-
-  .search-wrap input{
-    height:50px;
-  }
-
-  .category{
-    padding:8px 15px;
-    font-size:12px;
-  }
-
-  .section-head{
-    margin:28px 0 13px;
-  }
-
-  .section-title{
-    font-size:22px;
-  }
-
-  .section-small{
-    font-size:10px;
-  }
-
-  .hero{
-    min-height:420px;
-    border-radius:17px;
-  }
-
-  .hero-image{
-    height:420px;
-  }
-
-  .hero-content{
-    left:20px;
-    right:20px;
-    bottom:22px;
-  }
-
-  .hero h2{
-    font-size:25px;
-  }
-
-  .hero p{
-    font-size:12px;
-  }
-
-  .side-news{
-    grid-template-columns:1fr;
-  }
-
-  .side-card{
-    min-height:130px;
-  }
-
-  .news-grid{
-    grid-template-columns:1fr;
-    gap:16px;
-  }
-
-  .news-image{
-    height:210px;
-  }
-
-  .footer-inner{
-    grid-template-columns:1fr;
-    gap:25px;
-    padding-top:35px;
-  }
-
-  .copyright{
-    flex-direction:column;
-    gap:6px;
-  }
-
-  .admin-float{
-    right:14px;
-    bottom:14px;
-    padding:11px 16px;
-    font-size:12px;
-  }
-
-}
-
-
-/* =========================================================
-   PRINT
-========================================================= */
-
-@media print{
-
-  .admin-float,
-  .modal,
-  .breaking,
-  .nav,
-  .search-box{
-    display:none!important;
-  }
-
-}
-
-
-/* =========================================================
-   ACCESSIBILITY
-========================================================= */
-
-:focus-visible{
-  outline:3px solid rgba(200,16,46,.25);
-  outline-offset:2px;
-}
-
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =======================================================
-     TOP BAR
-======================================================= -->
-
-<div class="topbar">
-
-  <div class="topbar-inner">
-
-    <span id="todayDate">
-      আজি
-    </span>
-
-    <span class="topbar-right">
-      সত্য • নিৰপেক্ষ • দায়িত্বশীল
-    </span>
-
-  </div>
-
+<div class="top">
+<span id="date">শুকুৰবাৰ, ২৮ আগষ্ট ২০২৬</span>
+<span>সত্য • নিৰপেক্ষ • দায়িত্বশীল</span>
 </div>
-
-
-<!-- =======================================================
-     HEADER
-======================================================= -->
 
 <header class="header">
+<div class="head">
 
-  <div class="header-main">
+<div class="logo">
+P
+<small>PRESS</small>
+</div>
 
-    <a href="#home"
-       class="brand">
+<div class="brand">
+<h1>Press <span>Express</span> Assam</h1>
+<p>অসমৰ শেহতীয়া সংবাদ</p>
+</div>
 
-      <div class="logo">
+<button class="live" onclick="showLive()">
+<i></i>LIVE
+</button>
 
-        <div class="logo-p">
-          P
-        </div>
-
-        <div class="logo-press">
-          PRESS
-        </div>
-
-      </div>
-
-
-      <div class="brand-text">
-
-        <h1>
-          Press <span>Express</span> Assam
-        </h1>
-
-        <p>
-          অসমৰ শেহতীয়া সংবাদ
-        </p>
-
-      </div>
-
-    </a>
-
-
-    <button
-      class="live-btn"
-      onclick="openAdmin()">
-
-      ● LIVE
-
-    </button>
-
-  </div>
-
-
-  <nav class="nav">
-
-    <div
-      class="nav-inner"
-      id="nav">
-
-      <button
-        class="active"
-        onclick="selectCategory('সকলো')">
-
-        হোম
-
-      </button>
-
-    </div>
-
-  </nav>
-
+</div>
 </header>
 
+<nav class="nav">
+<div class="navin" id="mainNav"></div>
+</nav>
 
-<!-- =======================================================
-     BREAKING
-======================================================= -->
+<div class="ticker">
+<div class="breaking">⚡ BREAKING</div>
+<div class="tickerText">
+Press Express Assam — অসমৰ শেহতীয়া খবৰ, স্থানীয় সংবাদ আৰু গুৰুত্বপূৰ্ণ আপডেট আপোনাৰ কাষত।
+</div>
+</div>
 
-<div class="breaking">
+<main class="wrap">
 
-  <div class="breaking-label">
-    ⚡ BREAKING
-  </div>
+<div class="searchbox">
 
-  <div class="breaking-text">
+<div class="search">
+<input id="search" placeholder="খবৰ বিচাৰক..." oninput="render()">
+<span>⌕</span>
+</div>
 
-    Press Express Assam — অসমৰ শেহতীয়া খবৰ,
-    স্থানীয় সংবাদ আৰু গুৰুত্বপূৰ্ণ আপডেট।
-
-  </div>
+<div class="cats" id="cats"></div>
 
 </div>
 
+<div class="sectionhead">
+<h2>শেহতীয়া খবৰ</h2>
+<span>Press Express Assam</span>
+</div>
 
-<!-- =======================================================
-     MAIN
-======================================================= -->
+<section id="hero"></section>
 
-<main
-  id="home"
-  class="container">
+<div class="sectionhead">
+<h2>সংবাদ</h2>
+<span>Latest Updates</span>
+</div>
 
-
-  <!-- SEARCH -->
-
-  <section class="search-box">
-
-    <div class="search-wrap">
-
-      <input
-        id="search"
-        type="search"
-        placeholder="খবৰ বিচাৰক..."
-        autocomplete="off">
-
-      <span class="search-icon">
-        ⌕
-      </span>
-
-    </div>
-
-
-    <div
-      id="categories"
-      class="categories">
-    </div>
-
-  </section>
-
-
-  <!-- =====================================================
-       HERO SECTION
-  ====================================================== -->
-
-  <div class="section-head">
-
-    <h2 class="section-title">
-      শেহতীয়া খবৰ
-    </h2>
-
-    <span class="section-small">
-      Press Express Assam
-    </span>
-
-  </div>
-
-
-  <section
-    id="heroGrid"
-    class="hero-grid">
-  </section>
-
-
-  <!-- =====================================================
-       NEWS
-  ====================================================== -->
-
-  <div class="section-head">
-
-    <h2 class="section-title">
-      সংবাদ
-    </h2>
-
-    <span class="section-small">
-      Latest Updates
-    </span>
-
-  </div>
-
-
-  <section
-    id="newsGrid"
-    class="news-grid">
-  </section>
-
+<section class="grid" id="newsGrid"></section>
 
 </main>
 
-
-<!-- =======================================================
-     FOOTER
-======================================================= -->
-
 <footer class="footer">
 
-  <div class="footer-inner">
-
-
-    <div>
-
-      <div class="footer-brand">
-        Press <span>Express</span> Assam
-      </div>
-
-      <p>
-        অসমৰ স্থানীয়, গুৱাহাটী, ভাৰত, বিশ্ব,
-        ব্যৱসায়, খেল আৰু বিনোদনৰ সংবাদ।
-        সত্য, নিৰপেক্ষ আৰু দায়িত্বশীল সংবাদ
-        আমাৰ লক্ষ্য।
-      </p>
-
-    </div>
-
-
-    <div>
-
-      <h4>
-        শাখাসমূহ
-      </h4>
-
-      <div class="footer-links">
-
-        <button onclick="selectCategory('অসম')">
-          অসম
-        </button>
-
-        <button onclick="selectCategory('গুৱাহাটী')">
-          গুৱাহাটী
-        </button>
-
-        <button onclick="selectCategory('ভাৰত')">
-          ভাৰত
-        </button>
-
-        <button onclick="selectCategory('বিশ্ব')">
-          বিশ্ব
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <div>
-
-      <h4>
-        অন্যান্য
-      </h4>
-
-      <div class="footer-links">
-
-        <button onclick="selectCategory('ব্যৱসায়')">
-          ব্যৱসায়
-        </button>
-
-        <button onclick="selectCategory('খেল')">
-          খেল
-        </button>
-
-        <button onclick="selectCategory('বিনোদন')">
-          বিনোদন
-        </button>
-
-        <button onclick="goTop()">
-          ওপৰলৈ যাঁও ↑
-        </button>
-
-      </div>
-
-    </div>
-
-
-  </div>
-
-
-  <div class="copyright">
-
-    <span>
-      © 2026 Press Express Assam. All Rights Reserved.
-    </span>
-
-    <span>
-      সত্য • নিৰপেক্ষ • দায়িত্বশীল
-    </span>
-
-  </div>
-
-</footer>
-
-
-<!-- =======================================================
-     ADMIN BUTTON
-======================================================= -->
-
-<button
-  class="admin-float"
-  onclick="openAdmin()">
-
-  ⚙ Admin
-
-</button>
-
-
-<!-- =======================================================
-     ADMIN MODAL
-======================================================= -->
-
-<div
-  id="adminModal"
-  class="modal">
-
-
-  <div class="modal-box">
-
-
-    <div class="modal-head">
-
-      <h2>
-        Press Express Assam — Admin
-      </h2>
-
-      <button
-        class="close"
-        onclick="closeAdmin()">
-
-        ×
-
-      </button>
-
-    </div>
-
-
-    <div class="modal-body">
-
-
-      <!-- LOGIN -->
-
-      <div
-        id="loginBox"
-        class="login-box">
-
-        <div class="admin-note">
-
-          🔐 Admin panel খুলিবলৈ password দিয়ক।
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>
-            Admin Password
-          </label>
-
-          <input
-            id="adminPassword"
-            type="password"
-            placeholder="Password লিখক">
-
-        </div>
-
-
-        <button
-          class="primary"
-          onclick="loginAdmin()">
-
-          Login
-
-        </button>
-
-      </div>
-
-
-      <!-- ADMIN PANEL -->
-
-      <div
-        id="adminPanel"
-        class="admin-panel">
-
-
-        <div class="admin-note">
-
-          ✅ Admin panel active।
-          ইয়াৰ পৰা নতুন সংবাদ, photo,
-          category আৰু author যোগ কৰিব পাৰিব।
-
-        </div>
-
-
-        <form
-          id="newsForm"
-          onsubmit="publishNews(event)">
-
-
-          <div class="form-group">
-
-            <label>
-              সংবাদৰ শিৰোনাম *
-            </label>
-
-            <input
-              id="newsTitle"
-              type="text"
-              required
-              placeholder="শিৰোনাম লিখক">
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label>
-              শিতান *
-            </label>
-
-            <select
-              id="newsCategory"
-              required>
-
-            </select>
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label>
-              খবৰৰ বিৱৰণ *
-            </label>
-
-            <textarea
-              id="newsSummary"
-              required
-              placeholder="খবৰৰ সংক্ষিপ্ত বিৱৰণ লিখক">
-            </textarea>
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label>
-              News Photo
-            </label>
-
-            <input
-              id="newsImage"
-              type="file"
-              accept="image/*">
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label>
-              Author
-            </label>
-
-            <input
-              id="newsAuthor"
-              type="text"
-              value="Press Express Assam">
-
-          </div>
-
-
-          <button
-            class="primary"
-            type="submit">
-
-            📰 Publish News
-
-          </button>
-
-
-        </form>
-
-
-        <div class="admin-list">
-
-          <h3>
-            Published News
-          </h3>
-
-          <div
-            id="adminList">
-          </div>
-
-        </div>
-
-
-      </div>
-
-
-    </div>
-
-  </div>
+<div class="foot">
+
+<div>
+<h2>Press <span>Express</span> Assam</h2>
+<p>
+অসমৰ স্থানীয়, ৰাজ্যিক, ভাৰতীয় আৰু আন্তঃৰাষ্ট্ৰীয় সংবাদৰ বাবে Press Express Assam।
+সত্য, নিৰপেক্ষ আৰু দায়িত্বশীল সংবাদ আমাৰ লক্ষ্য।
+</p>
+</div>
+
+<div>
+<h3>শাখাসমূহ</h3>
+<a onclick="setCat('অসম')">অসম</a>
+<a onclick="setCat('গুৱাহাটী')">গুৱাহাটী</a>
+<a onclick="setCat('ভাৰত')">ভাৰত</a>
+<a onclick="setCat('বিশ্ব')">বিশ্ব</a>
+</div>
+
+<div>
+<h3>অন্যান্য</h3>
+<a onclick="setCat('ব্যৱসায়')">ব্যৱসায়</a>
+<a onclick="setCat('খেল')">খেল</a>
+<a onclick="setCat('বিনোদন')">বিনোদন</a>
+<a href="#top">ওপৰলৈ যাওক ↑</a>
+</div>
 
 </div>
 
+<div class="copy">
+© 2026 Press Express Assam. All Rights Reserved.
+</div>
+
+</footer>
+
+<button class="adminBtn" onclick="adminLogin()">⚙ Admin</button>
+
+<div class="modal" id="adminModal">
+
+<div class="panel">
+
+<div class="panelHead">
+<h2>Admin Panel</h2>
+<button class="close" onclick="closeModal('adminModal')">×</button>
+</div>
+
+<form class="form" onsubmit="saveNews(event)">
+
+<input id="ntitle" required placeholder="খবৰৰ শিৰোনাম">
+
+<select id="ncat">
+<option>অসম</option>
+<option>গুৱাহাটী</option>
+<option>ভাৰত</option>
+<option>বিশ্ব</option>
+<option>ব্যৱসায়</option>
+<option>খেল</option>
+<option>বিনোদন</option>
+</select>
+
+<textarea id="nsummary" required placeholder="খবৰৰ সংক্ষিপ্ত বিৱৰণ"></textarea>
+
+<input id="nimage" type="file" accept="image/*">
+
+<button class="primary">+ সংবাদ যোগ কৰক</button>
+
+</form>
+
+<div class="adminList" id="adminList"></div>
+
+</div>
+</div>
+
+<div class="modal" id="readerModal">
+<div class="panel reader" id="reader"></div>
+</div>
 
 <script>
 
-/* =========================================================
-   CONFIGURATION
-========================================================= */
+const KEY="pea_news_v1";
 
-const ADMIN_PASSWORD = "1234";
+const cats=[
+"সকলো",
+"অসম",
+"গুৱাহাটী",
+"ভাৰত",
+"বিশ্ব",
+"ব্যৱসায়",
+"খেল",
+"বিনোদন"
+];
 
-const STORAGE_KEY =
-  "press_express_assam_news_v1";
+const nav=[
+"হোম",
+"অসম",
+"গুৱাহাটী",
+"ভাৰত",
+"বিশ্ব",
+"ব্যৱসায়",
+"খেল",
+"বিনোদন"
+];
 
+const samples=[
 
-/* =========================================================
-   CATEGORIES
-========================================================= */
+{
+id:1,
+cat:"অসম",
+title:"অসমৰ গুৰুত্বপূৰ্ণ সংবাদ আৰু নতুন আপডেট",
+summary:"ৰাজ্যৰ বিভিন্ন প্ৰান্তৰ গুৰুত্বপূৰ্ণ খবৰ, স্থানীয় ঘটনা আৰু নতুন তথ্য একে ঠাইতে।",
+image:""
+},
 
-const categories = [
+{
+id:2,
+cat:"গুৱাহাটী",
+title:"গুৱাহাটীৰ শেহতীয়া খবৰ আৰু স্থানীয় আপডেট",
+summary:"মহানগৰীৰ জনজীৱন, যান-বাহন, উন্নয়ন আৰু স্থানীয় ঘটনাৰ গুৰুত্বপূৰ্ণ সংবাদ।",
+image:""
+},
 
-  "সকলো",
-  "অসম",
-  "গুৱাহাটী",
-  "ভাৰত",
-  "বিশ্ব",
-  "ব্যৱসায়",
-  "খেল",
-  "বিনোদন"
+{
+id:3,
+cat:"ভাৰত",
+title:"দেশৰ গুৰুত্বপূৰ্ণ সংবাদ একে ঠাইতে",
+summary:"ভাৰতৰ বিভিন্ন প্ৰান্তৰ উল্লেখযোগ্য ঘটনা আৰু গুৰুত্বপূৰ্ণ ৰাষ্ট্ৰীয় আপডেট।",
+image:""
+},
+
+{
+id:4,
+cat:"বিশ্ব",
+title:"বিশ্বৰ শেহতীয়া সংবাদ আৰু গুৰুত্বপূৰ্ণ আপডেট",
+summary:"আন্তঃৰাষ্ট্ৰীয় পৰ্যায়ৰ উল্লেখযোগ্য ঘটনা আৰু নতুন তথ্য।",
+image:""
+},
+
+{
+id:5,
+cat:"ব্যৱসায়",
+title:"ব্যৱসায় আৰু অৰ্থনীতিৰ গুৰুত্বপূৰ্ণ সংবাদ",
+summary:"বজাৰ, ব্যৱসায় আৰু অৰ্থনীতিৰ উল্লেখযোগ্য আপডেট।",
+image:""
+},
+
+{
+id:6,
+cat:"খেল",
+title:"ক্ৰীড়া জগতৰ শেহতীয়া সংবাদ",
+summary:"ক্ৰীড়া জগতৰ গুৰুত্বপূৰ্ণ খবৰ, ফলাফল আৰু নতুন আপডেট।",
+image:""
+},
+
+{
+id:7,
+cat:"বিনোদন",
+title:"বিনোদন জগতৰ নতুন খবৰ",
+summary:"চলচ্চিত্ৰ, সংগীত আৰু বিনোদন জগতৰ শেহতীয়া সংবাদ।",
+image:""
+}
 
 ];
 
+let news=JSON.parse(localStorage.getItem(KEY)||"null")||samples;
 
-/* =========================================================
-   SVG NEWS IMAGE
-========================================================= */
+let activeCat="সকলো";
 
-function makeImage(
-  title,
-  label
-){
-
-  const safeTitle =
-    String(title)
-      .replace(/&/g,"&amp;")
-      .replace(/</g,"&lt;")
-      .replace(/>/g,"&gt;");
-
-
-  const safeLabel =
-    String(label)
-      .replace(/&/g,"&amp;")
-      .replace(/</g,"&lt;")
-      .replace(/>/g,"&gt;");
-
-
-  const svg = `
-
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="1200"
-    height="700"
-    viewBox="0 0 1200 700">
-
-    <defs>
-
-      <linearGradient
-        id="bg"
-        x1="0"
-        y1="0"
-        x2="1"
-        y2="1">
-
-        <stop
-          offset="0"
-          stop-color="#121923"/>
-
-        <stop
-          offset=".6"
-          stop-color="#0c1118"/>
-
-        <stop
-          offset="1"
-          stop-color="#030507"/>
-
-      </linearGradient>
-
-
-      <radialGradient
-        id="glow">
-
-        <stop
-          offset="0"
-          stop-color="#c8102e"
-          stop-opacity=".8"/>
-
-        <stop
-          offset="1"
-          stop-color="#c8102e"
-          stop-opacity="0"/>
-
-      </radialGradient>
-
-    </defs>
-
-
-    <rect
-      width="1200"
-      height="700"
-      fill="url(#bg)"/>
-
-
-    <circle
-      cx="1000"
-      cy="130"
-      r="420"
-      fill="url(#glow)"/>
-
-
-    <path
-      d="M0 680 L650 0"
-      stroke="#c8102e"
-      stroke-width="12"
-      opacity=".22"/>
-
-
-    <circle
-      cx="1050"
-      cy="140"
-      r="110"
-      fill="none"
-      stroke="#ffffff"
-      stroke-width="3"
-      opacity=".13"/>
-
-
-    <text
-      x="65"
-      y="470"
-      fill="#c8102e"
-      font-family="Arial"
-      font-size="27"
-      font-weight="bold">
-
-      ${safeLabel}
-
-    </text>
-
-
-    <text
-      x="65"
-      y="535"
-      fill="#ffffff"
-      font-family="Arial"
-      font-size="43"
-      font-weight="bold">
-
-      PRESS EXPRESS
-
-    </text>
-
-
-    <text
-      x="65"
-      y="590"
-      fill="#d7dbe0"
-      font-family="Arial"
-      font-size="24">
-
-      ASSAM
-
-    </text>
-
-  </svg>
-
-  `;
-
-
-  return "data:image/svg+xml;charset=UTF-8," +
-    encodeURIComponent(svg);
-
+function save(){
+localStorage.setItem(KEY,JSON.stringify(news));
 }
 
-
-/* =========================================================
-   DEFAULT NEWS
-========================================================= */
-
-const defaultNews = [
-
-  {
-    category:"অসম",
-    title:"অসমৰ গুৰুত্বপূৰ্ণ সংবাদ আৰু নতুন আপডেট",
-    summary:"ৰাজ্যৰ বিভিন্ন প্ৰান্তৰ গুৰুত্বপূৰ্ণ খবৰ আৰু নতুন তথ্য Press Express Assamত।",
-    image:makeImage("অসমৰ সংবাদ","ASSAM"),
-    date:"আজিৰ খবৰ",
-    author:"Press Express Assam"
-  },
-
-  {
-    category:"গুৱাহাটী",
-    title:"গুৱাহাটীৰ শেহতীয়া খবৰ আৰু স্থানীয় আপডেট",
-    summary:"মহানগৰীৰ জনজীৱন আৰু স্থানীয় ঘটনাৰ গুৰুত্বপূৰ্ণ সংবাদ।",
-    image:makeImage("গুৱাহাটীৰ সংবাদ","GUWAHATI"),
-    date:"আজিৰ খবৰ",
-    author:"Press Express Assam"
-  },
-
-  {
-    category:"ভাৰত",
-    title:"দেশৰ গুৰুত্বপূৰ্ণ খবৰ একে ঠাইতে",
-    summary:"ভাৰতৰ বিভিন্ন প্ৰান্তৰ উল্লেখযোগ্য ৰাষ্ট্ৰীয় সংবাদ আৰু আপডেট।",
-    image:makeImage("ভাৰতৰ সংবাদ","INDIA"),
-    date:"আজিৰ খবৰ",
-    author:"Press Express Assam"
-  },
-
-  {
-    category:"বিশ্ব",
-    title:"বিশ্বৰ শেহতীয়া সংবাদ আৰু গুৰুত্বপূৰ্ণ আপডেট",
-    summary:"আন্তঃৰাষ্ট্ৰীয় পৰ্যায়ৰ উল্লেখযোগ্য সংবাদ আৰু নতুন তথ্য।",
-    image:makeImage("বিশ্বৰ সংবাদ","WORLD"),
-    date:"আজিৰ খবৰ",
-    author:"Press Express Assam"
-  },
-
-  {
-    category:"ব্যৱসায়",
-    title:"ব্যৱসায় আৰু অৰ্থনীতিৰ গুৰুত্বপূৰ্ণ সংবাদ",
-    summary:"বজাৰ, ব্যৱসায় আৰু অৰ্থনীতিৰ শেহতীয়া আপডেট।",
-    image:makeImage("ব্যৱসায়","BUSINESS"),
-    date:"আজিৰ খবৰ",
-    author:"Press Express Assam"
-  },
-
-  {
-    category:"খেল",
-    title:"ক্ৰীড়া জগতৰ শেহতীয়া সংবাদ",
-    summary:"ক্ৰীড়া জগতৰ গুৰুত্বপূৰ্ণ খবৰ আৰু নতুন আপডেট।",
-    image:makeImage("ক্ৰীড়া সংবাদ","SPORTS"),
-    date:"আজিৰ খবৰ",
-    author:"Press Express Assam"
-  },
-
-  {
-    category:"বিনোদন",
-    title:"বিনোদন জগতৰ নতুন খবৰ",
-    summary:"চলচ্চিত্ৰ, সংগীত আৰু বিনোদন জগতৰ শেহতীয়া সংবাদ।",
-    image:makeImage("বিনোদন","ENTERTAINMENT"),
-    date:"আজিৰ খবৰ",
-    author:"Press Express Assam"
-  }
-
-];
-
-
-/* =========================================================
-   LOAD NEWS
-========================================================= */
-
-let newsData = [];
-
-try{
-
-  const saved =
-    localStorage.getItem(
-      STORAGE_KEY
-    );
-
-  newsData =
-    saved
-      ? JSON.parse(saved)
-      : defaultNews;
-
-  if(
-    !Array.isArray(newsData) ||
-    newsData.length === 0
-  ){
-
-    newsData =
-      defaultNews;
-
-  }
-
-}
-catch(error){
-
-  newsData =
-    defaultNews;
-
+function esc(s){
+return String(s).replace(/[&<>"']/g,m=>({
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+}[m]));
 }
 
+function bg(title){
 
-let currentCategory =
-  "সকলো";
+const text=encodeURIComponent(title.slice(0,34));
 
-
-/* =========================================================
-   SAVE
-========================================================= */
-
-function saveNews(){
-
-  try{
-
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify(newsData)
-    );
-
-  }
-
-  catch(error){
-
-    alert(
-      "Photo ডাঙৰ হৈছে। অলপ সৰু photo ব্যৱহাৰ কৰক।"
-    );
-
-  }
-
+return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(
+`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700">
+<defs>
+<radialGradient id="r">
+<stop stop-color="#c8102e" stop-opacity=".75"/>
+<stop offset="1" stop-color="#c8102e" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<rect width="1200" height="700" fill="#10161f"/>
+<circle cx="950" cy="130" r="400" fill="url(#r)"/>
+<path d="M0 700L650 0" stroke="#c8102e" stroke-width="10" opacity=".25"/>
+<text x="60" y="590" fill="white" font-family="Arial" font-size="46" font-weight="bold">${text}</text>
+</svg>`
+)}`;
 }
 
+function imageFor(n){
+return n.image||bg(n.title);
+}
 
-/* =========================================================
-   DATE
-========================================================= */
+function setCat(c){
+activeCat=c;
+render();
+}
 
-document
-  .getElementById("todayDate")
-  .textContent =
-  new Intl.DateTimeFormat(
-    "as-IN",
-    {
-      dateStyle:"full"
-    }
-  ).format(
-    new Date()
-  );
+function renderNav(){
 
+document.getElementById("mainNav").innerHTML=nav.map((x,i)=>`
 
-/* =========================================================
-   NAV
-========================================================= */
+<button class="${(i===0&&activeCat==="সকলো")||x===activeCat?"active":""}"
+onclick="setCat('${x==="হোম"?"সকলো":x}')">
+${x}
+</button>
 
-const nav =
-  document.getElementById(
-    "nav"
-  );
+`).join("");
 
+document.getElementById("cats").innerHTML=cats.map(x=>`
 
-categories
-  .slice(1)
-  .forEach(
-    category => {
+<button class="cat ${x===activeCat?"active":""}"
+onclick="setCat('${x}')">
+${x}
+</button>
 
-      const button =
-        document.createElement(
-          "button"
-        );
+`).join("");
+}
 
-      button.textContent =
-        category;
+function render(){
 
-      button.onclick =
-        () => selectCategory(
-          category
-        );
+renderNav();
 
-      nav.appendChild(
-        button
-      );
+const q=document.getElementById("search").value.trim().toLowerCase();
 
-    }
-  );
-
-
-/* =========================================================
-   CATEGORY BUTTONS
-========================================================= */
-
-const categoryBox =
-  document.getElementById(
-    "categories"
-  );
-
-
-categories.forEach(
-  category => {
-
-    const button =
-      document.createElement(
-        "button"
-      );
-
-    button.className =
-      "category" +
-      (
-        category === "সকলো"
-          ? " active"
-          : ""
-      );
-
-    button.textContent =
-      category;
-
-    button.onclick =
-      () => selectCategory(
-        category
-      );
-
-    categoryBox.appendChild(
-      button
-    );
-
-  }
+let list=news.filter(n=>
+(activeCat==="সকলো"||n.cat===activeCat)&&
+(!q||(n.title+n.summary+n.cat).toLowerCase().includes(q))
 );
 
+const first=list[0];
 
-/* =========================================================
-   ADMIN CATEGORY SELECT
-========================================================= */
+document.getElementById("hero").innerHTML=first?
 
-const categorySelect =
-  document.getElementById(
-    "newsCategory"
-  );
+`<article class="heroCard"
+style="background-image:linear-gradient(90deg,#080b10dd,#080b1070),url('${imageFor(first)}');background-size:cover;background-position:center"
+onclick="read(${first.id})">
 
+<div class="heroContent">
 
-categories
-  .slice(1)
-  .forEach(
-    category => {
+<span class="tag">${esc(first.cat)}</span>
 
-      const option =
-        document.createElement(
-          "option"
-        );
+<h2>${esc(first.title)}</h2>
 
-      option.value =
-        category;
+<p>${esc(first.summary)}</p>
 
-      option.textContent =
-        category;
+<div class="meta">
+আজিৰ খবৰ • Press Express Assam
+</div>
 
-      categorySelect.appendChild(
-        option
-      );
+<div class="share">
 
-    }
-  );
+<button onclick="event.stopPropagation();shareNews(${first.id})">
+↗ Share
+</button>
 
+<button onclick="event.stopPropagation();copyNews(${first.id})">
+Copy Link
+</button>
 
-/* =========================================================
-   CATEGORY FILTER
-========================================================= */
+</div>
 
-function selectCategory(
-  category
-){
+</div>
+</article>`
 
-  currentCategory =
-    category;
+:
 
+`<div class="empty">
+এই শাখাত কোনো সংবাদ পোৱা নগ'ল।
+</div>`;
 
-  document
-    .querySelectorAll(
-      ".category"
-    )
-    .forEach(
-      button => {
+document.getElementById("newsGrid").innerHTML=
 
-        button.classList.toggle(
-          "active",
-          button.textContent.trim()
-          === category
-        );
+list.slice(1).map(n=>`
 
-      }
-    );
+<article class="card" onclick="read(${n.id})">
 
+<div class="pic"
+style="background-image:url('${imageFor(n)}');background-size:cover;background-position:center">
 
-  renderNews();
+<div class="picText">
+${esc(n.title)}
+</div>
 
+</div>
 
-  goNews();
+<div class="body">
 
-}
+<span class="tag">
+${esc(n.cat)}
+</span>
 
+<h3>
+${esc(n.title)}
+</h3>
 
-/* =========================================================
-   SEARCH
-========================================================= */
+<p>
+${esc(n.summary)}
+</p>
 
-document
-  .getElementById(
-    "search"
-  )
-  .addEventListener(
-    "input",
-    renderNews
-  );
+<div class="meta">
+Press Express Assam • আজি
+</div>
 
+</div>
 
-/* =========================================================
-   FILTER
-========================================================= */
+</article>
 
-function filteredNews(){
-
-  const search =
-    document
-      .getElementById(
-        "search"
-      )
-      .value
-      .trim()
-      .toLowerCase();
-
-
-  return newsData.filter(
-    news => {
-
-      const categoryOK =
-        currentCategory === "সকলো" ||
-        news.category === currentCategory;
-
-
-      const text =
-        (
-          news.title +
-          " " +
-          news.summary +
-          " " +
-          news.category
-        )
-        .toLowerCase();
-
-
-      const searchOK =
-        !search ||
-        text.includes(search);
-
-
-      return (
-        categoryOK &&
-        searchOK
-      );
-
-    }
-  );
+`).join("");
 
 }
 
+function read(id){
 
-/* =========================================================
-   RENDER NEWS
-========================================================= */
+const n=news.find(x=>x.id===id);
 
-function renderNews(){
+if(!n)return;
 
-  const data =
-    filteredNews();
+document.getElementById("reader").innerHTML=`
 
+<div class="panelHead">
 
-  const hero =
-    document.getElementById(
-      "heroGrid"
-    );
+<span class="tag">
+${esc(n.cat)}
+</span>
 
+<button class="close"
+onclick="closeModal('readerModal')">
+×
+</button>
 
-  const grid =
-    document.getElementById(
-      "newsGrid"
-    );
+</div>
 
+<div class="pic"
+style="height:300px;background-image:url('${imageFor(n)}');background-size:cover">
+</div>
 
-  if(
-    data.length === 0
-  ){
+<h1 style="margin-top:20px">
+${esc(n.title)}
+</h1>
 
-    hero.innerHTML = "";
+<p>
+${esc(n.summary)}
+</p>
 
+<p>
+Press Express Assam-ৰ সৈতে থাকক।
+সত্য, নিৰপেক্ষ আৰু দায়িত্বশীল সংবাদৰ বাবে আমাৰ আপডেট অনুসৰণ কৰক।
+</p>
 
-    grid.innerHTML = `
+<div class="share">
 
-      <div class="empty">
+<button onclick="shareNews(${n.id})">
+↗ Share
+</button>
 
-        <h3>
-          কোনো খবৰ পোৱা নগ'ল
-        </h3>
+<button onclick="copyNews(${n.id})">
+Copy Link
+</button>
 
-        <p>
-          অন্য শব্দ দি পুনৰ চেষ্টা কৰক।
-        </p>
+</div>
+`;
 
-      </div>
+document.getElementById("readerModal").classList.add("show");
+}
 
-    `;
+function closeModal(id){
+document.getElementById(id).classList.remove("show");
+}
 
-    return;
+function shareNews(id){
 
-  }
+let n=news.find(x=>x.id===id);
 
+let url=location.href.split("#")[0]+"#news-"+id;
 
-  const first =
-    data[0];
+if(navigator.share){
 
+navigator.share({
+title:n.title,
+text:n.summary,
+url:url
+});
 
-  const side =
-    data.slice(1,3);
+}else{
 
+navigator.clipboard?.writeText(url);
 
-  hero.innerHTML = `
-
-    <article class="hero">
-
-      <img
-        class="hero-image"
-        src="${first.image}"
-        alt="${escapeHTML(first.title)}">
-
-      <div class="hero-content">
-
-        <span class="badge">
-          ${escapeHTML(first.category)}
-        </span>
-
-        <h2>
-          ${escapeHTML(first.title)}
-        </h2>
-
-        <p>
-          ${escapeHTML(first.summary)}
-        </p>
-
-        <div class="meta">
-          ${escapeHTML(first.date)}
-          •
-          ${escapeHTML(first.author)}
-        </div>
-
-        <div class="share-row">
-
-          <button
-            class="share-btn"
-            onclick="shareNews(
-              '${encodeURIComponent(first.title)}'
-            )">
-
-            ↗ Share
-
-          </button>
-
-          <button
-            class="share-btn"
-            onclick="copyLink()">
-
-            Copy Link
-
-          </button>
-
-        </div>
-
-      </div>
-
-    </article>
-
-
-    <div class="side-news">
-
-      ${
-        side.map(
-          item => `
-
-          <article class="side-card">
-
-            <img
-              src="${item.image}"
-              alt="${escapeHTML(item.title)}">
-
-            <div class="side-content">
-
-              <span class="badge">
-                ${escapeHTML(item.category)}
-              </span>
-
-              <h3>
-                ${escapeHTML(item.title)}
-              </h3>
-
-            </div>
-
-          </article>
-
-          `
-        ).join("")
-      }
-
-    </div>
-
-  `;
-
-
-  grid.innerHTML =
-    data
-      .slice(3)
-      .map(
-        createCard
-      )
-      .join("");
+alert("Link copied");
 
 }
 
+}
 
-/* =========================================================
-   CARD
-========================================================= */
+function copyNews(id){
 
-function createCard(
-  item
-){
+let url=location.href.split("#")[0]+"#news-"+id;
 
-  return `
+if(navigator.clipboard){
 
-    <article class="news-card">
+navigator.clipboard.writeText(url)
+.then(()=>alert("Link copied"));
 
-      <img
-        class="news-image"
-        src="${item.image}"
-        alt="${escapeHTML(item.title)}"
-        loading="lazy">
+}else{
 
-      <div class="news-body">
-
-        <span class="badge">
-          ${escapeHTML(item.category)}
-        </span>
-
-        <h3>
-          ${escapeHTML(item.title)}
-        </h3>
-
-        <p>
-          ${escapeHTML(item.summary)}
-        </p>
-
-        <div class="meta">
-          ${escapeHTML(item.author)}
-          •
-          ${escapeHTML(item.date)}
-        </div>
-
-      </div>
-
-    </article>
-
-  `;
+alert(url);
 
 }
 
+}
 
-/* =========================================================
-   ESCAPE
-========================================================= */
+function showLive(){
 
-function escapeHTML(
-  text
-){
-
-  return String(text || "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+alert(
+"Press Express Assam LIVE — শীঘ্ৰেই লাইভ আপডেট উপলব্ধ হ'ব।"
+);
 
 }
 
+function adminLogin(){
 
-/* =========================================================
-   ADMIN OPEN
-========================================================= */
+const p=prompt("Admin password লিখক:");
+
+if(p!=="1234"){
+
+if(p!==null)
+alert("ভুল password।");
+
+return;
+
+}
+
+openAdmin();
+
+}
 
 function openAdmin(){
 
-  document
-    .getElementById(
-      "adminModal"
-    )
-    .classList.add(
-      "show"
-    );
+document.getElementById("adminModal")
+.classList.add("show");
 
-
-  document
-    .getElementById(
-      "loginBox"
-    )
-    .style.display =
-    "block";
-
-
-  document
-    .getElementById(
-      "adminPanel"
-    )
-    .style.display =
-    "none";
-
-
-  document
-    .getElementById(
-      "adminPassword"
-    )
-    .value = "";
+adminList();
 
 }
 
+function adminList(){
 
-/* =========================================================
-   ADMIN LOGIN
-========================================================= */
+document.getElementById("adminList").innerHTML=
 
-function loginAdmin(){
+news.map(n=>`
 
-  const password =
-    document
-      .getElementById(
-        "adminPassword"
-      )
-      .value;
+<div class="adminItem">
 
+<span>
 
-  if(
-    password !== ADMIN_PASSWORD
-  ){
+<b>
+${esc(n.title)}
+</b>
 
-    alert(
-      "❌ Password ভুল।"
-    );
+<br>
 
-    return;
+<small>
+${esc(n.cat)}
+</small>
 
-  }
+</span>
 
+<button class="danger"
+onclick="delNews(${n.id})">
+Delete
+</button>
 
-  document
-    .getElementById(
-      "loginBox"
-    )
-    .style.display =
-    "none";
+</div>
 
-
-  document
-    .getElementById(
-      "adminPanel"
-    )
-    .style.display =
-    "block";
-
-
-  renderAdminList();
+`).join("");
 
 }
 
+function saveNews(e){
 
-/* =========================================================
-   CLOSE ADMIN
-========================================================= */
+e.preventDefault();
 
-function closeAdmin(){
+const file=document.getElementById("nimage").files[0];
 
-  document
-    .getElementById(
-      "adminModal"
-    )
-    .classList.remove(
-      "show"
-    );
+const add=(image)=>{
+
+news.unshift({
+
+id:Date.now(),
+
+cat:document.getElementById("ncat").value,
+
+title:document.getElementById("ntitle").value.trim(),
+
+summary:document.getElementById("nsummary").value.trim(),
+
+image:image||""
+
+});
+
+save();
+
+e.target.reset();
+
+adminList();
+
+render();
+
+alert("সংবাদ সফলভাৱে যোগ কৰা হ'ল।");
+
+};
+
+if(file){
+
+const r=new FileReader();
+
+r.onload=()=>add(r.result);
+
+r.readAsDataURL(file);
+
+}else{
+
+add("");
 
 }
 
+}
 
-/* =========================================================
-   PUBLISH
-========================================================= */
+function delNews(id){
 
-function publishNews(
-  event
-){
+if(confirm("এই সংবাদটো delete কৰিবনে?")){
 
-  event.preventDefault();
+news=news.filter(n=>n.id!==id);
 
+save();
 
-  const title =
-    document
-      .getElementById(
-        "newsTitle"
-      )
-      .value
-      .trim();
+adminList();
 
-
-  const category =
-    document
-      .getElementById(
-        "newsCategory"
-      )
-      .value;
-
-
-  const summary =
-    document
-      .getElementById(
-        "newsSummary"
-      )
-      .value
-      .trim();
-
-
-  const author =
-    document
-      .getElementById(
-        "newsAuthor"
-      )
-      .value
-      .trim() ||
-      "Press Express Assam";
-
-
-  const file =
-    document
-      .getElementById(
-        "newsImage"
-      )
-      .files[0];
-
-
-  if(!title){
-
-    alert(
-      "শিৰোনাম লিখক।"
-    );
-
-    return;
-
-  }
-
-
-  if(!summary){
-
-    alert(
-      "খবৰৰ বিৱৰণ লিখক।"
-    );
-
-    return;
-
-  }
-
-
-  function finish(
-    image
-  ){
-
-    const newNews = {
-
-      category:category,
-
-      title:title,
-
-      summary:summary,
-
-      image:
-        image ||
-        makeImage(
-          title,
-          category
-        ),
-
-      date:
-        new Intl.DateTimeFormat(
-          "as-IN",
-          {
-            dateStyle:"medium"
-          }
-        ).format(
-          new Date()
-        ),
-
-      author:author
-
-    };
-
-
-    newsData.unshift(
-      newNews
-    );
-
-
-    saveNews();
-
-
-    renderNews();
-
-
-    renderAdminList();
-
-
-    document
-      .getElementById(
-        "newsForm"
-      )
-      .reset();
-
-
-    document
-      .getElementById(
-        "newsAuthor"
-      )
-      .value =
-      "Press Express Assam";
-
-
-    alert(
-      "✅ News Publish হৈছে।"
-    );
-
-  }
-
-
-  if(file){
-
-    if(
-      file.size > 900000
-    ){
-
-      alert(
-        "⚠️ Photo 900KB-তকৈ সৰু কৰক।"
-      );
-
-      return;
-
-    }
-
-
-    const reader =
-      new FileReader();
-
-
-    reader.onload =
-      function(){
-
-        finish(
-          reader.result
-        );
-
-      };
-
-
-    reader.readAsDataURL(
-      file
-    );
-
-  }
-
-  else{
-
-    finish("");
-
-  }
+render();
 
 }
 
-
-/* =========================================================
-   ADMIN LIST
-========================================================= */
-
-function renderAdminList(){
-
-  const list =
-    document.getElementById(
-      "adminList"
-    );
-
-
-  list.innerHTML = "";
-
-
-  if(
-    newsData.length === 0
-  ){
-
-    list.innerHTML =
-      "<p>এতিয়া কোনো News নাই।</p>";
-
-    return;
-
-  }
-
-
-  newsData.forEach(
-    (item,index) => {
-
-      const row =
-        document.createElement(
-          "div"
-        );
-
-
-      row.className =
-        "admin-item";
-
-
-      row.innerHTML = `
-
-        <div>
-
-          <div class="admin-item-title">
-            ${escapeHTML(item.title)}
-          </div>
-
-          <div class="admin-item-meta">
-            ${escapeHTML(item.category)}
-            •
-            ${escapeHTML(item.date)}
-          </div>
-
-        </div>
-
-        <button
-          class="delete-btn"
-          onclick="deleteNews(${index})">
-
-          Delete
-
-        </button>
-
-      `;
-
-
-      list.appendChild(
-        row
-      );
-
-    }
-  );
-
 }
 
+document.querySelectorAll(".modal").forEach(m=>
 
-/* =========================================================
-   DELETE
-========================================================= */
+m.addEventListener("click",e=>{
 
-function deleteNews(
-  index
-){
+if(e.target===m)
+m.classList.remove("show");
 
-  if(
-    !confirm(
-      "এই সংবাদটো Delete কৰিবনে?"
-    )
-  ){
+})
 
-    return;
+);
 
-  }
-
-
-  newsData.splice(
-    index,
-    1
-  );
-
-
-  saveNews();
-
-
-  renderNews();
-
-
-  renderAdminList();
-
-
-  alert(
-    "🗑️ News Delete হৈছে।"
-  );
-
-}
-
-
-/* =========================================================
-   SHARE
-========================================================= */
-
-function shareNews(
-  encodedTitle
-){
-
-  const title =
-    decodeURIComponent(
-      encodedTitle
-    );
-
-
-  if(
-    navigator.share
-  ){
-
-    navigator.share({
-
-      title:
-        title,
-
-      text:
-        "Press Express Assam — " +
-        title,
-
-      url:
-        location.href
-
-    })
-    .catch(
-      () => {}
-    );
-
-  }
-
-  else{
-
-    copyLink();
-
-  }
-
-}
-
-
-/* =========================================================
-   COPY LINK
-========================================================= */
-
-function copyLink(){
-
-  if(
-    navigator.clipboard
-  ){
-
-    navigator.clipboard
-      .writeText(
-        location.href
-      )
-      .then(
-        () => alert(
-          "🔗 Link Copy হৈছে।"
-        )
-      );
-
-  }
-
-  else{
-
-    alert(
-      "Link: " +
-      location.href
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   GO TOP
-========================================================= */
-
-function goTop(){
-
-  window.scrollTo({
-
-    top:0,
-
-    behavior:"smooth"
-
-  });
-
-}
-
-
-/* =========================================================
-   GO NEWS
-========================================================= */
-
-function goNews(){
-
-  const section =
-    document.querySelector(
-      ".section-title"
-    );
-
-
-  if(section){
-
-    section.scrollIntoView({
-
-      behavior:"smooth",
-
-      block:"start"
-
-    });
-
-  }
-
-}
-
-
-/* =========================================================
-   MODAL OUTSIDE CLICK
-========================================================= */
-
-document
-  .getElementById(
-    "adminModal"
-  )
-  .addEventListener(
-    "click",
-    function(event){
-
-      if(
-        event.target ===
-        this
-      ){
-
-        closeAdmin();
-
-      }
-
-    }
-  );
-
-
-/* =========================================================
-   ENTER LOGIN
-========================================================= */
-
-document
-  .getElementById(
-    "adminPassword"
-  )
-  .addEventListener(
-    "keydown",
-    function(event){
-
-      if(
-        event.key === "Enter"
-      ){
-
-        loginAdmin();
-
-      }
-
-    }
-  );
-
-
-/* =========================================================
-   INITIAL RENDER
-========================================================= */
-
-renderNews();
+render();
 
 </script>
 
