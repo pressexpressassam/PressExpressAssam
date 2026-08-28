@@ -2,1043 +2,1751 @@
 <html lang="as">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="Press Express Assam — অসমৰ শেহতীয়া সংবাদ">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Press Express Assam - অসমৰ শেহতীয়া সংবাদ">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#c8102e">
-<title>Press Express Assam — অসমৰ শেহতীয়া খবৰ</title>
+
+<title>Press Express Assam | অসমৰ শেহতীয়া খবৰ</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --red:#c8102e;
+  --dark:#101722;
+  --dark2:#182231;
+  --bg:#f3f5f7;
+  --white:#fff;
+  --text:#171b22;
+  --muted:#707985;
+  --line:#e1e5e9;
+  --shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
 body{
-font-family:system-ui,-apple-system,"Noto Sans Assamese","Noto Sans",sans-serif;
-background:#f4f6f8;color:#171b22
-}
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
-a{text-decoration:none;color:inherit;cursor:pointer}
-
-.top{
-background:#10161f;color:white;padding:7px 4%;
-font-size:12px;display:flex;justify-content:space-between
+  font-family:system-ui,-apple-system,"Noto Sans Assamese","Noto Sans",Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
 }
 
-.header{background:white;border-bottom:1px solid #e2e5e9}
-.head{
-max-width:1200px;margin:auto;padding:18px 20px;
-display:flex;align-items:center;gap:18px
+button,input,textarea,select{
+  font:inherit;
 }
+
+button{
+  cursor:pointer;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+  cursor:pointer;
+}
+
+/* TOP */
+
+.topbar{
+  background:var(--dark);
+  color:#dfe5ec;
+  padding:7px 5%;
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+}
+
+/* HEADER */
+
+.header{
+  background:#fff;
+  border-bottom:1px solid var(--line);
+}
+
+.header-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:18px 20px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+/* PROFESSIONAL LOGO */
 
 .logo{
-width:64px;height:64px;border:3px solid #c8102e;
-border-radius:50%;display:grid;place-items:center;
-color:#c8102e;font-family:Georgia,serif;
-font-weight:800;font-size:30px;line-height:.7
+  width:66px;
+  height:66px;
+  flex-shrink:0;
+  border:3px solid var(--red);
+  border-radius:50%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  color:var(--red);
+  font-family:Georgia,serif;
+  font-size:31px;
+  font-weight:900;
+  line-height:24px;
 }
+
 .logo small{
-display:block;font:700 8px Arial;letter-spacing:1px
+  font-family:Arial,sans-serif;
+  font-size:7px;
+  letter-spacing:1.3px;
+  font-weight:800;
 }
 
-.brand{flex:1}
-.brand h1{font-size:26px;line-height:1.05}
-.brand h1 span{color:#c8102e}
-.brand p{color:#9299a2;font-size:12px;margin-top:5px}
-
-.live{
-background:#c8102e;color:#fff;border:0;border-radius:10px;
-padding:13px 19px;font-weight:800;
-box-shadow:0 7px 18px #c8102e33
-}
-.live i{
-display:inline-block;width:7px;height:7px;border-radius:50%;
-background:white;margin-right:7px
+.brand{
+  flex:1;
 }
 
-.nav{background:white;border-bottom:1px solid #e2e5e9;overflow:auto}
-.navin{
-max-width:1200px;margin:auto;display:flex;
-gap:4px;padding:0 20px
-}
-.nav button{
-border:0;background:transparent;padding:14px 18px;
-font-weight:750;white-space:nowrap;color:#242a32
-}
-.nav button.active{
-color:#c8102e;border-bottom:3px solid #c8102e
+.brand h1{
+  font-size:27px;
+  line-height:1;
+  letter-spacing:-.5px;
 }
 
-.ticker{
-background:white;border-bottom:1px solid #e2e5e9;
-display:flex;align-items:center
+.brand h1 span{
+  color:var(--red);
 }
+
+.brand p{
+  color:#8b939d;
+  font-size:12px;
+  margin-top:6px;
+}
+
+.live-btn{
+  border:0;
+  background:var(--red);
+  color:#fff;
+  padding:12px 18px;
+  border-radius:10px;
+  font-weight:800;
+  box-shadow:0 6px 18px rgba(200,16,46,.25);
+}
+
+.live-dot{
+  display:inline-block;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#fff;
+  margin-right:6px;
+}
+
+/* NAV */
+
+.nav{
+  background:#fff;
+  border-bottom:1px solid var(--line);
+}
+
+.nav-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:0 20px;
+  display:flex;
+  overflow:auto;
+}
+
+.nav-btn{
+  border:0;
+  background:none;
+  padding:14px 20px;
+  white-space:nowrap;
+  font-weight:750;
+  color:#303741;
+}
+
+.nav-btn:hover,
+.nav-btn.active{
+  color:var(--red);
+  border-bottom:3px solid var(--red);
+}
+
+/* BREAKING */
+
 .breaking{
-background:#c8102e;color:white;padding:14px 30px;
-font-weight:800;min-width:155px;text-align:center
-}
-.tickerText{
-padding:0 22px;white-space:nowrap;overflow:hidden;
-color:#59616b;font-weight:600
+  background:#fff;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
 }
 
-.wrap{max-width:1200px;margin:auto;padding:30px 20px}
-
-.searchbox{
-background:white;border:1px solid #e2e5e9;border-radius:20px;
-padding:18px;box-shadow:0 12px 35px #0f172a14;
-margin-bottom:32px
-}
-.search{position:relative}
-.search input{
-width:100%;padding:17px 45px 17px 20px;
-border:1px solid #e2e5e9;border-radius:14px;outline:0
-}
-.search input:focus{border-color:#c8102e}
-.search span{
-position:absolute;right:18px;top:15px;font-size:20px;color:#7b838d
+.breaking-label{
+  background:var(--red);
+  color:#fff;
+  padding:13px 28px;
+  font-weight:900;
+  min-width:150px;
+  text-align:center;
 }
 
-.cats{
-display:flex;gap:9px;overflow:auto;padding-top:13px
-}
-.cat{
-border:1px solid #e2e5e9;background:white;
-border-radius:30px;padding:9px 18px;white-space:nowrap
-}
-.cat.active{
-background:#c8102e;color:white;border-color:#c8102e
+.breaking-text{
+  padding:0 20px;
+  white-space:nowrap;
+  overflow:hidden;
+  color:#59626c;
+  font-size:13px;
+  font-weight:650;
 }
 
-.sectionhead{
-display:flex;align-items:center;justify-content:space-between;
-margin:25px 0 14px
+/* MAIN */
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:30px 20px;
 }
-.sectionhead h2{
-font-size:28px;border-left:5px solid #c8102e;padding-left:14px
+
+/* SEARCH */
+
+.search-box{
+  background:#fff;
+  padding:18px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  margin-bottom:28px;
 }
-.sectionhead span{color:#8a919a;font-size:13px}
+
+.search-wrap{
+  position:relative;
+}
+
+.search-wrap input{
+  width:100%;
+  padding:15px 48px 15px 18px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  outline:none;
+  background:#fafbfc;
+}
+
+.search-wrap input:focus{
+  border-color:var(--red);
+  background:#fff;
+}
+
+.search-icon{
+  position:absolute;
+  right:17px;
+  top:12px;
+  font-size:22px;
+  color:#7b838c;
+}
+
+/* SECTION */
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:24px 0 15px;
+}
+
+.section-title h2{
+  border-left:5px solid var(--red);
+  padding-left:13px;
+  font-size:27px;
+}
+
+.section-title span{
+  color:#89919b;
+  font-size:12px;
+}
+
+/* HERO */
 
 .hero{
-margin-bottom:30px
+  margin-bottom:32px;
 }
 
-.heroCard{
-min-height:420px;border-radius:22px;overflow:hidden;
-position:relative;background:#10161f;
-box-shadow:0 12px 35px #0f172a14;color:white;
-padding:34px;display:flex;align-items:flex-end;
-background-size:cover;background-position:center
+.hero-card{
+  min-height:430px;
+  border-radius:22px;
+  overflow:hidden;
+  position:relative;
+  background:
+    radial-gradient(circle at 82% 18%,rgba(200,16,46,.75),transparent 30%),
+    linear-gradient(135deg,#182331,#05070a);
+  background-size:cover;
+  background-position:center;
+  box-shadow:var(--shadow);
+  color:#fff;
+  padding:35px;
+  display:flex;
+  align-items:flex-end;
+  cursor:pointer;
 }
 
-.heroCard:before{
-content:"";position:absolute;inset:0;
-background:
-radial-gradient(circle at 82% 20%,#c8102e99,transparent 38%),
-linear-gradient(125deg,transparent 45%,#c8102e35 46%,transparent 48%),
-linear-gradient(180deg,transparent 25%,#000000d9 100%)
+.hero-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,.93),
+    rgba(0,0,0,.20) 65%,
+    rgba(0,0,0,.05)
+  );
 }
 
-.heroContent{
-position:relative;z-index:2;max-width:900px
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:900px;
 }
 
-.tag{
-display:inline-block;background:#c8102e;color:white;
-border-radius:7px;padding:7px 12px;font-size:12px;
-font-weight:800;margin-bottom:13px
+.category{
+  display:inline-block;
+  background:var(--red);
+  color:#fff;
+  padding:6px 11px;
+  border-radius:6px;
+  font-size:11px;
+  font-weight:800;
+  margin-bottom:12px;
 }
 
-.heroContent h2{
-font-size:clamp(28px,4vw,47px);
-line-height:1.13;margin-bottom:12px
+.hero-content h2{
+  font-size:clamp(27px,4vw,45px);
+  line-height:1.15;
+  margin-bottom:12px;
 }
 
-.heroContent p{
-color:#d6dbe1;line-height:1.7
+.hero-content p{
+  color:#d7dce2;
+  font-size:14px;
+  line-height:1.7;
 }
 
 .meta{
-color:#aeb6c0;font-size:12px;margin-top:15px
+  margin-top:12px;
+  color:#aeb7c1;
+  font-size:11px;
 }
 
-.share{display:flex;gap:8px;margin-top:15px}
-.share button{
-border:0;background:white;padding:10px 15px;
-border-radius:9px;font-weight:700;color:#222
+/* NEWS */
+
+.news-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
 }
 
-.grid{
-display:grid;grid-template-columns:repeat(3,1fr);gap:20px
+.news-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:17px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  transition:.2s;
 }
 
-.card{
-background:white;border:1px solid #e2e5e9;
-border-radius:18px;overflow:hidden;
-box-shadow:0 12px 35px #0f172a14;
-transition:.2s
-}
-.card:hover{transform:translateY(-3px)}
-
-.pic{
-height:190px;background:#10161f;
-position:relative;overflow:hidden;
-background-size:cover;background-position:center
+.news-card:hover{
+  transform:translateY(-3px);
 }
 
-.pic:before{
-content:"";position:absolute;width:320px;height:320px;
-border-radius:50%;right:-90px;top:-140px;
-background:#c8102e70;filter:blur(15px)
+.news-image{
+  height:190px;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 80% 15%,rgba(200,16,46,.75),transparent 32%),
+    linear-gradient(135deg,#172331,#05070a);
+  background-size:cover;
+  background-position:center;
 }
 
-.pic:after{
-content:"PRESS EXPRESS";
-position:absolute;left:20px;bottom:20px;
-color:#ffffff18;font-size:25px;font-weight:900;
-letter-spacing:1px
+.news-image::before{
+  content:"";
+  position:absolute;
+  width:280px;
+  height:280px;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:50%;
+  right:-100px;
+  top:-130px;
 }
 
-.body{padding:20px}
-.body .tag{
-font-size:10px;padding:5px 9px;margin:0 0 10px
+.news-image::after{
+  content:"PEA";
+  position:absolute;
+  right:18px;
+  bottom:14px;
+  color:rgba(255,255,255,.12);
+  font-family:Georgia,serif;
+  font-size:30px;
+  font-weight:900;
 }
-.body h3{font-size:20px;line-height:1.4}
-.body p{
-color:#69727d;font-size:13px;line-height:1.6;margin-top:8px
+
+.news-body{
+  padding:18px;
 }
-.body .meta{margin-top:12px}
+
+.news-body .category{
+  font-size:10px;
+  padding:5px 9px;
+  margin-bottom:9px;
+}
+
+.news-body h3{
+  font-size:19px;
+  line-height:1.42;
+}
+
+.news-body p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.65;
+  margin-top:8px;
+}
+
+/* EMPTY */
 
 .empty{
-background:white;border:1px dashed #c9ced5;
-border-radius:18px;padding:45px;text-align:center;color:#69727d
+  background:#fff;
+  border:1px dashed #cbd1d7;
+  border-radius:17px;
+  padding:45px 20px;
+  text-align:center;
+  color:#747d87;
 }
+
+/* FOOTER */
 
 .footer{
-background:#0e141c;color:#d8dde4;margin-top:45px
-}
-.foot{
-max-width:1200px;margin:auto;padding:40px 20px;
-display:grid;grid-template-columns:2fr 1fr 1fr;gap:35px
-}
-.foot h2{color:white}
-.foot h2 span{color:#c8102e}
-.foot p,.foot a{
-display:block;color:#9ea7b2;font-size:13px;
-line-height:1.8;margin-top:9px
-}
-.copy{
-border-top:1px solid #252c35;max-width:1200px;
-margin:auto;padding:16px 20px;color:#7f8995;font-size:12px
+  margin-top:45px;
+  background:#0d141d;
+  color:#fff;
 }
 
-.adminBtn{
-position:fixed;right:18px;bottom:18px;border:0;
-background:#c8102e;color:white;border-radius:30px;
-padding:13px 19px;font-weight:800;
-box-shadow:0 10px 28px #c8102e55;z-index:20
+.footer-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:40px 20px;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:35px;
+}
+
+.footer h2{
+  font-size:22px;
+}
+
+.footer h2 span{
+  color:var(--red);
+}
+
+.footer h3{
+  font-size:15px;
+}
+
+.footer p,
+.footer a{
+  display:block;
+  color:#9ba5b0;
+  font-size:13px;
+  line-height:1.8;
+  margin-top:8px;
+}
+
+.copyright{
+  border-top:1px solid #252d36;
+  max-width:1200px;
+  margin:auto;
+  padding:15px 20px;
+  color:#7f8994;
+  font-size:11px;
+}
+
+/* ADMIN */
+
+.admin-button{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:40;
+  border:0;
+  border-radius:30px;
+  background:var(--red);
+  color:#fff;
+  padding:13px 19px;
+  font-weight:850;
+  box-shadow:0 10px 30px rgba(200,16,46,.35);
 }
 
 .modal{
-display:none;position:fixed;inset:0;background:#0009;
-z-index:50;padding:18px;overflow:auto
-}
-.modal.show{display:block}
-
-.panel{
-max-width:720px;background:white;border-radius:20px;
-margin:30px auto;padding:24px;
-box-shadow:0 25px 70px #0005
+  display:none;
+  position:fixed;
+  z-index:100;
+  inset:0;
+  background:rgba(0,0,0,.68);
+  padding:18px;
+  overflow:auto;
 }
 
-.panelHead{
-display:flex;justify-content:space-between;
-align-items:center;margin-bottom:20px
+.modal.show{
+  display:block;
+}
+
+.modal-box{
+  width:min(720px,100%);
+  margin:35px auto;
+  background:#fff;
+  border-radius:20px;
+  padding:24px;
+  box-shadow:0 25px 70px rgba(0,0,0,.35);
+}
+
+.modal-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
 }
 
 .close{
-border:0;background:#eef0f3;border-radius:50%;
-width:36px;height:36px;font-size:20px
+  width:36px;
+  height:36px;
+  border:0;
+  border-radius:50%;
+  background:#eef0f2;
+  font-size:20px;
 }
 
-.form{display:grid;gap:12px}
-.form input,.form textarea,.form select{
-width:100%;border:1px solid #e2e5e9;
-border-radius:10px;padding:12px;outline:0
-}
-.form textarea{min-height:100px;resize:vertical}
-
-.primary{
-border:0;background:#c8102e;color:white;
-padding:13px;border-radius:10px;font-weight:800
+.form{
+  display:grid;
+  gap:12px;
 }
 
-.danger{
-border:0;background:#333;color:white;
-padding:10px 13px;border-radius:8px
+.form input,
+.form textarea,
+.form select{
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:12px;
+  outline:none;
 }
 
-.adminList{
-margin-top:22px;display:grid;gap:10px
-}
-.adminItem{
-border:1px solid #e2e5e9;border-radius:10px;
-padding:12px;display:flex;gap:10px;
-justify-content:space-between;align-items:center
+.form textarea{
+  min-height:120px;
+  resize:vertical;
 }
 
-.reader{max-width:850px}
-.reader .pic{height:320px}
+.publish{
+  border:0;
+  border-radius:10px;
+  padding:13px;
+  background:var(--red);
+  color:#fff;
+  font-weight:800;
+}
+
+.admin-list{
+  margin-top:25px;
+  display:grid;
+  gap:10px;
+}
+
+.admin-item{
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:12px;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+}
+
+.delete{
+  border:0;
+  background:#333;
+  color:#fff;
+  border-radius:8px;
+  padding:9px 12px;
+}
+
+/* READER */
+
+.reader{
+  max-width:850px;
+}
+
+.reader-image{
+  width:100%;
+  height:330px;
+  border-radius:14px;
+  background-size:cover;
+  background-position:center;
+  margin-bottom:20px;
+}
+
+.reader h1{
+  font-size:32px;
+  line-height:1.25;
+}
+
 .reader p{
-line-height:1.9;color:#4e5660;margin-top:15px
+  color:#505964;
+  line-height:1.9;
+  margin-top:15px;
 }
+
+.reader-actions{
+  display:flex;
+  gap:8px;
+  margin-top:20px;
+}
+
+.reader-actions button{
+  border:0;
+  padding:10px 15px;
+  border-radius:9px;
+  font-weight:750;
+}
+
+/* MOBILE */
 
 @media(max-width:850px){
-.head{padding:14px}
-.logo{width:54px;height:54px;font-size:25px}
-.brand h1{font-size:20px}
-.live{padding:10px 13px}
-.grid{grid-template-columns:repeat(2,1fr)}
-.heroCard{min-height:380px}
-.foot{grid-template-columns:1fr 1fr}
+
+  .header-inner{
+    padding:14px;
+  }
+
+  .logo{
+    width:55px;
+    height:55px;
+    font-size:25px;
+  }
+
+  .brand h1{
+    font-size:20px;
+  }
+
+  .live-btn{
+    padding:10px 13px;
+  }
+
+  .news-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .footer-inner{
+    grid-template-columns:1fr 1fr;
+  }
+
 }
 
 @media(max-width:560px){
-.top{font-size:10px}
-.tickerText{font-size:12px}
-.breaking{min-width:125px;padding:12px 14px}
-.wrap{padding:20px 12px}
-.grid{grid-template-columns:1fr}
-.heroCard{padding:22px;min-height:360px}
-.heroContent h2{font-size:30px}
-.sectionhead h2{font-size:23px}
-.foot{grid-template-columns:1fr}
+
+  .topbar{
+    font-size:9px;
+  }
+
+  .breaking-label{
+    min-width:120px;
+    padding:12px 12px;
+  }
+
+  .breaking-text{
+    font-size:11px;
+  }
+
+  .container{
+    padding:20px 12px;
+  }
+
+  .news-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero-card{
+    min-height:370px;
+    padding:22px;
+  }
+
+  .hero-content h2{
+    font-size:29px;
+  }
+
+  .section-title h2{
+    font-size:22px;
+  }
+
+  .footer-inner{
+    grid-template-columns:1fr;
+  }
+
+  .reader h1{
+    font-size:25px;
+  }
+
+  .reader-image{
+    height:240px;
+  }
+
 }
 </style>
 </head>
 
-<body id="top">
+<body>
 
-<div class="top">
-<span id="date"></span>
-<span>সত্য • নিৰপেক্ষ • দায়িত্বশীল</span>
+<!-- TOP -->
+<div class="topbar">
+  <span id="today"></span>
+  <span>সত্য • নিৰপেক্ষ • দায়িত্বশীল</span>
 </div>
 
+<!-- HEADER -->
 <header class="header">
-<div class="head">
 
-<div class="logo">
-P
-<small>PRESS</small>
-</div>
+  <div class="header-inner">
 
-<div class="brand">
-<h1>Press <span>Express</span> Assam</h1>
-<p>অসমৰ শেহতীয়া সংবাদ</p>
-</div>
+    <div class="logo">
+      P
+      <small>PRESS</small>
+    </div>
 
-<button class="live" onclick="showLive()">
-<i></i>LIVE
-</button>
+    <div class="brand">
+      <h1>Press <span>Express</span> Assam</h1>
+      <p>অসমৰ শেহতীয়া সংবাদ</p>
+    </div>
 
-</div>
+    <button class="live-btn" onclick="liveMessage()">
+      <span class="live-dot"></span>LIVE
+    </button>
+
+  </div>
+
 </header>
 
+<!-- MAIN NAVIGATION -->
 <nav class="nav">
-<div class="navin" id="mainNav"></div>
+
+  <div class="nav-inner">
+
+    <button class="nav-btn active" onclick="filterNews('সকলো',this)">
+      হোম
+    </button>
+
+    <button class="nav-btn" onclick="filterNews('অসম',this)">
+      অসম
+    </button>
+
+    <button class="nav-btn" onclick="filterNews('গুৱাহাটী',this)">
+      গুৱাহাটী
+    </button>
+
+    <button class="nav-btn" onclick="filterNews('ভাৰত',this)">
+      ভাৰত
+    </button>
+
+    <button class="nav-btn" onclick="filterNews('বিশ্ব',this)">
+      বিশ্ব
+    </button>
+
+    <button class="nav-btn" onclick="filterNews('ব্যৱসায়',this)">
+      ব্যৱসায়
+    </button>
+
+    <button class="nav-btn" onclick="filterNews('খেল',this)">
+      খেল
+    </button>
+
+  </div>
+
 </nav>
 
-<div class="ticker">
-<div class="breaking">⚡ BREAKING</div>
-<div class="tickerText">
-Press Express Assam — অসমৰ শেহতীয়া খবৰ, স্থানীয় সংবাদ আৰু গুৰুত্বপূৰ্ণ আপডেট আপোনাৰ কাষত।
-</div>
-</div>
+<!-- BREAKING -->
+<div class="breaking">
 
-<main class="wrap">
+  <div class="breaking-label">
+    ⚡ BREAKING
+  </div>
 
-<div class="searchbox">
-
-<div class="search">
-<input id="search" placeholder="খবৰ বিচাৰক..." oninput="render()">
-<span>⌕</span>
-</div>
-
-<div class="cats" id="cats"></div>
+  <div class="breaking-text">
+    Press Express Assam — অসমৰ শেহতীয়া খবৰ আৰু গুৰুত্বপূৰ্ণ সংবাদ আপোনাৰ কাষত।
+  </div>
 
 </div>
 
-<div class="sectionhead">
-<h2>শেহতীয়া খবৰ</h2>
-<span>Press Express Assam</span>
-</div>
+<!-- CONTENT -->
+<main class="container">
 
-<section id="hero"></section>
+  <!-- SEARCH ONLY -->
+  <div class="search-box">
 
-<div class="sectionhead">
-<h2>সংবাদ</h2>
-<span>Latest Updates</span>
-</div>
+    <div class="search-wrap">
 
-<section class="grid" id="newsGrid"></section>
+      <input
+        id="search"
+        type="search"
+        placeholder="খবৰ বিচাৰক..."
+        oninput="renderNews()"
+      >
+
+      <span class="search-icon">⌕</span>
+
+    </div>
+
+  </div>
+
+  <div class="section-title">
+
+    <h2>শেহতীয়া খবৰ</h2>
+
+    <span>Press Express Assam</span>
+
+  </div>
+
+  <section id="hero"></section>
+
+  <div class="section-title">
+
+    <h2>সংবাদ</h2>
+
+    <span>Latest Updates</span>
+
+  </div>
+
+  <section class="news-grid" id="newsGrid"></section>
 
 </main>
 
+<!-- FOOTER -->
 <footer class="footer">
 
-<div class="foot">
+  <div class="footer-inner">
 
-<div>
-<h2>Press <span>Express</span> Assam</h2>
-<p>
-অসমৰ স্থানীয়, ৰাজ্যিক, ভাৰতীয় আৰু আন্তঃৰাষ্ট্ৰীয় সংবাদৰ বাবে
-Press Express Assam। সত্য, নিৰপেক্ষ আৰু দায়িত্বশীল সংবাদ আমাৰ লক্ষ্য।
-</p>
-</div>
+    <div>
 
-<div>
-<h3>শাখাসমূহ</h3>
-<a onclick="setCat('অসম')">অসম</a>
-<a onclick="setCat('গুৱাহাটী')">গুৱাহাটী</a>
-<a onclick="setCat('ভাৰত')">ভাৰত</a>
-<a onclick="setCat('বিশ্ব')">বিশ্ব</a>
-</div>
+      <h2>
+        Press <span>Express</span> Assam
+      </h2>
 
-<div>
-<h3>অন্যান্য</h3>
-<a onclick="setCat('ব্যৱসায়')">ব্যৱসায়</a>
-<a onclick="setCat('খেল')">খেল</a>
-<a onclick="setCat('বিনোদন')">বিনোদন</a>
-<a href="#top">ওপৰলৈ যাওক ↑</a>
-</div>
+      <p>
+        অসমৰ স্থানীয়, ৰাজ্যিক, ভাৰতীয় আৰু আন্তঃৰাষ্ট্ৰীয় সংবাদৰ বাবে
+        Press Express Assam। সত্য, নিৰপেক্ষ আৰু দায়িত্বশীল সংবাদ আমাৰ লক্ষ্য।
+      </p>
 
-</div>
+    </div>
 
-<div class="copy">
-© 2026 Press Express Assam. All Rights Reserved.
-</div>
+    <div>
+
+      <h3>সংবাদ</h3>
+
+      <a onclick="filterNews('অসম')">অসম</a>
+      <a onclick="filterNews('গুৱাহাটী')">গুৱাহাটী</a>
+      <a onclick="filterNews('ভাৰত')">ভাৰত</a>
+      <a onclick="filterNews('বিশ্ব')">বিশ্ব</a>
+
+    </div>
+
+    <div>
+
+      <h3>অন্যান্য</h3>
+
+      <a onclick="filterNews('ব্যৱসায়')">ব্যৱসায়</a>
+      <a onclick="filterNews('খেল')">খেল</a>
+      <a href="#top">ওপৰলৈ যাওক ↑</a>
+
+    </div>
+
+  </div>
+
+  <div class="copyright">
+    © 2026 Press Express Assam. All Rights Reserved.
+  </div>
 
 </footer>
 
-<button class="adminBtn" onclick="adminLogin()">⚙ Admin</button>
+<!-- ADMIN BUTTON -->
+<button class="admin-button" onclick="adminLogin()">
+  ⚙ Admin
+</button>
 
+<!-- ADMIN MODAL -->
 <div class="modal" id="adminModal">
-<div class="panel">
 
-<div class="panelHead">
-<h2>Admin Panel</h2>
-<button class="close" onclick="closeModal('adminModal')">×</button>
+  <div class="modal-box">
+
+    <div class="modal-head">
+
+      <h2>Admin Panel</h2>
+
+      <button class="close" onclick="closeModal('adminModal')">
+        ×
+      </button>
+
+    </div>
+
+    <form class="form" onsubmit="addNews(event)">
+
+      <input
+        id="newsTitle"
+        required
+        placeholder="খবৰৰ শিৰোনাম"
+      >
+
+      <select id="newsCategory">
+
+        <option value="অসম">অসম</option>
+        <option value="গুৱাহাটী">গুৱাহাটী</option>
+        <option value="ভাৰত">ভাৰত</option>
+        <option value="বিশ্ব">বিশ্ব</option>
+        <option value="ব্যৱসায়">ব্যৱসায়</option>
+        <option value="খেল">খেল</option>
+
+      </select>
+
+      <textarea
+        id="newsSummary"
+        required
+        placeholder="খবৰৰ সম্পূৰ্ণ বিৱৰণ"
+      ></textarea>
+
+      <input
+        id="newsImage"
+        type="file"
+        accept="image/*"
+      >
+
+      <button class="publish">
+        + সংবাদ প্ৰকাশ কৰক
+      </button>
+
+    </form>
+
+    <div class="admin-list" id="adminList"></div>
+
+  </div>
+
 </div>
 
-<form class="form" onsubmit="saveNews(event)">
-
-<input id="ntitle" required placeholder="খবৰৰ শিৰোনাম">
-
-<select id="ncat">
-<option>অসম</option>
-<option>গুৱাহাটী</option>
-<option>ভাৰত</option>
-<option>বিশ্ব</option>
-<option>ব্যৱসায়</option>
-<option>খেল</option>
-<option>বিনোদন</option>
-</select>
-
-<textarea id="nsummary" required placeholder="খবৰৰ সম্পূৰ্ণ বিৱৰণ"></textarea>
-
-<input id="nimage" type="file" accept="image/*">
-
-<button class="primary">+ সংবাদ প্ৰকাশ কৰক</button>
-
-</form>
-
-<div class="adminList" id="adminList"></div>
-
-</div>
-</div>
-
+<!-- READER MODAL -->
 <div class="modal" id="readerModal">
-<div class="panel reader" id="reader"></div>
+
+  <div class="modal-box reader" id="readerContent"></div>
+
 </div>
 
 <script>
 
-const KEY="pea_news_final_v2";
+/* =========================
+   FINAL PRESS EXPRESS ASSAM
+   ========================= */
 
-const cats=[
-"সকলো","অসম","গুৱাহাটী","ভাৰত",
-"বিশ্ব","ব্যৱসায়","খেল","বিনোদন"
-];
+const STORAGE_KEY = "PRESS_EXPRESS_ASSAM_FINAL_2026";
 
-const nav=[
-"হোম","অসম","গুৱাহাটী","ভাৰত",
-"বিশ্ব","ব্যৱসায়","খেল","বিনোদন"
-];
+const sampleNews = [
 
-const samples=[
+  {
+    id:101,
+    category:"অসম",
+    title:"অসমৰ গুৰুত্বপূৰ্ণ সংবাদ আৰু শেহতীয়া আপডেট",
+    summary:"অসমৰ বিভিন্ন প্ৰান্তৰ গুৰুত্বপূৰ্ণ সংবাদ, স্থানীয় ঘটনা আৰু নতুন আপডেট Press Express Assam-ত।",
+    image:""
+  },
 
-{
-id:1,
-cat:"অসম",
-title:"অসমৰ গুৰুত্বপূৰ্ণ সংবাদ আৰু নতুন আপডেট",
-summary:"ৰাজ্যৰ বিভিন্ন প্ৰান্তৰ গুৰুত্বপূৰ্ণ খবৰ, স্থানীয় ঘটনা আৰু নতুন তথ্য একে ঠাইতে।",
-image:""
-},
+  {
+    id:102,
+    category:"গুৱাহাটী",
+    title:"গুৱাহাটীৰ শেহতীয়া খবৰ আৰু স্থানীয় সংবাদ",
+    summary:"গুৱাহাটী মহানগৰীৰ জনজীৱন, উন্নয়ন, যান-বাহন আৰু স্থানীয় ঘটনাৰ গুৰুত্বপূৰ্ণ খবৰ।",
+    image:""
+  },
 
-{
-id:2,
-cat:"গুৱাহাটী",
-title:"গুৱাহাটীৰ শেহতীয়া খবৰ আৰু স্থানীয় আপডেট",
-summary:"মহানগৰীৰ জনজীৱন, যান-বাহন, উন্নয়ন আৰু স্থানীয় ঘটনাৰ গুৰুত্বপূৰ্ণ সংবাদ।",
-image:""
-},
+  {
+    id:103,
+    category:"ভাৰত",
+    title:"দেশৰ গুৰুত্বপূৰ্ণ সংবাদ একে ঠাইতে",
+    summary:"ভাৰতৰ বিভিন্ন প্ৰান্তৰ গুৰুত্বপূৰ্ণ ৰাষ্ট্ৰীয় সংবাদ আৰু নতুন আপডেট।",
+    image:""
+  },
 
-{
-id:3,
-cat:"ভাৰত",
-title:"দেশৰ গুৰুত্বপূৰ্ণ সংবাদ একে ঠাইতে",
-summary:"ভাৰতৰ বিভিন্ন প্ৰান্তৰ উল্লেখযোগ্য ঘটনা আৰু গুৰুত্বপূৰ্ণ ৰাষ্ট্ৰীয় আপডেট।",
-image:""
-},
+  {
+    id:104,
+    category:"বিশ্ব",
+    title:"বিশ্বৰ শেহতীয়া সংবাদ আৰু গুৰুত্বপূৰ্ণ আপডেট",
+    summary:"আন্তঃৰাষ্ট্ৰীয় পৰ্যায়ৰ গুৰুত্বপূৰ্ণ ঘটনা আৰু নতুন তথ্য।",
+    image:""
+  },
 
-{
-id:4,
-cat:"বিশ্ব",
-title:"বিশ্বৰ শেহতীয়া সংবাদ আৰু গুৰুত্বপূৰ্ণ আপডেট",
-summary:"আন্তঃৰাষ্ট্ৰীয় পৰ্যায়ৰ উল্লেখযোগ্য ঘটনা আৰু নতুন তথ্য।",
-image:""
-},
+  {
+    id:105,
+    category:"ব্যৱসায়",
+    title:"ব্যৱসায় আৰু অৰ্থনীতিৰ শেহতীয়া সংবাদ",
+    summary:"ব্যৱসায়, বজাৰ আৰু অৰ্থনীতিৰ গুৰুত্বপূৰ্ণ নতুন আপডেট।",
+    image:""
+  },
 
-{
-id:5,
-cat:"ব্যৱসায়",
-title:"ব্যৱসায় আৰু অৰ্থনীতিৰ গুৰুত্বপূৰ্ণ সংবাদ",
-summary:"বজাৰ, ব্যৱসায় আৰু অৰ্থনীতিৰ উল্লেখযোগ্য আপডেট।",
-image:""
-},
-
-{
-id:6,
-cat:"খেল",
-title:"ক্ৰীড়া জগতৰ শেহতীয়া সংবাদ",
-summary:"ক্ৰীড়া জগতৰ গুৰুত্বপূৰ্ণ খবৰ, ফলাফল আৰু নতুন আপডেট।",
-image:""
-},
-
-{
-id:7,
-cat:"বিনোদন",
-title:"বিনোদন জগতৰ নতুন খবৰ",
-summary:"চলচ্চিত্ৰ, সংগীত আৰু বিনোদন জগতৰ শেহতীয়া সংবাদ।",
-image:""
-}
+  {
+    id:106,
+    category:"খেল",
+    title:"ক্ৰীড়া জগতৰ শেহতীয়া সংবাদ",
+    summary:"ক্ৰীড়া জগতৰ গুৰুত্বপূৰ্ণ খবৰ আৰু নতুন আপডেট।",
+    image:""
+  }
 
 ];
 
-let saved=localStorage.getItem(KEY);
-let news=saved?JSON.parse(saved):samples;
+let stored = localStorage.getItem(STORAGE_KEY);
 
-let activeCat="সকলো";
+let news = stored
+  ? JSON.parse(stored)
+  : sampleNews;
 
-function save(){
-localStorage.setItem(KEY,JSON.stringify(news));
-}
+let currentCategory = "সকলো";
 
-/* FIXED BACKGROUND
-   Assamese text is NOT placed inside SVG.
-   So %E0%A6... will NEVER appear.
-*/
 
-function bg(){
+/* SAVE */
 
-return "data:image/svg+xml;charset=UTF-8,"+
-encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg"
-width="1200" height="700">
+function saveNewsData(){
 
-<defs>
-
-<radialGradient id="red">
-<stop offset="0" stop-color="#c8102e" stop-opacity=".75"/>
-<stop offset="1" stop-color="#c8102e" stop-opacity="0"/>
-</radialGradient>
-
-<linearGradient id="dark"
-x1="0" y1="0" x2="1" y2="1">
-<stop stop-color="#121923"/>
-<stop offset="1" stop-color="#05070b"/>
-</linearGradient>
-
-</defs>
-
-<rect width="1200" height="700" fill="url(#dark)"/>
-
-<circle cx="970" cy="130"
-r="380" fill="url(#red)"/>
-
-<path d="M0 700 L650 0"
-stroke="#c8102e"
-stroke-width="9"
-opacity=".30"/>
-
-<circle cx="970" cy="130"
-r="170"
-fill="none"
-stroke="#ffffff"
-stroke-opacity=".08"
-stroke-width="3"/>
-
-</svg>
-`);
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(news)
+  );
 
 }
 
-function imageFor(n){
-return n.image||bg();
-}
 
-function esc(s){
-return String(s).replace(/[&<>"']/g,m=>({
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#039;"
-}[m]));
-}
+/* ESCAPE */
 
-function setCat(c){
-activeCat=c;
-render();
-window.scrollTo({top:0,behavior:"smooth"});
-}
+function escapeHTML(text){
 
-function renderNav(){
+  return String(text).replace(
+    /[&<>"']/g,
+    function(char){
 
-document.getElementById("mainNav").innerHTML=
+      return {
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#039;"
 
-nav.map((x,i)=>`
+      }[char];
 
-<button
-class="${(i===0&&activeCat==="সকলো")||x===activeCat?"active":""}"
-onclick="setCat('${x==="হোম"?"সকলো":x}')">
-
-${x}
-
-</button>
-
-`).join("");
-
-document.getElementById("cats").innerHTML=
-
-cats.map(x=>`
-
-<button
-class="cat ${x===activeCat?"active":""}"
-onclick="setCat('${x}')">
-
-${x}
-
-</button>
-
-`).join("");
+    }
+  );
 
 }
 
-function render(){
 
-renderNav();
+/* PROFESSIONAL DEFAULT NEWS IMAGE */
 
-const q=
-document.getElementById("search").value
-.trim().toLowerCase();
+function defaultImage(){
 
-let list=news.filter(n=>
+  return "data:image/svg+xml;charset=UTF-8," +
+  encodeURIComponent(`
 
-(activeCat==="সকলো"||n.cat===activeCat)&&
+    <svg xmlns="http://www.w3.org/2000/svg"
+         width="1200"
+         height="700"
+         viewBox="0 0 1200 700">
 
-(!q||
-(n.title+" "+n.summary+" "+n.cat)
-.toLowerCase()
-.includes(q))
+      <defs>
 
-);
+        <linearGradient id="bg"
+          x1="0"
+          y1="0"
+          x2="1"
+          y2="1">
 
-const first=list[0];
+          <stop offset="0%" stop-color="#182331"/>
+          <stop offset="100%" stop-color="#05070a"/>
 
-if(first){
+        </linearGradient>
 
-document.getElementById("hero").innerHTML=`
+        <radialGradient id="red">
 
-<article class="heroCard"
-style="
-background-image:
-linear-gradient(180deg,transparent,#000000dd),
-url('${imageFor(first)}');
-"
-onclick="read(${first.id})">
+          <stop
+            offset="0%"
+            stop-color="#c8102e"
+            stop-opacity=".75"
+          />
 
-<div class="heroContent">
+          <stop
+            offset="100%"
+            stop-color="#c8102e"
+            stop-opacity="0"
+          />
 
-<span class="tag">
-${esc(first.cat)}
-</span>
+        </radialGradient>
 
-<h2>
-${esc(first.title)}
-</h2>
+      </defs>
 
-<p>
-${esc(first.summary)}
-</p>
+      <rect
+        width="1200"
+        height="700"
+        fill="url(#bg)"
+      />
 
-<div class="meta">
-আজিৰ খবৰ • Press Express Assam
-</div>
+      <circle
+        cx="970"
+        cy="130"
+        r="380"
+        fill="url(#red)"
+      />
 
-<div class="share">
+      <path
+        d="M0 700 L650 0"
+        stroke="#c8102e"
+        stroke-width="10"
+        opacity=".30"
+      />
 
-<button
-onclick="event.stopPropagation();shareNews(${first.id})">
-↗ Share
-</button>
+      <circle
+        cx="970"
+        cy="130"
+        r="160"
+        fill="none"
+        stroke="white"
+        stroke-opacity=".08"
+        stroke-width="3"
+      />
 
-<button
-onclick="event.stopPropagation();copyNews(${first.id})">
-Copy Link
-</button>
+      <circle
+        cx="970"
+        cy="130"
+        r="220"
+        fill="none"
+        stroke="white"
+        stroke-opacity=".04"
+        stroke-width="2"
+      />
 
-</div>
+    </svg>
 
-</div>
-
-</article>
-
-`;
-
-}else{
-
-document.getElementById("hero").innerHTML=`
-<div class="empty">
-এই শাখাত কোনো সংবাদ পোৱা নগ'ল।
-</div>
-`;
-
-}
-
-document.getElementById("newsGrid").innerHTML=
-
-list.slice(1).map(n=>`
-
-<article class="card"
-onclick="read(${n.id})">
-
-<div class="pic"
-style="
-background-image:url('${imageFor(n)}');
-">
-
-</div>
-
-<div class="body">
-
-<span class="tag">
-${esc(n.cat)}
-</span>
-
-<h3>
-${esc(n.title)}
-</h3>
-
-<p>
-${esc(n.summary)}
-</p>
-
-<div class="meta">
-Press Express Assam • আজি
-</div>
-
-</div>
-
-</article>
-
-`).join("");
+  `);
 
 }
 
-function read(id){
 
-const n=news.find(x=>x.id===id);
+function imageFor(item){
 
-if(!n)return;
-
-document.getElementById("reader").innerHTML=`
-
-<div class="panelHead">
-
-<span class="tag">
-${esc(n.cat)}
-</span>
-
-<button class="close"
-onclick="closeModal('readerModal')">
-×
-</button>
-
-</div>
-
-<div class="pic"
-style="
-height:320px;
-background-image:url('${imageFor(n)}');
-">
-</div>
-
-<h1 style="margin-top:20px">
-${esc(n.title)}
-</h1>
-
-<p>
-${esc(n.summary)}
-</p>
-
-<div class="share">
-
-<button onclick="shareNews(${n.id})">
-↗ Share
-</button>
-
-<button onclick="copyNews(${n.id})">
-Copy Link
-</button>
-
-</div>
-
-`;
-
-document.getElementById("readerModal")
-.classList.add("show");
+  return item.image || defaultImage();
 
 }
+
+
+/* FILTER */
+
+function filterNews(category,button){
+
+  currentCategory = category;
+
+  document
+    .querySelectorAll(".nav-btn")
+    .forEach(function(btn){
+
+      btn.classList.remove("active");
+
+    });
+
+  if(button){
+
+    button.classList.add("active");
+
+  }else{
+
+    document
+      .querySelectorAll(".nav-btn")
+      .forEach(function(btn){
+
+        if(
+          btn.textContent.trim() === category ||
+          (category==="সকলো" &&
+           btn.textContent.trim()==="হোম")
+        ){
+
+          btn.classList.add("active");
+
+        }
+
+      });
+
+  }
+
+  renderNews();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* RENDER */
+
+function renderNews(){
+
+  const search =
+    document
+      .getElementById("search")
+      .value
+      .trim()
+      .toLowerCase();
+
+  let list = news.filter(function(item){
+
+    const categoryOK =
+      currentCategory==="সকলো" ||
+      item.category===currentCategory;
+
+    const text =
+      (
+        item.title +
+        " " +
+        item.summary +
+        " " +
+        item.category
+      ).toLowerCase();
+
+    return categoryOK &&
+      (!search || text.includes(search));
+
+  });
+
+
+  const hero =
+    document.getElementById("hero");
+
+  const grid =
+    document.getElementById("newsGrid");
+
+
+  if(!list.length){
+
+    hero.innerHTML =
+      `<div class="empty">
+        কোনো সংবাদ পোৱা নগ'ল।
+       </div>`;
+
+    grid.innerHTML="";
+
+    return;
+
+  }
+
+
+  const first=list[0];
+
+
+  hero.innerHTML = `
+
+    <article
+      class="hero-card"
+      style="
+        background-image:
+        linear-gradient(
+          to top,
+          rgba(0,0,0,.93),
+          rgba(0,0,0,.12)
+        ),
+        url('${imageFor(first)}');
+      "
+      onclick="openNews(${first.id})"
+    >
+
+      <div class="hero-content">
+
+        <span class="category">
+          ${escapeHTML(first.category)}
+        </span>
+
+        <h2>
+          ${escapeHTML(first.title)}
+        </h2>
+
+        <p>
+          ${escapeHTML(first.summary)}
+        </p>
+
+        <div class="meta">
+          Press Express Assam • আজি
+        </div>
+
+      </div>
+
+    </article>
+
+  `;
+
+
+  grid.innerHTML =
+    list.slice(1).map(function(item){
+
+      return `
+
+        <article
+          class="news-card"
+          onclick="openNews(${item.id})"
+        >
+
+          <div
+            class="news-image"
+            style="
+              background-image:
+              url('${imageFor(item)}');
+            "
+          ></div>
+
+          <div class="news-body">
+
+            <span class="category">
+              ${escapeHTML(item.category)}
+            </span>
+
+            <h3>
+              ${escapeHTML(item.title)}
+            </h3>
+
+            <p>
+              ${escapeHTML(item.summary)}
+            </p>
+
+            <div class="meta">
+              Press Express Assam • আজি
+            </div>
+
+          </div>
+
+        </article>
+
+      `;
+
+    }).join("");
+
+}
+
+
+/* OPEN NEWS */
+
+function openNews(id){
+
+  const item =
+    news.find(function(n){
+      return n.id===id;
+    });
+
+  if(!item)return;
+
+
+  document.getElementById(
+    "readerContent"
+  ).innerHTML = `
+
+    <div class="modal-head">
+
+      <span class="category">
+        ${escapeHTML(item.category)}
+      </span>
+
+      <button
+        class="close"
+        onclick="closeModal('readerModal')"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div
+      class="reader-image"
+      style="
+        background-image:
+        url('${imageFor(item)}');
+      "
+    ></div>
+
+    <h1>
+      ${escapeHTML(item.title)}
+    </h1>
+
+    <p>
+      ${escapeHTML(item.summary)}
+    </p>
+
+    <p>
+      Press Express Assam-ৰ সৈতে থাকক।
+      সত্য, নিৰপেক্ষ আৰু দায়িত্বশীল সংবাদৰ বাবে
+      আমাৰ আপডেট অনুসৰণ কৰক।
+    </p>
+
+    <div class="reader-actions">
+
+      <button
+        onclick="shareNews(${item.id})"
+      >
+        ↗ Share
+      </button>
+
+      <button
+        onclick="copyNews(${item.id})"
+      >
+        Copy Link
+      </button>
+
+    </div>
+
+  `;
+
+  document
+    .getElementById("readerModal")
+    .classList.add("show");
+
+}
+
+
+/* SHARE */
 
 function shareNews(id){
 
-const n=news.find(x=>x.id===id);
+  const item =
+    news.find(function(n){
+      return n.id===id;
+    });
 
-const url=
-location.href.split("#")[0]+"#news-"+id;
+  if(!item)return;
 
-if(navigator.share){
+  const url =
+    location.href.split("#")[0] +
+    "#news-" +
+    id;
 
-navigator.share({
-title:n.title,
-text:n.summary,
-url:url
-}).catch(()=>{});
+  if(navigator.share){
 
-}else{
+    navigator.share({
 
-copyText(url);
+      title:item.title,
+      text:item.summary,
+      url:url
+
+    }).catch(function(){});
+
+  }else{
+
+    copyText(url);
+
+  }
 
 }
 
-}
+
+/* COPY */
 
 function copyNews(id){
 
-const url=
-location.href.split("#")[0]+"#news-"+id;
+  const url =
+    location.href.split("#")[0] +
+    "#news-" +
+    id;
 
-copyText(url);
+  copyText(url);
 
 }
+
 
 function copyText(text){
 
-if(navigator.clipboard){
+  if(navigator.clipboard){
 
-navigator.clipboard.writeText(text)
-.then(()=>alert("Link copied"));
+    navigator.clipboard
+      .writeText(text)
+      .then(function(){
 
-}else{
+        alert("Link copied successfully");
 
-prompt("Copy this link:",text);
+      });
+
+  }else{
+
+    prompt(
+      "Link copy কৰক:",
+      text
+    );
+
+  }
 
 }
 
+
+/* LIVE */
+
+function liveMessage(){
+
+  alert(
+    "Press Express Assam LIVE — শীঘ্ৰেই LIVE update উপলব্ধ হ'ব।"
+  );
+
 }
 
-function showLive(){
 
-alert(
-"Press Express Assam LIVE — শীঘ্ৰেই লাইভ আপডেট উপলব্ধ হ'ব।"
-);
-
-}
+/* ADMIN LOGIN */
 
 function adminLogin(){
 
-const p=prompt("Admin password লিখক:");
+  const password =
+    prompt("Admin password লিখক:");
 
-if(p==="1234"){
+  if(password === "1234"){
 
-openAdmin();
+    openAdmin();
 
-}else if(p!==null){
+  }else if(password !== null){
 
-alert("ভুল password।");
+    alert("ভুল password।");
+
+  }
 
 }
 
-}
+
+/* OPEN ADMIN */
 
 function openAdmin(){
 
-document.getElementById("adminModal")
-.classList.add("show");
+  document
+    .getElementById("adminModal")
+    .classList.add("show");
 
-adminList();
-
-}
-
-function adminList(){
-
-document.getElementById("adminList").innerHTML=
-
-news.map(n=>`
-
-<div class="adminItem">
-
-<span>
-<b>${esc(n.title)}</b>
-<br>
-<small>${esc(n.cat)}</small>
-</span>
-
-<button
-class="danger"
-onclick="delNews(${n.id})">
-Delete
-</button>
-
-</div>
-
-`).join("");
+  renderAdminList();
 
 }
 
-function saveNews(e){
 
-e.preventDefault();
+/* ADMIN LIST */
 
-const title=
-document.getElementById("ntitle").value.trim();
+function renderAdminList(){
 
-const cat=
-document.getElementById("ncat").value;
+  const box =
+    document.getElementById("adminList");
 
-const summary=
-document.getElementById("nsummary").value.trim();
+  if(!news.length){
 
-const file=
-document.getElementById("nimage").files[0];
+    box.innerHTML =
+      "<p>এতিয়া কোনো সংবাদ নাই।</p>";
 
-function add(image){
+    return;
 
-news.unshift({
+  }
 
-id:Date.now(),
+  box.innerHTML =
+    news.map(function(item){
 
-cat:cat,
+      return `
 
-title:title,
+        <div class="admin-item">
 
-summary:summary,
+          <div>
 
-image:image||""
+            <strong>
+              ${escapeHTML(item.title)}
+            </strong>
 
-});
+            <br>
 
-save();
+            <small>
+              ${escapeHTML(item.category)}
+            </small>
 
-e.target.reset();
+          </div>
 
-adminList();
+          <button
+            class="delete"
+            onclick="deleteNews(${item.id})"
+          >
+            Delete
+          </button>
 
-render();
+        </div>
 
-alert("সংবাদ সফলভাৱে প্ৰকাশ কৰা হ'ল।");
+      `;
 
-}
-
-if(file){
-
-const reader=new FileReader();
-
-reader.onload=()=>{
-add(reader.result);
-};
-
-reader.readAsDataURL(file);
-
-}else{
-
-add("");
+    }).join("");
 
 }
 
+
+/* ADD NEWS */
+
+function addNews(event){
+
+  event.preventDefault();
+
+
+  const title =
+    document
+      .getElementById("newsTitle")
+      .value
+      .trim();
+
+  const category =
+    document
+      .getElementById("newsCategory")
+      .value;
+
+  const summary =
+    document
+      .getElementById("newsSummary")
+      .value
+      .trim();
+
+  const file =
+    document
+      .getElementById("newsImage")
+      .files[0];
+
+
+  function publish(image){
+
+    news.unshift({
+
+      id:Date.now(),
+
+      category:category,
+
+      title:title,
+
+      summary:summary,
+
+      image:image || ""
+
+    });
+
+
+    saveNewsData();
+
+    document
+      .querySelector("#adminModal form")
+      .reset();
+
+    renderAdminList();
+
+    renderNews();
+
+    alert(
+      "সংবাদ সফলভাৱে প্ৰকাশ কৰা হ'ল।"
+    );
+
+  }
+
+
+  if(file){
+
+    const reader =
+      new FileReader();
+
+    reader.onload =
+      function(){
+
+        publish(reader.result);
+
+      };
+
+    reader.readAsDataURL(file);
+
+  }else{
+
+    publish("");
+
+  }
+
 }
 
-function delNews(id){
 
-if(confirm("এই সংবাদটো delete কৰিবনে?")){
+/* DELETE */
 
-news=news.filter(n=>n.id!==id);
+function deleteNews(id){
 
-save();
+  if(
+    !confirm(
+      "এই সংবাদটো delete কৰিবনে?"
+    )
+  ){
 
-adminList();
+    return;
 
-render();
+  }
+
+
+  news =
+    news.filter(function(item){
+
+      return item.id!==id;
+
+    });
+
+
+  saveNewsData();
+
+  renderAdminList();
+
+  renderNews();
 
 }
 
-}
+
+/* CLOSE MODAL */
 
 function closeModal(id){
 
-document.getElementById(id)
-.classList.remove("show");
+  document
+    .getElementById(id)
+    .classList.remove("show");
 
 }
 
-document.querySelectorAll(".modal")
-.forEach(m=>{
 
-m.addEventListener("click",e=>{
+/* CLICK OUTSIDE */
 
-if(e.target===m){
+document
+  .querySelectorAll(".modal")
+  .forEach(function(modal){
 
-m.classList.remove("show");
+    modal.addEventListener(
+      "click",
+      function(event){
 
-}
+        if(event.target===modal){
 
-});
+          modal.classList.remove("show");
 
-});
+        }
 
-document.getElementById("date").textContent=
+      }
+    );
 
-new Date().toLocaleDateString(
-"as-IN",
-{
-weekday:"long",
-day:"numeric",
-month:"long",
-year:"numeric"
-}
-);
+  });
 
-render();
+
+/* DATE */
+
+document.getElementById("today")
+  .textContent =
+  new Date().toLocaleDateString(
+    "as-IN",
+    {
+      weekday:"long",
+      day:"numeric",
+      month:"long",
+      year:"numeric"
+    }
+  );
+
+
+/* START */
+
+renderNews();
 
 </script>
 
