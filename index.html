@@ -1,32 +1,50 @@
 <!DOCTYPE html>
 <html lang="as">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Press Express Assam — অসমৰ শেহতীয়া খবৰ</title>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Press Express Assam — অসমৰ শেহতীয়া খবৰ</title>
 
 <meta name="description"
-content="Press Express Assam — অসমৰ স্থানীয়, ৰাজ্যিক, ৰাষ্ট্ৰীয় আৰু আন্তঃৰাষ্ট্ৰীয় শেহতীয়া খবৰ। সত্য, নিৰপেক্ষ আৰু দায়িত্বশীল সংবাদ।">
+content="Press Express Assam — অসমৰ স্থানীয়, গুৱাহাটী, ভাৰত, বিশ্ব, ব্যৱসায়, খেল আৰু বিনোদনৰ শেহতীয়া সংবাদ। সত্য, নিৰপেক্ষ আৰু দায়িত্বশীল সংবাদ।">
+
+<meta name="robots" content="index,follow">
 
 <meta name="theme-color" content="#c8102e">
-   
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Noto+Sans+Assamese:wght@400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<style>
 
 /* =========================================================
    PRESS EXPRESS ASSAM
-   PROFESSIONAL NEWS PORTAL DESIGN
+   COMPLETE PROFESSIONAL NEWS PORTAL
+   EVERYTHING IS INSIDE THIS ONE FILE
    ========================================================= */
 
 :root{
   --red:#c8102e;
-  --dark:#101820;
-  --dark2:#17212b;
-  --text:#171b20;
-  --muted:#737b83;
-  --bg:#f4f6f8;
+  --red-dark:#9d0821;
+  --black:#111827;
+  --dark:#17202b;
+  --text:#20242a;
+  --muted:#707780;
+  --bg:#f5f6f8;
   --white:#ffffff;
-  --border:#e5e8eb;
-  --shadow:0 8px 28px rgba(16,24,32,.08);
+  --line:#e5e7eb;
+  --shadow:0 8px 28px rgba(15,23,42,.08);
   --radius:16px;
 }
 
@@ -41,30 +59,23 @@ html{
 }
 
 body{
+  font-family:"Noto Sans Assamese",
+  "Noto Sans",
+  system-ui,
+  sans-serif;
   background:var(--bg);
   color:var(--text);
-  font-family:
-    "Noto Sans Assamese",
-    "Nirmala UI",
-    "Arial Unicode MS",
-    Arial,
-    sans-serif;
-  line-height:1.6;
+  line-height:1.55;
 }
 
 a{
-  text-decoration:none;
   color:inherit;
-}
-
-img{
-  max-width:100%;
-  display:block;
+  text-decoration:none;
 }
 
 button,
 input{
-  font:inherit;
+  font-family:inherit;
 }
 
 /* =========================================================
@@ -72,116 +83,116 @@ input{
    ========================================================= */
 
 .topbar{
-  background:var(--dark);
-  color:#dce2e7;
-  font-size:13px;
+  background:#101820;
+  color:#fff;
+  font-size:12px;
 }
 
 .topbar-inner{
-  max-width:1400px;
+  width:min(1380px,94%);
   margin:auto;
-  padding:8px 22px;
+  min-height:34px;
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
 }
 
-.topbar-right{
-  font-weight:600;
+.top-date{
+  opacity:.85;
+}
+
+.top-slogan{
+  opacity:.9;
 }
 
 /* =========================================================
-   MAIN HEADER
+   HEADER
    ========================================================= */
 
 .header{
   background:#fff;
-  border-bottom:1px solid var(--border);
+  border-bottom:1px solid var(--line);
   position:sticky;
   top:0;
   z-index:1000;
 }
 
 .header-inner{
-  max-width:1400px;
+  width:min(1380px,94%);
   margin:auto;
-  min-height:92px;
-  padding:12px 22px;
+  min-height:78px;
   display:flex;
   align-items:center;
-  gap:28px;
+  gap:24px;
 }
 
 .logo{
-  width:92px;
-  height:70px;
+  width:82px;
+  height:64px;
   object-fit:contain;
   flex-shrink:0;
 }
 
-.social{
-  display:flex;
-  gap:9px;
+.brand{
+  min-width:190px;
 }
 
-.social a{
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:white;
+.brand-name{
+  font-size:25px;
   font-weight:800;
-  font-size:15px;
-  transition:.25s;
+  line-height:1.05;
+  color:var(--black);
 }
 
-.social a:hover{
-  transform:translateY(-3px);
-}
-
-.facebook{background:#1877f2}
-.whatsapp{background:#20b968}
-.instagram{background:linear-gradient(135deg,#7b2cff,#ff315c,#ff9f00)}
-.youtube{background:#d60018}
-
-.nav{
-  margin-left:auto;
-  display:flex;
-  align-items:center;
-  gap:25px;
-}
-
-.nav a{
-  font-weight:700;
-  font-size:16px;
-  white-space:nowrap;
-  position:relative;
-}
-
-.nav a:hover,
-.nav a.active{
+.brand-name span{
   color:var(--red);
 }
 
-.nav a.active:after{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:-12px;
-  height:3px;
-  background:var(--red);
-  border-radius:10px;
+.brand-tag{
+  font-size:11px;
+  color:var(--muted);
+  margin-top:3px;
+}
+
+.main-nav{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  gap:5px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+.main-nav a{
+  padding:9px 11px;
+  font-size:14px;
+  font-weight:700;
+  border-radius:8px;
+  transition:.2s;
+  white-space:nowrap;
+}
+
+.main-nav a:hover,
+.main-nav a.active{
+  color:var(--red);
+  background:#fff1f3;
 }
 
 .live-btn{
-  background:var(--red);
-  color:white !important;
-  padding:11px 18px;
-  border-radius:9px;
-  box-shadow:0 5px 14px rgba(200,16,46,.25);
+  background:var(--red)!important;
+  color:#fff!important;
+  padding:10px 16px!important;
+  border-radius:8px!important;
+  box-shadow:0 5px 15px rgba(200,16,46,.2);
+}
+
+.live-dot{
+  display:inline-block;
+  width:7px;
+  height:7px;
+  background:#fff;
+  border-radius:50%;
+  margin-right:5px;
 }
 
 /* =========================================================
@@ -190,97 +201,101 @@ input{
 
 .breaking{
   background:#fff;
-  border-bottom:1px solid var(--border);
+  border-bottom:1px solid var(--line);
+}
+
+.breaking-inner{
+  width:100%;
   display:flex;
+  align-items:center;
   overflow:hidden;
 }
 
 .breaking-label{
+  flex-shrink:0;
   background:var(--red);
   color:#fff;
+  font-size:13px;
   font-weight:800;
-  padding:12px 25px;
-  min-width:155px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:7px;
+  padding:11px 22px;
 }
 
 .breaking-track{
-  flex:1;
   overflow:hidden;
+  flex:1;
   white-space:nowrap;
 }
 
 .breaking-text{
   display:inline-block;
-  padding:12px 0 12px 25px;
-  animation:ticker 28s linear infinite;
-  color:#454b51;
+  padding-left:100%;
+  animation:ticker 24s linear infinite;
+  font-size:13px;
   font-weight:600;
+  color:#4b5563;
 }
 
 @keyframes ticker{
-  from{transform:translateX(100%)}
+  from{transform:translateX(0)}
   to{transform:translateX(-100%)}
 }
 
 /* =========================================================
-   PAGE CONTAINER
+   CONTAINER
    ========================================================= */
 
 .container{
-  max-width:1400px;
+  width:min(1380px,94%);
   margin:auto;
-  padding:28px 22px;
 }
 
 /* =========================================================
-   SEARCH
+   SEARCH + CATEGORIES
    ========================================================= */
 
-.search-area{
+.tools{
   background:#fff;
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:16px;
-  box-shadow:0 4px 18px rgba(0,0,0,.03);
+  border:1px solid var(--line);
+  border-radius:14px;
+  margin:22px 0;
+  padding:14px;
+  box-shadow:0 3px 14px rgba(0,0,0,.03);
 }
 
-.search-box{
+.search{
   position:relative;
 }
 
-.search-box input{
+.search input{
   width:100%;
-  height:52px;
-  border:1px solid #dfe3e7;
-  border-radius:12px;
-  padding:0 18px 0 48px;
+  height:46px;
+  border:1px solid #dfe3e8;
+  border-radius:10px;
   outline:none;
-  font-size:15px;
-  background:#fafbfc;
+  padding:0 16px 0 44px;
+  font-size:14px;
+  background:#fafafa;
 }
 
-.search-box input:focus{
+.search input:focus{
   border-color:var(--red);
   background:#fff;
+  box-shadow:0 0 0 3px rgba(200,16,46,.08);
 }
 
 .search-icon{
   position:absolute;
-  left:17px;
-  top:13px;
-  font-size:22px;
-  color:#888;
+  left:16px;
+  top:12px;
+  color:#8a9098;
+  font-size:18px;
 }
 
 .categories{
   display:flex;
-  gap:9px;
+  gap:8px;
   overflow-x:auto;
-  padding-top:13px;
+  margin-top:12px;
   scrollbar-width:none;
 }
 
@@ -288,22 +303,22 @@ input{
   display:none;
 }
 
-.category{
-  border:1px solid #dfe3e7;
-  background:white;
-  padding:7px 18px;
+.cat{
+  border:1px solid #e1e4e8;
+  background:#fff;
   border-radius:30px;
-  white-space:nowrap;
+  padding:8px 17px;
+  font-size:13px;
   font-weight:700;
-  font-size:14px;
+  white-space:nowrap;
   cursor:pointer;
   transition:.2s;
 }
 
-.category:hover,
-.category.active{
+.cat:hover,
+.cat.active{
+  color:#fff;
   background:var(--red);
-  color:white;
   border-color:var(--red);
 }
 
@@ -315,72 +330,59 @@ input{
   display:flex;
   justify-content:space-between;
   align-items:end;
-  margin:35px 0 17px;
+  margin:30px 0 15px;
 }
 
 .section-title{
-  font-size:27px;
-  font-weight:900;
-  display:flex;
-  align-items:center;
-  gap:11px;
+  border-left:4px solid var(--red);
+  padding-left:12px;
+  font-size:23px;
+  line-height:1.2;
+  font-weight:800;
 }
 
-.section-title:before{
-  content:"";
-  width:5px;
-  height:30px;
-  background:var(--red);
-  border-radius:4px;
-}
-
-.section-link{
+.section-more{
+  font-size:12px;
   color:var(--red);
   font-weight:700;
-  font-size:14px;
 }
 
 /* =========================================================
-   HERO GRID
+   HERO AREA
    ========================================================= */
 
 .hero-grid{
   display:grid;
-  grid-template-columns:minmax(0,2fr) minmax(330px,1fr);
-  gap:20px;
+  grid-template-columns:minmax(0,2fr) minmax(300px,.82fr);
+  gap:18px;
 }
 
 .hero{
-  position:relative;
-  min-height:500px;
-  border-radius:18px;
+  min-height:420px;
+  border-radius:var(--radius);
   overflow:hidden;
-  background:#111;
+  position:relative;
+  background:#17202b;
   box-shadow:var(--shadow);
 }
 
 .hero img{
   width:100%;
-  height:500px;
+  height:100%;
+  min-height:420px;
   object-fit:cover;
-  opacity:.88;
-  transition:.5s;
+  display:block;
 }
 
-.hero:hover img{
-  transform:scale(1.03);
-}
-
-.hero:after{
+.hero::after{
   content:"";
   position:absolute;
   inset:0;
   background:
     linear-gradient(
       to top,
-      rgba(0,0,0,.90),
-      rgba(0,0,0,.15) 65%,
-      rgba(0,0,0,.05)
+      rgba(0,0,0,.88),
+      rgba(0,0,0,.05) 65%
     );
 }
 
@@ -388,84 +390,94 @@ input{
   position:absolute;
   left:28px;
   right:28px;
-  bottom:28px;
+  bottom:24px;
+  color:#fff;
   z-index:2;
-  color:white;
 }
 
 .badge{
   display:inline-block;
   background:var(--red);
-  color:white;
-  font-size:12px;
-  font-weight:800;
-  padding:5px 11px;
+  color:#fff;
+  padding:5px 10px;
   border-radius:5px;
-  margin-bottom:12px;
+  font-size:11px;
+  font-weight:800;
+  margin-bottom:8px;
 }
 
 .hero-title{
-  font-size:38px;
-  line-height:1.25;
-  font-weight:900;
-  margin-bottom:9px;
+  font-size:32px;
+  line-height:1.2;
+  font-weight:800;
+  max-width:850px;
 }
 
 .hero-desc{
-  color:#e8e8e8;
-  font-size:15px;
+  margin-top:8px;
+  font-size:13px;
+  color:#e6e6e6;
+  max-width:750px;
 }
 
 /* =========================================================
-   RIGHT SIDE FEATURED
+   SIDE NEWS
    ========================================================= */
 
 .side-news{
-  display:flex;
-  flex-direction:column;
-  gap:16px;
+  display:grid;
+  grid-template-rows:1fr 1fr;
+  gap:18px;
 }
 
 .side-card{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:16px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
   overflow:hidden;
   display:grid;
-  grid-template-columns:150px 1fr;
-  min-height:160px;
-  box-shadow:var(--shadow);
-  transition:.25s;
+  grid-template-columns:145px 1fr;
+  min-height:201px;
+  box-shadow:0 5px 20px rgba(0,0,0,.04);
+  transition:.2s;
 }
 
 .side-card:hover{
-  transform:translateY(-3px);
+  transform:translateY(-2px);
+  box-shadow:var(--shadow);
 }
 
 .side-card img{
-  width:150px;
-  height:160px;
+  width:100%;
+  height:100%;
+  min-height:201px;
   object-fit:cover;
 }
 
-.side-content{
-  padding:16px;
+.side-body{
+  padding:15px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 
-.side-content .badge{
-  margin-bottom:6px;
+.side-category{
+  color:var(--red);
+  font-size:10px;
+  font-weight:800;
+  margin-bottom:5px;
 }
 
 .side-title{
-  font-size:19px;
+  font-size:17px;
   line-height:1.35;
-  font-weight:850;
+  font-weight:800;
 }
 
-.side-meta{
+.side-date{
   color:var(--muted);
-  font-size:12px;
-  margin-top:8px;
+  font-size:11px;
+  margin-top:9px;
 }
 
 /* =========================================================
@@ -475,204 +487,170 @@ input{
 .news-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:20px;
+  gap:18px;
 }
 
 .news-card{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:16px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
   overflow:hidden;
-  box-shadow:0 5px 20px rgba(0,0,0,.05);
-  transition:.25s;
+  box-shadow:0 4px 16px rgba(0,0,0,.035);
+  transition:.2s;
 }
 
 .news-card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 12px 30px rgba(0,0,0,.10);
+  transform:translateY(-3px);
+  box-shadow:var(--shadow);
 }
 
 .news-img{
   width:100%;
-  height:220px;
+  height:205px;
   object-fit:cover;
-  background:#e9edf0;
+  display:block;
+  background:#e9edf2;
 }
 
-.news-content{
-  padding:17px;
+.news-body{
+  padding:15px;
 }
 
 .news-meta{
   display:flex;
   align-items:center;
-  gap:8px;
-  color:#81878d;
-  font-size:12px;
-  margin-bottom:9px;
+  gap:9px;
+  color:var(--muted);
+  font-size:10px;
+  margin-bottom:7px;
 }
 
 .news-category{
-  background:#fff0f2;
-  color:var(--red);
+  color:#fff;
+  background:var(--red);
   padding:3px 8px;
-  border-radius:5px;
+  border-radius:4px;
   font-weight:800;
 }
 
 .news-title{
-  font-size:20px;
+  font-size:18px;
   line-height:1.35;
-  font-weight:850;
-  margin-bottom:8px;
+  font-weight:800;
 }
 
 .news-excerpt{
-  color:#737a80;
-  font-size:14px;
+  color:#707780;
+  font-size:12px;
+  line-height:1.5;
+  margin-top:7px;
 }
 
 .read-more{
   display:inline-block;
-  margin-top:13px;
+  margin-top:10px;
   color:var(--red);
+  font-size:12px;
   font-weight:800;
-  font-size:14px;
 }
 
 /* =========================================================
    TWO COLUMN SECTION
    ========================================================= */
 
-.content-layout{
+.content-grid{
   display:grid;
-  grid-template-columns:minmax(0,2fr) 360px;
-  gap:25px;
+  grid-template-columns:minmax(0,2fr) minmax(280px,.8fr);
+  gap:22px;
 }
 
 .list-news{
-  display:flex;
-  flex-direction:column;
-  gap:15px;
+  display:grid;
+  gap:12px;
 }
 
 .list-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:10px;
   display:grid;
-  grid-template-columns:220px 1fr;
-  gap:18px;
-  background:white;
-  border:1px solid var(--border);
-  border-radius:14px;
-  overflow:hidden;
-  box-shadow:0 4px 15px rgba(0,0,0,.04);
+  grid-template-columns:180px 1fr;
+  gap:15px;
+  transition:.2s;
+}
+
+.list-card:hover{
+  box-shadow:var(--shadow);
 }
 
 .list-card img{
-  width:220px;
-  height:150px;
+  width:180px;
+  height:120px;
   object-fit:cover;
-}
-
-.list-content{
-  padding:15px 15px 15px 0;
+  border-radius:8px;
 }
 
 .list-title{
-  font-size:20px;
-  font-weight:850;
+  font-size:17px;
   line-height:1.35;
+  font-weight:800;
 }
 
-.list-text{
-  color:#777;
-  font-size:14px;
-  margin-top:7px;
+.list-excerpt{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:6px;
 }
 
 /* =========================================================
    SIDEBAR
    ========================================================= */
 
+.sidebar{
+  display:grid;
+  align-content:start;
+  gap:15px;
+}
+
 .sidebar-box{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:20px;
-  margin-bottom:18px;
-  box-shadow:0 5px 18px rgba(0,0,0,.04);
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:18px;
 }
 
-.sidebar-title{
-  font-size:20px;
-  font-weight:900;
-  border-left:4px solid var(--red);
-  padding-left:10px;
-  margin-bottom:16px;
+.sidebar-heading{
+  border-left:3px solid var(--red);
+  padding-left:9px;
+  font-size:17px;
+  font-weight:800;
+  margin-bottom:13px;
 }
 
-.ad-box{
-  min-height:250px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:#fafafa;
-  border:1px dashed #d8dde2;
-  color:#999;
-  font-size:13px;
+.popular{
+  display:grid;
+  gap:13px;
 }
 
 .popular-item{
-  display:flex;
-  gap:11px;
-  padding:11px 0;
-  border-bottom:1px solid #edf0f2;
+  display:grid;
+  grid-template-columns:70px 1fr;
+  gap:10px;
+  align-items:center;
 }
 
-.popular-item:last-child{
-  border-bottom:0;
-}
-
-.popular-number{
-  color:var(--red);
-  font-size:23px;
-  font-weight:900;
+.popular-item img{
+  width:70px;
+  height:55px;
+  border-radius:7px;
+  object-fit:cover;
 }
 
 .popular-title{
+  font-size:12px;
   font-weight:700;
-  font-size:14px;
-  line-height:1.4;
-}
-
-/* =========================================================
-   BRAND STRIP
-   ========================================================= */
-
-.brand-strip{
-  background:linear-gradient(135deg,#111820,#202a34);
-  color:white;
-  border-radius:18px;
-  padding:28px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin:35px 0;
-}
-
-.brand-strip h2{
-  font-size:25px;
-}
-
-.brand-strip p{
-  color:#b9c1c8;
-  margin-top:4px;
-}
-
-.brand-btn{
-  background:var(--red);
-  padding:12px 22px;
-  border-radius:8px;
-  font-weight:800;
+  line-height:1.35;
 }
 
 /* =========================================================
@@ -680,59 +658,63 @@ input{
    ========================================================= */
 
 .footer{
-  background:#0d161d;
-  color:#d9dfe4;
-  margin-top:45px;
+  margin-top:50px;
+  background:#101820;
+  color:#fff;
 }
 
-.footer-inner{
-  max-width:1400px;
+.footer-main{
+  width:min(1380px,94%);
   margin:auto;
-  padding:45px 22px;
+  padding:35px 0;
   display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  gap:45px;
+  grid-template-columns:1.3fr 1fr 1fr;
+  gap:35px;
 }
 
 .footer-logo{
-  width:110px;
-  height:80px;
+  width:78px;
+  height:62px;
   object-fit:contain;
-  background:white;
-  border-radius:9px;
-  padding:5px;
-  margin-bottom:15px;
+  margin-bottom:8px;
 }
 
-.footer h3{
-  color:white;
-  font-size:17px;
-  margin-bottom:13px;
+.footer-title{
+  font-size:18px;
+  font-weight:800;
+  margin-bottom:9px;
 }
 
-.footer a{
-  display:block;
-  color:#aeb7be;
-  margin:7px 0;
-  font-size:14px;
+.footer p{
+  color:#b9c0c8;
+  font-size:12px;
+  line-height:1.7;
 }
 
-.footer-about{
-  color:#9da8b0;
-  max-width:450px;
-  font-size:14px;
+.footer-links{
+  display:grid;
+  gap:7px;
 }
 
-.copyright{
-  border-top:1px solid #27323b;
-  padding:15px 22px;
-  text-align:center;
-  color:#89939b;
+.footer-links a{
+  color:#cbd1d7;
   font-size:12px;
 }
 
+.footer-links a:hover{
+  color:#fff;
+}
+
+.copyright{
+  border-top:1px solid rgba(255,255,255,.1);
+  text-align:center;
+  padding:14px;
+  color:#9fa7b0;
+  font-size:11px;
+}
+
 /* =========================================================
-   ADMIN BUTTON
+   FLOATING ADMIN
    ========================================================= */
 
 .admin-btn{
@@ -741,12 +723,12 @@ input{
   bottom:20px;
   z-index:2000;
   background:var(--red);
-  color:white;
-  border:0;
+  color:#fff;
+  padding:11px 17px;
   border-radius:30px;
-  padding:13px 21px;
-  font-weight:900;
-  box-shadow:0 8px 25px rgba(0,0,0,.25);
+  font-size:12px;
+  font-weight:800;
+  box-shadow:0 8px 25px rgba(0,0,0,.2);
 }
 
 /* =========================================================
@@ -754,37 +736,38 @@ input{
    ========================================================= */
 
 .loading{
-  padding:50px;
+  padding:40px;
   text-align:center;
-  color:#888;
+  color:var(--muted);
+  font-size:13px;
 }
 
-.spinner{
-  width:30px;
-  height:30px;
-  border:3px solid #ddd;
-  border-top-color:var(--red);
-  border-radius:50%;
-  margin:0 auto 12px;
-  animation:spin .8s linear infinite;
-}
-
-@keyframes spin{
-  to{transform:rotate(360deg)}
+.empty{
+  padding:35px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  text-align:center;
+  color:var(--muted);
 }
 
 /* =========================================================
-   MOBILE
+   RESPONSIVE
    ========================================================= */
 
 @media(max-width:1100px){
 
-  .nav{
-    gap:14px;
+  .brand{
+    min-width:150px;
   }
 
-  .nav a{
-    font-size:14px;
+  .brand-name{
+    font-size:21px;
+  }
+
+  .main-nav a{
+    padding:7px 8px;
+    font-size:12px;
   }
 
   .hero-grid{
@@ -792,169 +775,534 @@ input{
   }
 
   .side-news{
-    display:grid;
     grid-template-columns:1fr 1fr;
+    grid-template-rows:auto;
   }
 
   .news-grid{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .content-layout{
-    grid-template-columns:1fr;
-  }
-
 }
 
-@media(max-width:768px){
+@media(max-width:760px){
+
+  .top-slogan{
+    display:none;
+  }
 
   .topbar-inner{
-    padding:7px 14px;
+    justify-content:center;
+  }
+
+  .header{
+    position:relative;
   }
 
   .header-inner{
-    min-height:70px;
-    padding:8px 14px;
-    gap:12px;
+    min-height:auto;
+    padding:12px 0;
+    flex-wrap:wrap;
+    gap:10px;
   }
 
   .logo{
-    width:70px;
-    height:55px;
+    width:62px;
+    height:52px;
   }
 
-  .social{
-    display:none;
+  .brand{
+    min-width:0;
+    flex:1;
   }
 
-  .nav{
+  .brand-name{
+    font-size:18px;
+  }
+
+  .brand-tag{
+    font-size:9px;
+  }
+
+  .main-nav{
+    width:100%;
+    justify-content:flex-start;
     overflow-x:auto;
-    margin-left:auto;
-    gap:17px;
-    scrollbar-width:none;
+    flex-wrap:nowrap;
+    padding-bottom:2px;
   }
 
-  .nav::-webkit-scrollbar{
-    display:none;
-  }
-
-  .nav a{
-    font-size:13px;
-  }
-
-  .nav a.active:after{
-    bottom:-7px;
+  .main-nav a{
+    font-size:11px;
+    padding:6px 9px;
   }
 
   .live-btn{
-    padding:7px 12px;
+    display:none;
   }
 
   .breaking-label{
-    min-width:110px;
-    padding:10px;
-    font-size:12px;
+    padding:9px 13px;
+    font-size:11px;
   }
 
-  .container{
-    padding:18px 12px;
+  .breaking-text{
+    font-size:11px;
+  }
+
+  .tools{
+    margin:14px 0;
+  }
+
+  .section-head{
+    margin:22px 0 12px;
   }
 
   .section-title{
-    font-size:23px;
+    font-size:20px;
   }
 
   .hero{
-    min-height:360px;
+    min-height:330px;
   }
 
   .hero img{
-    height:360px;
+    min-height:330px;
   }
 
   .hero-content{
-    left:17px;
-    right:17px;
+    left:18px;
+    right:18px;
     bottom:18px;
   }
 
   .hero-title{
-    font-size:27px;
+    font-size:24px;
+  }
+
+  .hero-desc{
+    font-size:11px;
   }
 
   .side-news{
-    display:flex;
+    grid-template-columns:1fr;
   }
 
   .side-card{
-    grid-template-columns:120px 1fr;
+    min-height:140px;
+    grid-template-columns:115px 1fr;
   }
 
   .side-card img{
-    width:120px;
-    height:135px;
+    min-height:140px;
   }
 
   .side-title{
-    font-size:16px;
+    font-size:14px;
   }
 
   .news-grid{
     grid-template-columns:1fr;
+    gap:12px;
   }
 
   .news-img{
-    height:210px;
+    height:190px;
+  }
+
+  .news-title{
+    font-size:17px;
+  }
+
+  .content-grid{
+    grid-template-columns:1fr;
   }
 
   .list-card{
     grid-template-columns:120px 1fr;
+    gap:11px;
   }
 
   .list-card img{
     width:120px;
-    height:125px;
-  }
-
-  .list-content{
-    padding:10px 10px 10px 0;
+    height:95px;
   }
 
   .list-title{
-    font-size:16px;
+    font-size:14px;
   }
 
-  .list-text{
+  .list-excerpt{
+    font-size:11px;
+  }
+
+  .sidebar{
     display:none;
   }
 
-  .brand-strip{
-    display:block;
-    padding:22px;
-  }
-
-  .brand-btn{
-    display:inline-block;
-    margin-top:14px;
-  }
-
-  .footer-inner{
+  .footer-main{
     grid-template-columns:1fr;
-    gap:25px;
-    padding:30px 18px;
+    gap:20px;
+    padding:28px 0;
   }
 
   .admin-btn{
     right:14px;
     bottom:14px;
-    padding:11px 17px;
+    padding:9px 14px;
+    font-size:11px;
   }
+
 }
 
 /* =========================================================
-   EXTRA SMALL
+   VERY SMALL MOBILE
    ========================================================= */
 
-@media(max-width:420px){
+@media(max-width:430px){
 
-  .nav a
+  .container{
+    width:94%;
+  }
+
+  .hero-title{
+    font-size:21px;
+  }
+
+  .hero{
+    min-height:290px;
+  }
+
+  .hero img{
+    min-height:290px;
+  }
+
+  .side-card{
+    grid-template-columns:105px 1fr;
+  }
+
+  .side-card img{
+    min-height:125px;
+  }
+
+  .side-body{
+    padding:11px;
+  }
+
+  .side-title{
+    font-size:13px;
+  }
+
+  .news-img{
+    height:175px;
+  }
+
+  .news-body{
+    padding:12px;
+  }
+
+  .news-title{
+    font-size:16px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ======================================================
+     TOP BAR
+     ====================================================== -->
+
+<div class="topbar">
+  <div class="topbar-inner">
+
+    <span class="top-date" id="topDate">
+      আজি
+    </span>
+
+    <span class="top-slogan">
+      সত্য • নিৰপেক্ষ • দায়িত্বশীল
+    </span>
+
+  </div>
+</div>
+
+
+<!-- ======================================================
+     HEADER
+     ====================================================== -->
+
+<header class="header">
+
+  <div class="header-inner">
+
+    <a href="/" aria-label="Press Express Assam">
+
+      <img
+        src="logo.png"
+        class="logo"
+        alt="Press Express Assam Logo"
+      >
+
+    </a>
+
+    <div class="brand">
+
+      <div class="brand-name">
+        Press <span>Express</span> Assam
+      </div>
+
+      <div class="brand-tag">
+        অসমৰ শেহতীয়া সংবাদ
+      </div>
+
+    </div>
+
+
+    <nav class="main-nav">
+
+      <a class="active" href="/">হোম</a>
+
+      <a href="#assam"
+         onclick="filterCategory('অসম')">
+        অসম
+      </a>
+
+      <a href="#guwahati"
+         onclick="filterCategory('গুৱাহাটী')">
+        গুৱাহাটী
+      </a>
+
+      <a href="#india"
+         onclick="filterCategory('ভাৰত')">
+        ভাৰত
+      </a>
+
+      <a href="#world"
+         onclick="filterCategory('বিশ্ব')">
+        বিশ্ব
+      </a>
+
+      <a href="#business"
+         onclick="filterCategory('ব্যৱসায়')">
+        ব্যৱসায়
+      </a>
+
+      <a href="#sports"
+         onclick="filterCategory('খেল')">
+        খেল
+      </a>
+
+      <a href="#entertainment"
+         onclick="filterCategory('বিনোদন')">
+        বিনোদন
+      </a>
+
+      <a class="live-btn" href="live.html">
+        <span class="live-dot"></span>
+        LIVE
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+<!-- ======================================================
+     BREAKING NEWS
+     ====================================================== -->
+
+<div class="breaking">
+
+  <div class="breaking-inner">
+
+    <div class="breaking-label">
+      ⚡ BREAKING
+    </div>
+
+    <div class="breaking-track">
+
+      <div class="breaking-text"
+           id="breakingText">
+
+        Press Express Assam — অসমৰ শেহতীয়া খবৰ, স্থানীয় সংবাদ আৰু গুৰুত্বপূৰ্ণ আপডেট।
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<main class="container">
+
+
+<!-- ======================================================
+     SEARCH + CATEGORY
+     ====================================================== -->
+
+<section class="tools">
+
+  <div class="search">
+
+    <span class="search-icon">⌕</span>
+
+    <input
+      type="search"
+      id="searchInput"
+      placeholder="খবৰ বিচাৰক..."
+      autocomplete="off"
+    >
+
+  </div>
+
+
+  <div class="categories">
+
+    <button class="cat active"
+            onclick="filterCategory('সকলো')">
+      সকলো
+    </button>
+
+    <button class="cat"
+            onclick="filterCategory('অসম')">
+      অসম
+    </button>
+
+    <button class="cat"
+            onclick="filterCategory('গুৱাহাটী')">
+      গুৱাহাটী
+    </button>
+
+    <button class="cat"
+            onclick="filterCategory('ভাৰত')">
+      ভাৰত
+    </button>
+
+    <button class="cat"
+            onclick="filterCategory('বিশ্ব')">
+      বিশ্ব
+    </button>
+
+    <button class="cat"
+            onclick="filterCategory('ব্যৱসায়')">
+      ব্যৱসায়
+    </button>
+
+    <button class="cat"
+            onclick="filterCategory('খেল')">
+      খেল
+    </button>
+
+    <button class="cat"
+            onclick="filterCategory('বিনোদন')">
+      বিনোদন
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+     HERO
+     ====================================================== -->
+
+<section>
+
+  <div class="section-head">
+
+    <h2 class="section-title">
+      শেহতীয়া খবৰ
+    </h2>
+
+    <span class="section-more">
+      Press Express Assam
+    </span>
+
+  </div>
+
+
+  <div class="hero-grid">
+
+    <article class="hero"
+             id="heroNews">
+
+      <img
+        id="heroImage"
+        src="logo.png"
+        alt="News"
+      >
+
+      <div class="hero-content">
+
+        <span class="badge"
+              id="heroCategory">
+          অসম
+        </span>
+
+        <h1 class="hero-title"
+            id="heroTitle">
+          Press Express Assamলৈ স্বাগতম
+        </h1>
+
+        <p class="hero-desc"
+           id="heroDescription">
+          সত্য, নিৰপেক্ষ আৰু দায়িত্বশীল সংবাদ।
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <div class="side-news"
+         id="sideNews">
+
+      <article class="side-card">
+
+        <img
+          src="logo.png"
+          alt="Press Express Assam"
+        >
+
+        <div class="side-body">
+
+          <div class="side-category">
+            অসম
+          </div>
+
+          <h3 class="side-title">
+            অসমৰ গুৰুত্বপূৰ্ণ খবৰ আৰু সংবাদ
+          </h3>
+
+          <div class="side-date">
+            Press Express Assam
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="side-card">
+
+        <img
+          src="logo.png"
+          alt="Press Express Assam"
+        >
+
+        <div class="side-body">
+
+          <div class="side-category">
+            সংবাদ
+          </div>
+
+          <h3 class
