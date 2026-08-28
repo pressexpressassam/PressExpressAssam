@@ -2119,7 +2119,27 @@ document
    ).value="";
 
 
-   await loadNews();
+   async function startSite() {
+  try {
+    await loadNews();
+  } catch (error) {
+    console.error("START ERROR:", error);
+
+    document.getElementById("hero").innerHTML = `
+      <div class="no-news">
+        সংবাদ লোড কৰিব পৰা নগ'ল।
+      </div>
+    `;
+
+    document.getElementById("news").innerHTML = `
+      <div class="no-news">
+        সংযোগত সমস্যা হৈছে। অলপ পিছত পুনৰ চেষ্টা কৰক।
+      </div>
+    `;
+  }
+}
+
+startSite();
 
 
   }catch(error){
@@ -2326,7 +2346,134 @@ modal.addEventListener(
 
 
 loadNews();
+async function loadNews() {
 
+  const heroBox =
+    document.getElementById("hero");
+
+  const newsBox =
+    document.getElementById("news");
+
+  try {
+
+    heroBox.innerHTML = `
+      <div class="no-news">
+        সংবাদ লোড হৈ আছে...
+      </div>
+    `;
+
+    newsBox.innerHTML = `
+      <div class="no-news">
+        সংবাদ লোড হৈ আছে...
+      </div>
+    `;
+
+
+    const response = await fetch(
+      `${SUPABASE_URL}/rest/v1/articles?select=*&order=created_at.desc`,
+      {
+        method: "GET",
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization":
+            `Bearer ${SUPABASE_KEY}`,
+          "Content-Type":
+            "application/json"
+        }
+      }
+    );
+
+
+    if (!response.ok) {
+
+      const errorText =
+        await response.text();
+
+      console.error(
+        "SUPABASE ERROR:",
+        response.status,
+        errorText
+      );
+
+      throw new Error(
+        `Supabase HTTP ${response.status}`
+      );
+    }
+
+
+    const data =
+      await response.json();
+
+
+    console.log(
+      "NEWS DATA:",
+      data
+    );
+
+
+    if (!Array.isArray(data)) {
+
+      throw new Error(
+        "Invalid news data"
+      );
+
+    }
+
+
+    news = data;
+
+
+    renderNews(
+      currentCategory,
+      document.getElementById(
+        "search"
+      ).value
+    );
+
+
+    drawAdmin();
+
+
+  } catch (error) {
+
+    console.error(
+      "NEWS LOAD ERROR:",
+      error
+    );
+
+
+    heroBox.innerHTML = `
+      <div class="no-news">
+
+        <h3>
+          সংবাদ লোড কৰিব পৰা নগ'ল
+        </h3>
+
+        <p>
+          Supabase সংযোগ পৰীক্ষা কৰি পুনৰ চেষ্টা কৰক।
+        </p>
+
+      </div>
+    `;
+
+
+    newsBox.innerHTML = `
+      <div class="no-news">
+
+        <h3>
+          সংবাদ উপলব্ধ নহয়
+        </h3>
+
+        <p>
+          অলপ পিছত পুনৰ চেষ্টা কৰক।
+        </p>
+
+      </div>
+    `;
+
+  }
+
+}
 </script>
 
 
