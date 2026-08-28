@@ -1357,7 +1357,569 @@ footer{
   }
 
 }
+/* ============================================================
+   PRESS EXPRESS ASSAM — FINAL PROFESSIONAL FRONT PAGE FIX
+   ============================================================ */
 
+:root{
+  --pea-red:#c8102e;
+  --pea-red-dark:#9e0b23;
+  --pea-ink:#101820;
+  --pea-muted:#68717a;
+  --pea-bg:#f4f6f8;
+  --pea-card:#ffffff;
+  --pea-border:#e5e8eb;
+  --pea-shadow:0 10px 30px rgba(16,24,32,.07);
+}
+
+html{
+  overflow-x:hidden;
+}
+
+body{
+  overflow-x:hidden;
+  background:var(--pea-bg);
+}
+
+/* GLOBAL IMAGE SAFETY */
+
+img{
+  max-width:100%;
+}
+
+img[src*="logo"],
+img[alt*="Press Express"],
+img[alt*="press express"]{
+  object-fit:contain;
+}
+
+/* HEADER */
+
+header{
+  background:rgba(255,255,255,.98) !important;
+  border-bottom:1px solid var(--pea-border) !important;
+  box-shadow:0 2px 12px rgba(0,0,0,.04);
+}
+
+.header{
+  width:min(1440px,94%) !important;
+  min-height:82px !important;
+  padding:7px 0 !important;
+  gap:14px !important;
+}
+
+.logo img{
+  width:88px !important;
+  height:68px !important;
+  object-fit:contain !important;
+}
+
+/* SOCIAL ICONS */
+
+.social-buttons{
+  gap:7px !important;
+}
+
+.social-buttons a{
+  width:36px !important;
+  height:36px !important;
+}
+
+/* NAVIGATION */
+
+nav{
+  gap:18px !important;
+}
+
+nav a{
+  font-size:16px !important;
+  font-weight:800 !important;
+}
+
+/* LIVE BUTTON */
+
+.live{
+  background:linear-gradient(
+    135deg,
+    var(--pea-red),
+    #e31b3b
+  ) !important;
+
+  box-shadow:
+    0 5px 16px rgba(200,16,46,.20);
+}
+
+/* TICKERS */
+
+.latest-news,
+.breaking-news{
+  width:min(1440px,94%) !important;
+  max-width:none !important;
+}
+
+.latest-news{
+  min-height:48px;
+}
+
+/* HERO */
+
+.hero{
+  width:min(1440px,94%) !important;
+  max-width:none !important;
+
+  margin:22px auto !important;
+
+  border-radius:18px !important;
+
+  box-shadow:
+    var(--pea-shadow);
+}
+
+.hero img{
+  width:100% !important;
+  height:430px !important;
+
+  object-fit:cover !important;
+}
+
+.heroOverlay{
+  padding:34px !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,0) 28%,
+      rgba(0,0,0,.84) 100%
+    ) !important;
+}
+
+/* NEWS SECTION */
+
+.section{
+  width:min(1440px,94%) !important;
+  max-width:none !important;
+}
+
+.sectionTitle{
+  font-size:30px !important;
+  font-weight:900 !important;
+}
+
+/* SEARCH */
+
+.search{
+  border-radius:12px !important;
+
+  border:1px solid #dfe3e7 !important;
+
+  box-shadow:
+    0 2px 10px rgba(0,0,0,.03);
+}
+
+/* CATEGORY */
+
+.tools{
+  gap:9px !important;
+}
+
+.category{
+  border-radius:999px !important;
+  padding:10px 17px !important;
+}
+
+/* NEWS GRID */
+
+.newsGrid{
+  grid-template-columns:
+    repeat(2,minmax(0,1fr)) !important;
+
+  gap:22px !important;
+}
+
+.newsCard{
+  min-width:0;
+
+  border-radius:16px !important;
+
+  box-shadow:
+    var(--pea-shadow) !important;
+}
+
+.newsCard img{
+  width:100% !important;
+  height:260px !important;
+
+  object-fit:cover !important;
+}
+
+/* ============================================================
+   RIGHT SIDE / SIDEBAR LOGO FIX
+   ডাঙৰ A4-ৰ দৰে logo আৰু কাটি যোৱা সমস্যাৰ বাবে
+   ============================================================ */
+
+.sidebar,
+.side-bar,
+.right-sidebar,
+.rightSidebar,
+.sidebar-area,
+.side-area,
+.front-sidebar{
+  min-width:0;
+}
+
+/* RIGHT SIDE IMAGE */
+
+.sidebar img,
+.side-bar img,
+.right-sidebar img,
+.rightSidebar img,
+.sidebar-area img,
+.side-area img,
+.front-sidebar img{
+
+  width:100% !important;
+
+  max-width:110px !important;
+
+  height:110px !important;
+
+  object-fit:contain !important;
+
+  object-position:center !important;
+
+  display:block !important;
+
+  margin:auto !important;
+}
+
+/* SIDEBAR CARDS */
+
+.sidebar-card,
+.side-card,
+.right-card,
+.sidebar-item,
+.latest-card,
+.news-side-card,
+.side-news-card,
+.front-side-card{
+
+  min-width:0 !important;
+
+  overflow:hidden !important;
+
+  background:#fff !important;
+
+  border:1px solid var(--pea-border) !important;
+
+  border-radius:16px !important;
+
+  box-shadow:
+    0 6px 20px rgba(16,24,32,.055) !important;
+
+  display:grid !important;
+
+  grid-template-columns:
+    110px minmax(0,1fr) !important;
+
+  align-items:center !important;
+
+  gap:14px !important;
+
+  padding:12px !important;
+}
+
+/* SIDEBAR LOGO EXACT SIZE */
+
+.sidebar-card img,
+.side-card img,
+.right-card img,
+.sidebar-item img,
+.latest-card img,
+.news-side-card img,
+.side-news-card img,
+.front-side-card img{
+
+  width:110px !important;
+
+  height:110px !important;
+
+  max-width:110px !important;
+
+  max-height:110px !important;
+
+  object-fit:contain !important;
+
+  object-position:center !important;
+
+  margin:0 !important;
+
+  border-radius:10px !important;
+}
+
+/* SIDEBAR TEXT */
+
+.sidebar-card h1,
+.sidebar-card h2,
+.sidebar-card h3,
+.side-card h1,
+.side-card h2,
+.side-card h3,
+.right-card h1,
+.right-card h2,
+.right-card h3,
+.sidebar-item h1,
+.sidebar-item h2,
+.sidebar-item h3,
+.latest-card h1,
+.latest-card h2,
+.latest-card h3{
+
+  min-width:0;
+
+  overflow-wrap:anywhere;
+}
+
+/* ONLY-LOGO CARD */
+
+.sidebar-card:has(img:only-child),
+.side-card:has(img:only-child),
+.right-card:has(img:only-child){
+
+  display:flex !important;
+
+  align-items:center !important;
+
+  justify-content:center !important;
+
+  min-height:120px !important;
+}
+
+.sidebar-card:has(img:only-child) img,
+.side-card:has(img:only-child) img,
+.right-card:has(img:only-child) img{
+
+  width:100px !important;
+
+  height:100px !important;
+}
+
+/* MODAL */
+
+.modal{
+  backdrop-filter:blur(4px);
+}
+
+#adminModal .box,
+.details{
+  max-width:760px !important;
+}
+
+/* FOOTER */
+
+footer{
+  background:#0e1820 !important;
+}
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width:1100px){
+
+  .header{
+    width:96% !important;
+  }
+
+  nav{
+    gap:13px !important;
+  }
+
+  nav a{
+    font-size:15px !important;
+  }
+
+  .hero img{
+    height:380px !important;
+  }
+
+  .newsGrid{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr)) !important;
+  }
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width:700px){
+
+  .header{
+    width:96% !important;
+
+    min-height:72px !important;
+
+    gap:6px !important;
+  }
+
+  .logo img{
+    width:72px !important;
+    height:52px !important;
+  }
+
+  .social-buttons{
+    gap:4px !important;
+  }
+
+  .social-buttons a{
+    width:30px !important;
+    height:30px !important;
+    font-size:14px !important;
+  }
+
+  nav{
+    order:10 !important;
+
+    flex:1 0 100% !important;
+
+    min-width:100% !important;
+
+    width:100% !important;
+
+    justify-content:flex-start !important;
+
+    gap:17px !important;
+  }
+
+  nav a{
+    font-size:14px !important;
+  }
+
+  .hero{
+    width:94% !important;
+
+    margin:15px auto !important;
+
+    border-radius:14px !important;
+  }
+
+  .hero img{
+    height:280px !important;
+  }
+
+  .heroOverlay{
+    padding:18px !important;
+  }
+
+  .heroText h1{
+    font-size:23px !important;
+  }
+
+  .heroText p{
+    font-size:13px !important;
+  }
+
+  .section{
+    width:94% !important;
+  }
+
+  .newsGrid{
+    grid-template-columns:1fr !important;
+
+    gap:17px !important;
+  }
+
+  .newsCard img{
+    height:220px !important;
+  }
+
+  /* RIGHT SIDEBAR */
+
+  .sidebar,
+  .side-bar,
+  .right-sidebar,
+  .rightSidebar,
+  .sidebar-area,
+  .side-area,
+  .front-sidebar{
+
+    width:100% !important;
+  }
+
+  .sidebar-card,
+  .side-card,
+  .right-card,
+  .sidebar-item,
+  .latest-card,
+  .news-side-card,
+  .side-news-card,
+  .front-side-card{
+
+    grid-template-columns:
+      82px minmax(0,1fr) !important;
+
+    gap:11px !important;
+
+    padding:10px !important;
+  }
+
+  .sidebar-card img,
+  .side-card img,
+  .right-card img,
+  .sidebar-item img,
+  .latest-card img,
+  .news-side-card img,
+  .side-news-card img,
+  .front-side-card img{
+
+    width:82px !important;
+
+    height:82px !important;
+
+    max-width:82px !important;
+
+    max-height:82px !important;
+  }
+
+  .adminBtn{
+    right:12px !important;
+
+    bottom:12px !important;
+
+    z-index:999 !important;
+  }
+
+  footer{
+    padding:28px 15px !important;
+  }
+}
+
+/* VERY SMALL PHONE */
+
+@media (max-width:420px){
+
+  .logo img{
+    width:64px !important;
+  }
+
+  .social-buttons a{
+    width:28px !important;
+    height:28px !important;
+  }
+
+  .live{
+    padding:8px 10px !important;
+    font-size:12px !important;
+  }
+
+  .hero img{
+    height:245px !important;
+  }
+
+  .sectionTitle{
+    font-size:24px !important;
+  }
+}
 </style>
 </head>
 
