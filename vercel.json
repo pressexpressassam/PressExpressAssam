@@ -1,12 +1,12 @@
 {
   "rewrites": [
     {
-      "source": "/rss.xml",
-      "destination": "/api/rss"
-    },
-    {
       "source": "/news/:id",
       "destination": "/api/share?id=:id"
+    },
+    {
+      "source": "/rss.xml",
+      "destination": "/api/rss"
     }
   ]
 }
