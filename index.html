@@ -680,496 +680,992 @@ a{text-decoration:none;color:inherit}
 
 <script>
 
-const ADMIN_PASSWORD = "press2026";
+const SUPABASE_URL =
+  "https://fhxtbfxvsnuelkmkbtnr.supabase.co";
 
-const STORAGE_KEY = "press_express_assam_news";
+const SUPABASE_KEY =
+  "sb_publishable_jM_lhxQm0iWqko9hZROrCg_n_kvNoEu";
 
-const defaultNews = [
+const SITE =
+  "https://press-express-assam-ryfd.vercel.app";
 
- {
-  title:"অসমৰ গুৰুত্বপূৰ্ণ সংবাদ আৰু নতুন আপডেট",
-  cat:"অসম",
-  desc:"ৰাজ্যৰ বিভিন্ন প্ৰান্তৰ গুৰুত্বপূৰ্ণ খবৰ, স্থানীয় ঘটনা আৰু নতুন তথ্য একে ঠাইতে।",
-  img:""
- },
+const ADMIN_PASSWORD =
+  "press2026";
 
- {
-  title:"গুৱাহাটীৰ শেহতীয়া খবৰ আৰু স্থানীয় আপডেট",
-  cat:"গুৱাহাটী",
-  desc:"মহানগৰীৰ জনজীৱন, যাতায়াত, উন্নয়ন আৰু স্থানীয় ঘটনাৰ গুৰুত্বপূৰ্ণ সংবাদ।",
-  img:""
- },
-
- {
-  title:"দেশৰ গুৰুত্বপূৰ্ণ সংবাদ একে ঠাইতে",
-  cat:"ভাৰত",
-  desc:"ভাৰতৰ বিভিন্ন প্ৰান্তৰ গুৰুত্বপূৰ্ণ জাতীয় আপডেট।",
-  img:""
- },
-
- {
-  title:"বিশ্বৰ শেহতীয়া সংবাদ আৰু গুৰুত্বপূৰ্ণ আপডেট",
-  cat:"বিশ্ব",
-  desc:"আন্তঃৰাষ্ট্ৰীয় পৰ্যায়ৰ উল্লেখযোগ্য ঘটনা আৰু নতুন তথ্য।",
-  img:""
- },
-
- {
-  title:"ব্যৱসায় আৰু অৰ্থনীতিৰ গুৰুত্বপূৰ্ণ সংবাদ",
-  cat:"ব্যৱসায়",
-  desc:"বজাৰ, ব্যৱসায় আৰু অৰ্থনীতিৰ উল্লেখযোগ্য আপডেট।",
-  img:""
- },
-
- {
-  title:"ক্ৰীড়া জগতৰ শেহতীয়া সংবাদ",
-  cat:"খেল",
-  desc:"ক্ৰীড়া জগতৰ গুৰুত্বপূৰ্ণ খবৰ, ফলাফল আৰু নতুন আপডেট।",
-  img:""
- }
-
-];
+let news = [];
+let currentCategory = "সকলো";
 
 
-let news =
- JSON.parse(localStorage.getItem(STORAGE_KEY));
+/* =========================
+   SUPABASE REQUEST
+========================= */
 
-if(!Array.isArray(news)){
- news = defaultNews;
- localStorage.setItem(
-  STORAGE_KEY,
-  JSON.stringify(news)
- );
-}
+async function supabaseRequest(url, options = {}) {
 
+  const headers = {
+    "apikey": SUPABASE_KEY,
+    "Authorization": `Bearer ${SUPABASE_KEY}`,
+    "Content-Type": "application/json",
+    ...(options.headers || {})
+  };
 
-function saveNews(){
+  const response = await fetch(
+    `${SUPABASE_URL}${url}`,
+    {
+      ...options,
+      headers
+    }
+  );
 
- localStorage.setItem(
-  STORAGE_KEY,
-  JSON.stringify(news)
- );
+  if (!response.ok) {
 
-}
+    const text =
+      await response.text();
 
-
-function renderNews(category="সকলো",query=""){
-
- const q =
-  query.toLowerCase().trim();
-
- const filtered =
-  news.filter(item=>{
-
-   const categoryOK =
-    category==="সকলো" ||
-    item.cat===category;
-
-   const searchOK =
-    !q ||
-    (
-     item.title+
-     item.desc+
-     item.cat
-    ).toLowerCase().includes(q);
-
-   return categoryOK && searchOK;
-
-  });
-
-
- const hero =
-  filtered[0] || defaultNews[0];
-
-
- document.getElementById("hero").innerHTML = `
-
- <article class="hero">
-
-  ${
-   hero.img
-   ?
-   `<img class="hero-image"
-    src="${hero.img}"
-    alt="${hero.title}"
-   >`
-   :
-   ""
+    throw new Error(
+      text || `HTTP ${response.status}`
+    );
   }
 
-  <div class="hero-content">
+  if (response.status === 204) {
+    return null;
+  }
 
-   <span class="tag">
-    ${hero.cat}
-   </span>
-
-   <h3>
-    ${hero.title}
-   </h3>
-
-   <p>
-    ${hero.desc}
-   </p>
-
-   <div class="meta">
-    আজিৰ খবৰ • Press Express Assam
-   </div>
-
-   <div class="actions">
-
-    <button onclick="sharePage()">
-     ↗ Share
-    </button>
-
-    <button onclick="copyLink()">
-     Copy Link
-    </button>
-
-   </div>
-
-  </div>
-
- </article>
-
- `;
+  return response.json();
+}
 
 
- if(filtered.length===0){
+/* =========================
+   LOAD NEWS
+========================= */
 
-  document.getElementById("news").innerHTML =
-   `<div class="no-news">
-     এই category-ত এতিয়া কোনো সংবাদ নাই।
-    </div>`;
+async function loadNews() {
 
-  return;
+  try {
 
- }
+    const data =
+      await supabaseRequest(
+        "/rest/v1/articles?select=*&order=created_at.desc"
+      );
 
+    news =
+      Array.isArray(data)
+        ? data
+        : [];
 
- document.getElementById("news").innerHTML =
-  filtered.map(item=>`
+    renderNews(
+      currentCategory,
+      document.getElementById("search").value
+    );
 
-   <article class="card">
+    drawAdmin();
 
-    <div class="card-image">
+  } catch (error) {
 
-     ${
-      item.img
-      ?
-      `<img
-       src="${item.img}"
-       alt="${item.title}"
-      >`
-      :
-      ""
-     }
+    console.error(
+      "News loading error:",
+      error
+    );
 
-    </div>
+    document.getElementById(
+      "hero"
+    ).innerHTML = `
+      <div class="no-news">
+        সংবাদ লোড কৰিব পৰা নগ'ল।
+      </div>
+    `;
 
-    <div class="card-content">
+    document.getElementById(
+      "news"
+    ).innerHTML = `
+      <div class="no-news">
+        Supabase connection check কৰক।
+      </div>
+    `;
 
-     <span class="tag">
-      ${item.cat}
-     </span>
-
-     <h3>
-      ${item.title}
-     </h3>
-
-     <p>
-      ${item.desc}
-     </p>
-
-     <div class="meta">
-      Press Express Assam • আজি
-     </div>
-
-    </div>
-
-   </article>
-
-  `).join("");
+  }
 
 }
 
 
-function setCategory(category){
+/* =========================
+   HTML ESCAPE
+========================= */
 
- document
-  .querySelectorAll("[data-cat]")
-  .forEach(button=>{
+function escapeHtml(value) {
 
-   button.classList.toggle(
-    "active",
-    button.dataset.cat===category
-   );
-
-  });
-
- renderNews(
-  category,
-  document.getElementById("search").value
- );
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 
 }
 
 
-document
- .querySelectorAll("[data-cat]")
- .forEach(button=>{
+/* =========================
+   NEWS URL
+========================= */
 
-  button.addEventListener("click",function(e){
+function newsUrl(id) {
 
-   e.preventDefault();
+  return `/news/${encodeURIComponent(id)}`;
 
-   setCategory(
-    this.dataset.cat
-   );
-
-  });
-
- });
+}
 
 
-document
- .getElementById("search")
- .addEventListener("input",function(){
+/* =========================
+   IMAGE
+========================= */
 
-  const active =
-   document.querySelector(
-    ".filters button.active"
-   );
+function imageHtml(item, className = "") {
+
+  if (!item.image_url) {
+    return "";
+  }
+
+  return `
+    <img
+      class="${className}"
+      src="${escapeHtml(item.image_url)}"
+      alt="${escapeHtml(item.title)}"
+      loading="lazy"
+      onerror="this.style.display='none'"
+    >
+  `;
+
+}
+
+
+/* =========================
+   RENDER NEWS
+========================= */
+
+function renderNews(
+  category = "সকলো",
+  query = ""
+) {
+
+  currentCategory =
+    category;
+
+  const q =
+    String(query || "")
+      .toLowerCase()
+      .trim();
+
+
+  const filtered =
+    news.filter(item => {
+
+      const itemCategory =
+        item.category ||
+        item.cat ||
+        "অসম";
+
+      const title =
+        item.title ||
+        "";
+
+      const excerpt =
+        item.excerpt ||
+        item.description ||
+        item.content ||
+        "";
+
+      const categoryOK =
+        category === "সকলো" ||
+        itemCategory === category;
+
+      const searchOK =
+        !q ||
+        (
+          title +
+          " " +
+          excerpt +
+          " " +
+          itemCategory
+        )
+        .toLowerCase()
+        .includes(q);
+
+      return (
+        categoryOK &&
+        searchOK
+      );
+
+    });
+
+
+  /* =========================
+     HERO
+  ========================= */
+
+  const hero =
+    filtered[0] ||
+    null;
+
+
+  if (!hero) {
+
+    document.getElementById(
+      "hero"
+    ).innerHTML = `
+      <div class="no-news">
+        এই category-ত এতিয়া কোনো সংবাদ নাই।
+      </div>
+    `;
+
+  } else {
+
+    const heroCategory =
+      hero.category ||
+      hero.cat ||
+      "অসম";
+
+    const heroDescription =
+      hero.excerpt ||
+      hero.description ||
+      hero.content ||
+      "";
+
+    document.getElementById(
+      "hero"
+    ).innerHTML = `
+
+      <a
+        href="${newsUrl(hero.id)}"
+        style="display:block"
+      >
+
+        <article class="hero">
+
+          ${imageHtml(
+            hero,
+            "hero-image"
+          )}
+
+          <div class="hero-content">
+
+            <span class="tag">
+              ${escapeHtml(heroCategory)}
+            </span>
+
+            <h3>
+              ${escapeHtml(hero.title)}
+            </h3>
+
+            <p>
+              ${escapeHtml(
+                heroDescription
+              )}
+            </p>
+
+            <div class="meta">
+
+              ${hero.created_at
+                ? new Date(
+                    hero.created_at
+                  ).toLocaleDateString(
+                    "as-IN",
+                    {
+                      day:"2-digit",
+                      month:"long",
+                      year:"numeric"
+                    }
+                  )
+                : "আজি"
+              }
+
+              • Press Express Assam
+
+            </div>
+
+          </div>
+
+        </article>
+
+      </a>
+
+    `;
+
+  }
+
+
+  /* =========================
+     NEWS GRID
+  ========================= */
+
+  if (
+    filtered.length === 0
+  ) {
+
+    document.getElementById(
+      "news"
+    ).innerHTML = `
+      <div class="no-news">
+        এই category-ত এতিয়া কোনো সংবাদ নাই।
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  document.getElementById(
+    "news"
+  ).innerHTML =
+
+    filtered
+      .map(item => {
+
+        const category =
+          item.category ||
+          item.cat ||
+          "অসম";
+
+        const description =
+          item.excerpt ||
+          item.description ||
+          item.content ||
+          "";
+
+        return `
+
+          <a
+            href="${newsUrl(item.id)}"
+            style="display:block"
+          >
+
+            <article class="card">
+
+              <div class="card-image">
+
+                ${imageHtml(item)}
+
+              </div>
+
+              <div class="card-content">
+
+                <span class="tag">
+                  ${escapeHtml(category)}
+                </span>
+
+                <h3>
+                  ${escapeHtml(item.title)}
+                </h3>
+
+                <p>
+                  ${escapeHtml(description)}
+                </p>
+
+                <div class="meta">
+
+                  Press Express Assam •
+                  ${
+                    item.created_at
+                    ? new Date(
+                        item.created_at
+                      ).toLocaleDateString(
+                        "as-IN"
+                      )
+                    : "আজি"
+                  }
+
+                </div>
+
+              </div>
+
+            </article>
+
+          </a>
+
+        `;
+
+      })
+      .join("");
+
+}
+
+
+/* =========================
+   CATEGORY
+========================= */
+
+function setCategory(
+  category
+) {
+
+  currentCategory =
+    category;
+
+
+  document
+    .querySelectorAll(
+      "[data-cat]"
+    )
+    .forEach(button => {
+
+      button.classList.toggle(
+        "active",
+        button.dataset.cat ===
+          category
+      );
+
+    });
+
 
   renderNews(
-   active
-    ? active.dataset.cat
-    : "সকলো",
-   this.value
+    category,
+    document.getElementById(
+      "search"
+    ).value
   );
 
- });
+}
 
 
-function sharePage(){
+/* =========================
+   CATEGORY BUTTONS
+========================= */
 
- if(navigator.share){
+document
+  .querySelectorAll(
+    "[data-cat]"
+  )
+  .forEach(button => {
 
-  navigator.share({
-   title:"Press Express Assam",
-   text:"Press Express Assam",
-   url:location.href
+    button.addEventListener(
+      "click",
+      function(e) {
+
+        e.preventDefault();
+
+        setCategory(
+          this.dataset.cat
+        );
+
+      }
+    );
+
   });
 
- }else{
 
-  copyLink();
+/* =========================
+   SEARCH
+========================= */
 
- }
+document
+  .getElementById(
+    "search"
+  )
+  .addEventListener(
+    "input",
+    function() {
 
-}
+      renderNews(
+        currentCategory,
+        this.value
+      );
 
-
-function copyLink(){
-
- if(navigator.clipboard){
-
-  navigator.clipboard.writeText(
-   location.href
+    }
   );
 
- }
 
- alert("Link copied");
+/* =========================
+   DATE
+========================= */
+
+document.getElementById(
+  "date"
+).textContent =
+
+  new Date().toLocaleDateString(
+    "as-IN",
+    {
+      weekday:"long",
+      day:"2-digit",
+      month:"long",
+      year:"numeric"
+    }
+  );
+
+
+/* =========================
+   SHARE
+========================= */
+
+function sharePage() {
+
+  if (navigator.share) {
+
+    navigator.share({
+
+      title:
+        "Press Express Assam",
+
+      text:
+        "Press Express Assam",
+
+      url:
+        location.href
+
+    }).catch(
+      () => {}
+    );
+
+  } else {
+
+    copyLink();
+
+  }
 
 }
 
 
-document.getElementById("date").textContent =
- new Date().toLocaleDateString(
-  "en-GB",
-  {
-   weekday:"long",
-   day:"2-digit",
-   month:"long",
-   year:"numeric"
+/* =========================
+   COPY LINK
+========================= */
+
+async function copyLink() {
+
+  try {
+
+    await navigator.clipboard.writeText(
+      location.href
+    );
+
+    alert(
+      "Link copied"
+    );
+
+  } catch (error) {
+
+    prompt(
+      "Link copy কৰক:",
+      location.href
+    );
+
   }
- );
+
+}
 
 
-renderNews();
-
-
-/* ADMIN */
+/* =========================
+   ADMIN MODAL
+========================= */
 
 const modal =
- document.getElementById("modal");
+  document.getElementById(
+    "modal"
+  );
 
 const adminArea =
- document.getElementById("adminArea");
-
-
-document
- .getElementById("adminBtn")
- .onclick=function(){
-
-  modal.classList.add("show");
-
- };
-
-
-document
- .getElementById("closeAdmin")
- .onclick=function(){
-
-  modal.classList.remove("show");
-
- };
-
-
-document
- .getElementById("password")
- .addEventListener("input",function(){
-
-  if(this.value===ADMIN_PASSWORD){
-
-   adminArea.style.display="block";
-
-   document.getElementById(
-    "loginMsg"
-   ).textContent="";
-
-   drawAdmin();
-
-  }else{
-
-   adminArea.style.display="none";
-
-   document.getElementById(
-    "loginMsg"
-   ).textContent=
-    "Admin password দিয়ক";
-
-  }
-
- });
-
-
-document
- .getElementById("addNews")
- .onclick=function(){
-
-  const title =
-   document.getElementById(
-    "newsTitle"
-   ).value.trim();
-
-  const cat =
-   document.getElementById(
-    "newsCategory"
-   ).value;
-
-  const desc =
-   document.getElementById(
-    "newsDescription"
-   ).value.trim();
-
-  const img =
-   document.getElementById(
-    "newsImage"
-   ).value.trim();
-
-
-  if(!title || !desc){
-
-   alert(
-    "Title আৰু description দিয়ক"
-   );
-
-   return;
-
-  }
-
-
-  news.unshift({
-
-   title:title,
-   cat:cat,
-   desc:desc,
-   img:img
-
-  });
-
-
-  saveNews();
-
-  renderNews();
-
-  drawAdmin();
-
-
   document.getElementById(
-   "newsTitle"
-  ).value="";
-
-  document.getElementById(
-   "newsDescription"
-  ).value="";
-
-  document.getElementById(
-   "newsImage"
-  ).value="";
-
- };
+    "adminArea"
+  );
 
 
-function drawAdmin(){
-
- document.getElementById(
-  "adminList"
- ).innerHTML =
-
- news.map((item,index)=>`
-
-  <div class="news-admin-item">
-
-   <span>
-    <b>${item.title}</b><br>
-    <small>${item.cat}</small>
-   </span>
-
-   <button
-    class="btn"
-    onclick="deleteNews(${index})"
-   >
-    Delete
-   </button>
-
-  </div>
-
- `).join("");
-
-}
-
-
-function deleteNews(index){
-
- if(
-  confirm(
-   "এই news-টো delete কৰিবনে?"
+document
+  .getElementById(
+    "adminBtn"
   )
- ){
+  .onclick = function() {
 
-  news.splice(index,1);
+    modal.classList.add(
+      "show"
+    );
 
-  saveNews();
+  };
 
-  renderNews();
 
-  drawAdmin();
+document
+  .getElementById(
+    "closeAdmin"
+  )
+  .onclick = function() {
 
- }
+    modal.classList.remove(
+      "show"
+    );
+
+  };
+
+
+/* =========================
+   ADMIN LOGIN
+========================= */
+
+document
+  .getElementById(
+    "password"
+  )
+  .addEventListener(
+    "input",
+    function() {
+
+      const message =
+        document.getElementById(
+          "loginMsg"
+        );
+
+
+      if (
+        this.value ===
+        ADMIN_PASSWORD
+      ) {
+
+        adminArea.style.display =
+          "block";
+
+        message.textContent =
+          "Admin login সফল।";
+
+        message.style.color =
+          "green";
+
+        drawAdmin();
+
+      } else {
+
+        adminArea.style.display =
+          "none";
+
+        message.textContent =
+          "Admin password দিয়ক";
+
+        message.style.color =
+          "#c8102e";
+
+      }
+
+    }
+  );
+
+
+/* =========================
+   ADD NEWS
+========================= */
+
+document
+  .getElementById(
+    "addNews"
+  )
+  .onclick = async function() {
+
+    const title =
+      document
+        .getElementById(
+          "newsTitle"
+        )
+        .value
+        .trim();
+
+    const category =
+      document
+        .getElementById(
+          "newsCategory"
+        )
+        .value;
+
+    const description =
+      document
+        .getElementById(
+          "newsDescription"
+        )
+        .value
+        .trim();
+
+    const image =
+      document
+        .getElementById(
+          "newsImage"
+        )
+        .value
+        .trim();
+
+
+    if (
+      !title ||
+      !description
+    ) {
+
+      alert(
+        "Title আৰু description দিয়ক"
+      );
+
+      return;
+
+    }
+
+
+    const button =
+      this;
+
+    button.disabled =
+      true;
+
+    button.textContent =
+      "যোগ হৈ আছে...";
+
+
+    try {
+
+      const result =
+        await supabaseRequest(
+          "/rest/v1/articles",
+          {
+            method:"POST",
+
+            headers:{
+              "Prefer":
+                "return=representation"
+            },
+
+            body:
+              JSON.stringify({
+
+                title:
+                  title,
+
+                excerpt:
+                  description,
+
+                content:
+                  description,
+
+                category:
+                  category,
+
+                image_url:
+                  image || null
+
+              })
+
+          }
+        );
+
+
+      alert(
+        "News সফলভাৱে যোগ হৈছে।"
+      );
+
+
+      document.getElementById(
+        "newsTitle"
+      ).value = "";
+
+      document.getElementById(
+        "newsDescription"
+      ).value = "";
+
+      document.getElementById(
+        "newsImage"
+      ).value = "";
+
+
+      await loadNews();
+
+
+    } catch (error) {
+
+      console.error(
+        error
+      );
+
+      alert(
+        "News যোগ নহ'ল। Supabase RLS/permission check কৰক।"
+      );
+
+    } finally {
+
+      button.disabled =
+        false;
+
+      button.textContent =
+        "News যোগ কৰক";
+
+    }
+
+  };
+
+
+/* =========================
+   ADMIN LIST
+========================= */
+
+function drawAdmin() {
+
+  const list =
+    document.getElementById(
+      "adminList"
+    );
+
+
+  if (!list) {
+    return;
+  }
+
+
+  if (!news.length) {
+
+    list.innerHTML = `
+      <p>
+        এতিয়া কোনো news নাই।
+      </p>
+    `;
+
+    return;
+
+  }
+
+
+  list.innerHTML =
+
+    news
+      .map(
+        (item,index) => {
+
+          const category =
+            item.category ||
+            item.cat ||
+            "অসম";
+
+          return `
+
+            <div
+              class="news-admin-item"
+            >
+
+              <span>
+
+                <b>
+                  ${escapeHtml(
+                    item.title
+                  )}
+                </b>
+
+                <br>
+
+                <small>
+                  ${escapeHtml(
+                    category
+                  )}
+                  • ID:
+                  ${escapeHtml(
+                    item.id
+                  )}
+                </small>
+
+              </span>
+
+
+              <button
+                class="btn"
+                onclick="deleteNews('${String(
+                  item.id
+                ).replace(
+                  /'/g,
+                  "\\'"
+                )}')"
+              >
+                Delete
+              </button>
+
+            </div>
+
+          `;
+
+        }
+      )
+      .join("");
 
 }
+
+
+/* =========================
+   DELETE NEWS
+========================= */
+
+async function deleteNews(
+  id
+) {
+
+  if (
+    !confirm(
+      "এই news-টো delete কৰিবনে?"
+    )
+  ) {
+
+    return;
+
+  }
+
+
+  try {
+
+    await supabaseRequest(
+      `/rest/v1/articles?id=eq.${encodeURIComponent(
+        id
+      )}`,
+      {
+        method:"DELETE"
+      }
+    );
+
+
+    alert(
+      "News delete হৈছে।"
+    );
+
+
+    await loadNews();
+
+
+  } catch (error) {
+
+    console.error(
+      error
+    );
+
+    alert(
+      "News delete নহ'ল। Supabase permission check কৰক।"
+    );
+
+  }
+
+}
+
+
+/* =========================
+   CLOSE MODAL OUTSIDE
+========================= */
+
+modal.addEventListener(
+  "click",
+  function(e) {
+
+    if (
+      e.target === modal
+    ) {
+
+      modal.classList.remove(
+        "show"
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================
+   START
+========================= */
+
+loadNews();
 
 </script>
 
