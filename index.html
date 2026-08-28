@@ -1665,13 +1665,98 @@ function setCategory(
 
 
  renderNews(
-  category,
-  document.getElementById(
-   "search"
-  ).value
- );
+  document.getElementById("news").innerHTML =
+  filtered.map(item => {
 
-}
+    const category =
+      item.category ||
+      "অসম";
+
+    const description =
+      item.excerpt ||
+      item.description ||
+      item.content ||
+      "";
+
+    const image =
+      item.image_url ||
+      "";
+
+    return `
+      <a
+        href="/news/${encodeURIComponent(item.id)}"
+        style="display:block"
+      >
+
+        <article
+          class="card"
+          style="cursor:pointer"
+        >
+
+          <div class="card-image">
+
+            ${
+              image
+              ?
+              `
+              <img
+                src="${escapeHtml(image)}"
+                alt="${escapeHtml(item.title)}"
+                loading="lazy"
+                onerror="this.style.display='none'"
+              >
+              `
+              :
+              ""
+            }
+
+          </div>
+
+          <div class="card-content">
+
+            <span class="tag">
+              ${escapeHtml(category)}
+            </span>
+
+            <h3>
+              ${escapeHtml(item.title)}
+            </h3>
+
+            <p>
+              ${escapeHtml(description)}
+            </p>
+
+            <div class="meta">
+
+              ${
+                item.created_at
+                ?
+                new Date(
+                  item.created_at
+                ).toLocaleDateString(
+                  "as-IN",
+                  {
+                    day:"2-digit",
+                    month:"long",
+                    year:"numeric"
+                  }
+                )
+                :
+                "আজি"
+              }
+
+              • Press Express Assam
+
+            </div>
+
+          </div>
+
+        </article>
+
+      </a>
+    `;
+
+  }).join("");
 
 
 /* =========================
