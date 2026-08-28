@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html lang="as">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Press Express Assam — অসমৰ শেহতীয়া সংবাদ</title>
-
-<meta name="description" content="Press Express Assam — অসমৰ স্থানীয়, ৰাজ্যিক, ভাৰত আৰু বিশ্বৰ শেহতীয়া সংবাদ। সত্য, নিৰপেক্ষ আৰু দায়িত্বশীল সংবাদ।">
-<meta name="robots" content="index,follow">
 <meta name="theme-color" content="#c8102e">
 
+<meta name="robots" content="index, follow">
+
+<title>Press Express Assam | অসমৰ শেহতীয়া সংবাদ</title>
+
+<meta
+  name="description"
+  content="Press Express Assam — অসমৰ শেহতীয়া স্থানীয়, ৰাজ্যিক, ৰাষ্ট্ৰীয় আৰু আন্তঃৰাষ্ট্ৰীয় সংবাদ।"
+/>
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Assamese:wght@400;500;600;700;800&display=swap');
+
+/* =====================================================
+   ROOT
+===================================================== */
 
 :root{
   --red:#c8102e;
-  --red2:#e3193f;
-  --dark:#10141b;
-  --dark2:#171c24;
+  --red-dark:#a70d26;
+  --black:#10141a;
+  --dark:#171c24;
+  --white:#ffffff;
+  --bg:#f4f6f8;
   --text:#171a20;
-  --muted:#6d7480;
-  --bg:#f4f6f9;
-  --white:#fff;
-  --line:#e4e7ec;
-  --shadow:0 8px 30px rgba(20,25,35,.08);
-  --radius:18px;
+  --muted:#747b84;
+  --border:#e3e7eb;
+  --shadow:0 8px 28px rgba(16,20,26,.08);
 }
 
+
+/* =====================================================
+   RESET
+===================================================== */
+
 *{
-  box-sizing:border-box;
   margin:0;
   padding:0;
+  box-sizing:border-box;
 }
 
 html{
@@ -38,14 +53,19 @@ html{
 }
 
 body{
-  font-family:"Noto Sans Assamese","Noto Sans",Arial,sans-serif;
   background:var(--bg);
   color:var(--text);
-  line-height:1.6;
+  font-family:
+    "Noto Sans Assamese",
+    "Nirmala UI",
+    Arial,
+    sans-serif;
 }
 
 button,
-input{
+input,
+textarea,
+select{
   font-family:inherit;
 }
 
@@ -53,1211 +73,2864 @@ button{
   cursor:pointer;
 }
 
-/* ================= HEADER ================= */
 
-.topbar{
-  background:var(--dark);
+/* =====================================================
+   TOP BAR
+===================================================== */
+
+.top-bar{
+
+  background:var(--black);
+
   color:#fff;
-  height:34px;
+
+  min-height:32px;
+
+  padding:6px 4%;
+
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
-  padding:0 5%;
+
   font-size:12px;
 }
 
-.topbar-right{
-  opacity:.9;
-}
+
+/* =====================================================
+   HEADER
+===================================================== */
 
 .header{
+
   background:#fff;
-  border-bottom:1px solid var(--line);
+
+  border-bottom:1px solid var(--border);
+
+  position:sticky;
+
+  top:0;
+
+  z-index:100;
 }
 
 .header-inner{
-  max-width:1280px;
+
+  max-width:1300px;
+
   margin:auto;
-  min-height:92px;
-  padding:15px 24px;
+
+  min-height:88px;
+
+  padding:12px 22px;
+
   display:flex;
+
   align-items:center;
-  gap:22px;
+
+  gap:20px;
 }
 
-.logo{
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo-wrap{
+
   display:flex;
+
   align-items:center;
-  gap:12px;
-  min-width:270px;
+
+  gap:11px;
+
+  flex-shrink:0;
 }
 
-.logo-mark{
-  width:62px;
-  height:62px;
+.logo-circle{
+
+  width:60px;
+
+  height:60px;
+
   border:3px solid var(--red);
+
   border-radius:50%;
+
   display:flex;
-  flex-direction:column;
-  justify-content:center;
+
   align-items:center;
+
+  justify-content:center;
+
+  flex-direction:column;
+
   color:var(--red);
+
   background:#fff;
-  box-shadow:0 4px 15px rgba(200,16,46,.12);
 }
 
-.logo-mark strong{
+.logo-circle strong{
+
   font-family:Georgia,serif;
-  font-size:30px;
-  line-height:25px;
+
+  font-size:28px;
+
+  line-height:24px;
 }
 
-.logo-mark span{
-  font-size:8px;
+.logo-circle small{
+
+  font-size:7px;
+
   font-weight:800;
+
   letter-spacing:1px;
 }
 
-.logo-text h1{
+.logo-name{
+
+  line-height:1.1;
+}
+
+.logo-name h1{
+
   font-family:Arial,sans-serif;
+
   font-size:25px;
-  line-height:1.05;
+
   font-weight:800;
-  color:#111;
 }
 
-.logo-text h1 span{
+.logo-name h1 span{
+
   color:var(--red);
 }
 
-.logo-text p{
-  font-size:11px;
-  color:#777;
+.logo-name p{
+
   margin-top:5px;
+
+  color:#777;
+
+  font-size:11px;
 }
 
-.main-nav{
-  flex:1;
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.nav{
+
+  margin-left:auto;
+
   display:flex;
-  justify-content:flex-end;
+
   align-items:center;
-  gap:4px;
-  flex-wrap:wrap;
+
+  gap:3px;
+
+  overflow-x:auto;
+
+  scrollbar-width:none;
 }
 
-.main-nav button{
+.nav::-webkit-scrollbar{
+  display:none;
+}
+
+.nav button{
+
   border:0;
+
   background:transparent;
+
   color:#222;
-  font-size:14px;
-  font-weight:700;
-  padding:10px 11px;
+
+  padding:9px 11px;
+
   border-radius:9px;
+
+  font-size:13px;
+
+  font-weight:700;
+
+  white-space:nowrap;
 }
 
-.main-nav button:hover,
-.main-nav button.active{
+.nav button:hover{
+
+  background:#fff0f3;
+
   color:var(--red);
-  background:#fff1f4;
 }
 
 .live-btn{
+
   background:var(--red)!important;
+
   color:#fff!important;
+
+  padding:10px 15px!important;
+
   border-radius:10px!important;
-  padding:11px 18px!important;
-  box-shadow:0 5px 16px rgba(200,16,46,.22);
 }
 
-.live-dot{
-  display:inline-block;
-  width:7px;
-  height:7px;
-  background:#fff;
-  border-radius:50%;
-  margin-right:5px;
-}
 
-/* ================= BREAKING ================= */
+/* =====================================================
+   BREAKING
+===================================================== */
 
 .breaking{
-  height:43px;
+
+  height:44px;
+
   background:#fff;
-  border-bottom:1px solid var(--line);
+
+  border-bottom:1px solid var(--border);
+
   display:flex;
+
   align-items:center;
+
   overflow:hidden;
 }
 
-.breaking-label{
-  height:43px;
-  min-width:150px;
+.breaking-title{
+
+  height:100%;
+
+  min-width:135px;
+
   background:var(--red);
+
   color:#fff;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
-  font-size:13px;
+
+  font-size:12px;
+
   font-weight:800;
 }
 
-.breaking-track{
-  white-space:nowrap;
+.breaking-scroll{
+
   overflow:hidden;
+
+  white-space:nowrap;
+
   flex:1;
 }
 
 .breaking-text{
+
   display:inline-block;
-  padding-left:25px;
-  animation:ticker 25s linear infinite;
-  font-size:13px;
-  color:#555;
+
+  padding-left:20px;
+
+  font-size:12px;
+
   font-weight:600;
+
+  color:#555;
+
+  animation:ticker 25s linear infinite;
 }
 
 @keyframes ticker{
-  from{transform:translateX(100%)}
-  to{transform:translateX(-100%)}
+
+  from{
+    transform:translateX(100%);
+  }
+
+  to{
+    transform:translateX(-100%);
+  }
+
 }
 
-/* ================= PAGE ================= */
+
+/* =====================================================
+   MAIN
+===================================================== */
 
 .container{
-  max-width:1280px;
+
+  max-width:1300px;
+
   margin:auto;
-  padding:28px 24px 70px;
+
+  padding:25px 22px 70px;
 }
 
-/* SEARCH */
+
+/* =====================================================
+   SEARCH
+===================================================== */
 
 .search-panel{
+
   background:#fff;
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  padding:18px;
+
+  border:1px solid var(--border);
+
+  border-radius:17px;
+
+  padding:17px;
+
   box-shadow:var(--shadow);
-  margin-bottom:30px;
 }
 
-.search-box{
-  height:54px;
-  border:1px solid #dfe3e8;
-  border-radius:13px;
-  display:flex;
-  align-items:center;
-  padding:0 17px;
-  gap:10px;
+.search{
+
+  width:100%;
+
+  height:50px;
+
+  border:1px solid #dfe3e7;
+
+  border-radius:11px;
+
+  padding:0 16px;
+
+  outline:none;
+
+  font-size:15px;
+
+  background:#fafafa;
+}
+
+.search:focus{
+
+  border-color:var(--red);
+
   background:#fff;
 }
 
-.search-icon{
-  font-size:20px;
-  color:#858b95;
-}
 
-.search-box input{
-  width:100%;
-  height:100%;
-  border:0;
-  outline:0;
-  font-size:15px;
-  color:#222;
-}
+/* =====================================================
+   CATEGORIES
+===================================================== */
 
 .categories{
+
   display:flex;
-  gap:9px;
-  flex-wrap:wrap;
-  margin-top:14px;
+
+  gap:8px;
+
+  margin-top:13px;
+
+  overflow-x:auto;
+
+  scrollbar-width:none;
 }
 
-.cat{
+.categories::-webkit-scrollbar{
+  display:none;
+}
+
+.category{
+
+  flex:0 0 auto;
+
+  border:1px solid #dfe2e6;
+
   background:#fff;
-  border:1px solid #dfe2e7;
-  border-radius:25px;
-  padding:8px 18px;
-  font-size:13px;
-  font-weight:700;
+
   color:#333;
-  transition:.2s;
+
+  padding:8px 16px;
+
+  border-radius:22px;
+
+  font-size:12px;
+
+  font-weight:700;
 }
 
-.cat:hover,
-.cat.active{
+.category:hover,
+.category.active{
+
   background:var(--red);
+
   border-color:var(--red);
+
   color:#fff;
 }
 
-/* SECTION TITLE */
+
+/* =====================================================
+   SECTION TITLE
+===================================================== */
 
 .section-head{
+
+  margin:30px 0 15px;
+
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
-  margin:0 0 16px;
 }
 
 .section-title{
-  font-size:25px;
-  font-weight:800;
+
   border-left:5px solid var(--red);
-  padding-left:13px;
+
+  padding-left:12px;
+
+  font-size:26px;
+
+  font-weight:800;
 }
 
 .section-sub{
-  color:#858a92;
-  font-size:13px;
+
+  color:#888;
+
+  font-size:12px;
 }
 
-/* ================= HERO ================= */
+
+/* =====================================================
+   HERO
+===================================================== */
 
 .hero-grid{
+
   display:grid;
-  grid-template-columns:2fr 1fr;
+
+  grid-template-columns:1.7fr .8fr;
+
   gap:18px;
-  margin-bottom:34px;
 }
 
 .hero{
+
   min-height:410px;
-  border-radius:22px;
+
+  border-radius:20px;
+
   overflow:hidden;
+
   position:relative;
+
   background:
-    radial-gradient(circle at 80% 20%,rgba(200,16,46,.6),transparent 28%),
-    linear-gradient(135deg,#121822,#07090d);
-  color:#fff;
+    linear-gradient(
+      135deg,
+      #101820,
+      #07090c
+    );
+
   box-shadow:var(--shadow);
 }
 
-.hero::after{
-  content:"";
+.hero-image{
+
   position:absolute;
+
   inset:0;
+
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
+}
+
+.hero-overlay{
+
+  position:absolute;
+
+  inset:0;
+
+  padding:30px;
+
+  display:flex;
+
+  align-items:flex-end;
+
   background:
-    linear-gradient(135deg,transparent 30%,rgba(200,16,46,.12) 31%,transparent 32%),
-    linear-gradient(to top,rgba(0,0,0,.8),transparent 70%);
+    linear-gradient(
+      transparent 25%,
+      rgba(0,0,0,.88)
+    );
+
+  color:#fff;
 }
 
 .hero-content{
-  position:absolute;
-  z-index:2;
-  left:34px;
-  right:34px;
-  bottom:30px;
+
+  max-width:850px;
 }
 
 .badge{
+
   display:inline-block;
+
   background:var(--red);
+
   color:#fff;
-  padding:5px 12px;
+
+  padding:5px 10px;
+
   border-radius:6px;
-  font-size:11px;
+
+  font-size:10px;
+
   font-weight:800;
-  margin-bottom:12px;
 }
 
 .hero h2{
+
   font-size:34px;
-  line-height:1.3;
-  margin-bottom:9px;
-  font-weight:800;
+
+  line-height:1.35;
+
+  margin:10px 0 7px;
 }
 
 .hero p{
-  color:#d7d9dd;
+
+  color:#d4d8dc;
+
   font-size:14px;
-  max-width:700px;
 }
 
 .hero-meta{
-  margin-top:15px;
-  font-size:12px;
-  color:#bfc3ca;
+
+  color:#bfc4ca;
+
+  font-size:11px;
+
+  margin-top:12px;
 }
 
-/* SIDE NEWS */
+
+/* =====================================================
+   SIDE NEWS
+===================================================== */
 
 .side-news{
+
   display:grid;
+
+  grid-template-rows:1fr 1fr;
+
   gap:18px;
 }
 
 .side-card{
-  background:#fff;
-  border:1px solid var(--line);
+
+  position:relative;
+
+  overflow:hidden;
+
   border-radius:17px;
-  padding:21px;
+
+  background:#101820;
+
+  color:#fff;
+
   box-shadow:var(--shadow);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  min-height:196px;
-  transition:.2s;
 }
 
-.side-card:hover{
-  transform:translateY(-2px);
+.side-card img{
+
+  position:absolute;
+
+  inset:0;
+
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
 }
 
-.side-label{
-  color:var(--red);
-  font-size:10px;
-  font-weight:800;
-  text-transform:uppercase;
-  margin-bottom:8px;
+.side-card::after{
+
+  content:"";
+
+  position:absolute;
+
+  inset:35% 0 0;
+
+  background:
+    linear-gradient(
+      transparent,
+      rgba(0,0,0,.95)
+    );
 }
 
-.side-card h3{
+.side-content{
+
+  position:absolute;
+
+  z-index:2;
+
+  left:18px;
+
+  right:18px;
+
+  bottom:17px;
+}
+
+.side-content h3{
+
+  margin-top:7px;
+
   font-size:18px;
-  line-height:1.45;
+
+  line-height:1.4;
 }
 
-.side-card p{
-  color:var(--muted);
-  font-size:12px;
-  margin-top:8px;
-}
 
-/* ================= NEWS GRID ================= */
+/* =====================================================
+   NEWS GRID
+===================================================== */
 
 .news-grid{
+
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    repeat(3,1fr);
+
   gap:18px;
 }
 
 .news-card{
+
   background:#fff;
-  border:1px solid var(--line);
+
+  border:1px solid var(--border);
+
   border-radius:17px;
+
   overflow:hidden;
-  box-shadow:0 5px 22px rgba(20,25,35,.06);
+
+  box-shadow:
+    0 5px 20px rgba(16,20,26,.06);
+
   transition:.25s;
 }
 
 .news-card:hover{
+
   transform:translateY(-4px);
-  box-shadow:0 12px 30px rgba(20,25,35,.1);
+
+  box-shadow:
+    0 12px 32px rgba(16,20,26,.12);
 }
 
 .news-image{
-  height:170px;
-  position:relative;
-  background:
-    radial-gradient(circle at 80% 25%,rgba(255,255,255,.15),transparent 25%),
-    linear-gradient(135deg,#222b39,#0d1118);
-  overflow:hidden;
-}
 
-.news-image::before{
-  content:"PRESS EXPRESS";
-  position:absolute;
-  left:20px;
-  bottom:18px;
-  color:rgba(255,255,255,.13);
-  font-size:25px;
-  font-weight:800;
-  letter-spacing:1px;
-}
+  width:100%;
 
-.news-image::after{
-  content:"P";
-  position:absolute;
-  right:22px;
-  top:18px;
-  width:48px;
-  height:48px;
-  border:2px solid rgba(255,255,255,.25);
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:rgba(255,255,255,.4);
-  font-size:24px;
-  font-family:Georgia,serif;
+  height:190px;
+
+  object-fit:cover;
+
+  display:block;
+
+  background:#111820;
 }
 
 .news-body{
-  padding:17px;
+
+  padding:16px;
 }
 
-.news-category{
-  color:var(--red);
-  font-size:10px;
-  font-weight:800;
-  margin-bottom:7px;
-}
+.news-body h3{
 
-.news-card h3{
-  font-size:17px;
+  font-size:18px;
+
   line-height:1.45;
-  margin-bottom:8px;
+
+  margin:8px 0;
 }
 
-.news-card p{
-  font-size:12px;
+.news-body p{
+
   color:var(--muted);
+
+  font-size:13px;
+
+  line-height:1.7;
 }
 
-.news-meta{
-  margin-top:13px;
-  color:#9297a0;
+.meta{
+
+  color:#9298a0;
+
   font-size:11px;
+
+  margin-top:11px;
 }
 
-/* ================= EMPTY ================= */
 
-.no-result{
-  display:none;
-  text-align:center;
-  padding:50px 20px;
+/* =====================================================
+   EMPTY
+===================================================== */
+
+.empty{
+
+  grid-column:1/-1;
+
   background:#fff;
-  border:1px solid var(--line);
-  border-radius:17px;
+
+  border:1px dashed #d4d9df;
+
+  border-radius:16px;
+
+  padding:45px 20px;
+
+  text-align:center;
+
   color:#777;
 }
 
-/* ================= FOOTER ================= */
+
+/* =====================================================
+   FOOTER
+===================================================== */
 
 .footer{
-  background:var(--dark);
-  color:#fff;
-  margin-top:40px;
+
+  background:var(--black);
+
+  color:#d4d8dd;
+
+  padding:40px 4% 20px;
 }
 
 .footer-inner{
-  max-width:1280px;
+
+  max-width:1300px;
+
   margin:auto;
-  padding:42px 24px 25px;
-}
 
-.footer-top{
   display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  gap:35px;
+
+  grid-template-columns:
+    2fr 1fr 1fr;
+
+  gap:30px;
 }
 
-.footer-logo{
-  font-size:22px;
-  font-weight:800;
+.footer h2{
+
+  color:#fff;
+
   margin-bottom:8px;
 }
 
-.footer-logo span{
-  color:#e51c43;
-}
+.footer h2 span{
 
-.footer p{
-  color:#aeb4bd;
-  font-size:12px;
-  max-width:480px;
-}
-
-.footer h4{
-  margin-bottom:10px;
-  font-size:14px;
-}
-
-.footer-links{
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-}
-
-.footer-links button{
-  text-align:left;
-  background:none;
-  border:0;
-  color:#aeb4bd;
-  font-size:12px;
-}
-
-.footer-bottom{
-  border-top:1px solid #292f38;
-  margin-top:30px;
-  padding-top:17px;
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  color:#8e959f;
-  font-size:11px;
-}
-
-/* ================= ADMIN ================= */
-
-.admin{
-  position:fixed;
-  right:22px;
-  bottom:22px;
-  z-index:20;
-  background:var(--red);
-  color:#fff;
-  border:0;
-  border-radius:30px;
-  padding:12px 20px;
-  font-weight:800;
-  font-size:12px;
-  box-shadow:0 8px 25px rgba(200,16,46,.28);
-}
-
-.admin:hover{
-  background:#a90d27;
-}
-
-/* ================= SHARE ================= */
-
-.share-bar{
-  display:flex;
-  gap:8px;
-  margin-top:13px;
-}
-
-.share-btn{
-  border:1px solid #ddd;
-  background:#fff;
-  border-radius:8px;
-  padding:6px 10px;
-  font-size:11px;
-  font-weight:700;
-  color:#555;
-}
-
-.share-btn:hover{
-  border-color:var(--red);
   color:var(--red);
 }
 
-/* ================= RESPONSIVE ================= */
+.footer p{
 
-@media(max-width:950px){
+  color:#aeb5bd;
+
+  font-size:12px;
+
+  line-height:1.8;
+}
+
+.footer h4{
+
+  color:#fff;
+
+  margin-bottom:8px;
+}
+
+.footer-bottom{
+
+  max-width:1300px;
+
+  margin:28px auto 0;
+
+  padding-top:17px;
+
+  border-top:1px solid #2c333c;
+
+  color:#8d949d;
+
+  font-size:11px;
+}
+
+
+/* =====================================================
+   ADMIN BUTTON
+===================================================== */
+
+.admin-button{
+
+  position:fixed;
+
+  right:18px;
+
+  bottom:18px;
+
+  z-index:50;
+
+  border:0;
+
+  background:var(--red);
+
+  color:#fff;
+
+  padding:12px 18px;
+
+  border-radius:28px;
+
+  font-weight:800;
+
+  font-size:12px;
+
+  box-shadow:
+    0 8px 25px rgba(200,16,46,.28);
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal{
+
+  display:none;
+
+  position:fixed;
+
+  inset:0;
+
+  z-index:200;
+
+  background:rgba(0,0,0,.7);
+
+  padding:18px;
+
+  overflow:auto;
+
+  align-items:center;
+
+  justify-content:center;
+}
+
+.modal.show{
+
+  display:flex;
+}
+
+.modal-box{
+
+  width:min(900px,100%);
+
+  background:#fff;
+
+  border-radius:20px;
+
+  padding:22px;
+
+  box-shadow:
+    0 25px 80px rgba(0,0,0,.35);
+}
+
+.login-box{
+
+  width:min(420px,100%);
+}
+
+.modal-head{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  margin-bottom:15px;
+}
+
+.close{
+
+  border:0;
+
+  background:#eee;
+
+  width:38px;
+
+  height:38px;
+
+  border-radius:50%;
+
+  font-size:22px;
+}
+
+
+/* =====================================================
+   ADMIN FORM
+===================================================== */
+
+.form-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:14px;
+}
+
+.field{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:6px;
+}
+
+.full{
+
+  grid-column:1/-1;
+}
+
+.field input,
+.field textarea,
+.field select{
+
+  border:1px solid #ddd;
+
+  border-radius:10px;
+
+  padding:11px;
+
+  outline:none;
+
+  background:#fafafa;
+}
+
+.field textarea{
+
+  min-height:120px;
+
+  resize:vertical;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+
+  border-color:var(--red);
+
+  background:#fff;
+}
+
+.primary{
+
+  border:0;
+
+  background:var(--red);
+
+  color:#fff;
+
+  padding:12px 18px;
+
+  border-radius:10px;
+
+  font-weight:800;
+}
+
+
+/* =====================================================
+   ADMIN LIST
+===================================================== */
+
+.admin-list{
+
+  margin-top:25px;
+
+  display:grid;
+
+  gap:10px;
+}
+
+.admin-item{
+
+  border:1px solid #ddd;
+
+  border-radius:10px;
+
+  padding:12px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:10px;
+}
+
+.delete{
+
+  border:0;
+
+  background:#ffe8ed;
+
+  color:#a50d28;
+
+  padding:8px 12px;
+
+  border-radius:8px;
+
+  font-weight:700;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:900px){
 
   .header-inner{
-    padding:14px 16px;
+
     flex-wrap:wrap;
   }
 
-  .logo{
-    min-width:auto;
-    flex:1;
-  }
+  .nav{
 
-  .main-nav{
+    order:3;
+
     width:100%;
-    justify-content:flex-start;
-    overflow-x:auto;
-    flex-wrap:nowrap;
-    padding-bottom:2px;
-  }
 
-  .main-nav button{
-    white-space:nowrap;
+    justify-content:flex-start;
   }
 
   .hero-grid{
+
     grid-template-columns:1fr;
   }
 
   .side-news{
+
     grid-template-columns:1fr 1fr;
+
+    grid-template-rows:none;
   }
 
   .news-grid{
-    grid-template-columns:repeat(2,1fr);
+
+    grid-template-columns:
+      repeat(2,1fr);
   }
+
 }
 
-@media(max-width:650px){
+@media(max-width:600px){
 
-  .topbar{
-    padding:0 15px;
+  .top-bar{
+
+    padding:6px 12px;
+
     font-size:10px;
   }
 
   .header-inner{
-    min-height:auto;
+
+    padding:10px 12px;
   }
 
-  .logo-mark{
-    width:52px;
-    height:52px;
+  .logo-circle{
+
+    width:50px;
+
+    height:50px;
   }
 
-  .logo-mark strong{
-    font-size:25px;
+  .logo-circle strong{
+
+    font-size:24px;
   }
 
-  .logo-text h1{
+  .logo-name h1{
+
     font-size:20px;
   }
 
-  .logo-text p{
+  .logo-name p{
+
     font-size:9px;
   }
 
-  .live-btn{
-    padding:8px 12px!important;
-    font-size:11px!important;
-  }
-
-  .breaking-label{
-    min-width:105px;
-    font-size:11px;
-  }
-
-  .breaking-text{
-    font-size:11px;
-  }
-
   .container{
-    padding:18px 14px 50px;
-  }
 
-  .search-panel{
-    padding:13px;
-    margin-bottom:24px;
-  }
-
-  .search-box{
-    height:48px;
-  }
-
-  .categories{
-    gap:7px;
-  }
-
-  .cat{
-    padding:7px 13px;
-    font-size:11px;
+    padding:18px 12px 50px;
   }
 
   .section-title{
-    font-size:21px;
-  }
 
-  .section-sub{
-    display:none;
+    font-size:22px;
   }
 
   .hero{
-    min-height:355px;
-    border-radius:17px;
+
+    min-height:380px;
   }
 
-  .hero-content{
-    left:22px;
-    right:22px;
-    bottom:22px;
+  .hero-overlay{
+
+    padding:20px;
   }
 
   .hero h2{
-    font-size:25px;
+
+    font-size:26px;
   }
 
   .hero p{
+
     font-size:12px;
   }
 
   .side-news{
+
     grid-template-columns:1fr;
   }
 
   .side-card{
-    min-height:145px;
+
+    min-height:170px;
   }
 
   .news-grid{
+
     grid-template-columns:1fr;
   }
 
   .news-image{
-    height:190px;
+
+    height:210px;
   }
 
-  .footer-top{
+  .footer-inner{
+
     grid-template-columns:1fr;
-    gap:25px;
   }
 
-  .footer-bottom{
-    flex-direction:column;
+  .form-grid{
+
+    grid-template-columns:1fr;
   }
 
-  .admin{
-    right:15px;
-    bottom:15px;
-    padding:10px 16px;
+  .full{
+
+    grid-column:auto;
   }
+
 }
+
 </style>
+
 </head>
+
 
 <body>
 
-<!-- TOP BAR -->
-<div class="topbar">
-  <div>শুকুৰবাৰ, ২৮ আগষ্ট ২০২৬</div>
-  <div class="topbar-right">সত্য • নিৰপেক্ষ • দায়িত্বশীল</div>
+
+<!-- =====================================================
+     TOP BAR
+===================================================== -->
+
+<div class="top-bar">
+
+  <span id="todayDate">
+    আজিৰ তাৰিখ
+  </span>
+
+  <span>
+    সত্য • নিৰপেক্ষ • দায়িত্বশীল
+  </span>
+
 </div>
 
-<!-- HEADER -->
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
 <header class="header">
+
   <div class="header-inner">
 
-    <div class="logo">
-      <div class="logo-mark">
+
+    <div class="logo-wrap">
+
+      <div class="logo-circle">
+
         <strong>P</strong>
-        <span>PRESS</span>
+
+        <small>PRESS</small>
+
       </div>
 
-      <div class="logo-text">
-        <h1>Press <span>Express</span> Assam</h1>
-        <p>অসমৰ শেহতীয়া সংবাদ</p>
+
+      <div class="logo-name">
+
+        <h1>
+          Press <span>Express</span> Assam
+        </h1>
+
+        <p>
+          অসমৰ শেহতীয়া সংবাদ
+        </p>
+
       </div>
+
     </div>
 
-    <nav class="main-nav">
-      <button class="active" data-category="সকলো">হোম</button>
-      <button data-category="অসম">অসম</button>
-      <button data-category="গুৱাহাটী">গুৱাহাটী</button>
-      <button data-category="ভাৰত">ভাৰত</button>
-      <button data-category="বিশ্ব">বিশ্ব</button>
-      <button data-category="ব্যৱসায়">ব্যৱসায়</button>
-      <button data-category="খেল">খেল</button>
-      <button data-category="বিনোদন">বিনোদন</button>
-      <button class="live-btn" onclick="showLive()">
-        <span class="live-dot"></span>LIVE
-      </button>
-    </nav>
+
+    <nav
+      class="nav"
+      id="nav"
+    ></nav>
+
+
+    <button
+      class="live-btn"
+      onclick="goNews()"
+    >
+      ● LIVE
+    </button>
 
   </div>
+
 </header>
 
-<!-- BREAKING -->
+
+<!-- =====================================================
+     BREAKING
+===================================================== -->
+
 <div class="breaking">
-  <div class="breaking-label">⚡ BREAKING</div>
-  <div class="breaking-track">
-    <div class="breaking-text">
-      Press Express Assam — অসমৰ শেহতীয়া খবৰ, স্থানীয় সংবাদ আৰু গুৰুত্বপূৰ্ণ আপডেট একেলগে।
-    </div>
+
+  <div class="breaking-title">
+    ⚡ BREAKING
   </div>
+
+  <div class="breaking-scroll">
+
+    <div class="breaking-text">
+
+      Press Express Assam — অসমৰ শেহতীয়া খবৰ আৰু গুৰুত্বপূৰ্ণ সংবাদ আপোনাৰ কাষত।
+
+    </div>
+
+  </div>
+
 </div>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
 <main class="container">
 
+
   <!-- SEARCH -->
+
   <section class="search-panel">
 
-    <div class="search-box">
-      <span class="search-icon">⌕</span>
-      <input
-        id="search"
-        type="search"
-        placeholder="খবৰ বিচাৰক..."
-        oninput="searchNews()"
-      >
-    </div>
+    <input
+      id="search"
+      class="search"
+      type="search"
+      placeholder="🔎 খবৰ বিচাৰক..."
+      oninput="renderNews()"
+    >
 
-    <div class="categories">
-      <button class="cat active" data-filter="সকলো">সকলো</button>
-      <button class="cat" data-filter="অসম">অসম</button>
-      <button class="cat" data-filter="গুৱাহাটী">গুৱাহাটী</button>
-      <button class="cat" data-filter="ভাৰত">ভাৰত</button>
-      <button class="cat" data-filter="বিশ্ব">বিশ্ব</button>
-      <button class="cat" data-filter="ব্যৱসায়">ব্যৱসায়</button>
-      <button class="cat" data-filter="খেল">খেল</button>
-      <button class="cat" data-filter="বিনোদন">বিনোদন</button>
-    </div>
+
+    <div
+      class="categories"
+      id="categories"
+    ></div>
 
   </section>
+
 
   <!-- HERO -->
-  <section>
 
-    <div class="section-head">
-      <h2 class="section-title">শেহতীয়া খবৰ</h2>
-      <span class="section-sub">Press Express Assam</span>
-    </div>
+  <div class="section-head">
 
-    <div class="hero-grid">
+    <h2 class="section-title">
+      শেহতীয়া খবৰ
+    </h2>
 
-      <article class="hero">
-        <div class="hero-content">
-          <span class="badge">অসম</span>
+    <span class="section-sub">
+      Press Express Assam
+    </span>
 
-          <h2>Press Express Assamলৈ স্বাগতম</h2>
+  </div>
 
-          <p>
-            সত্য, নিৰপেক্ষ আৰু দায়িত্বশীল সংবাদ আপোনাৰ কাষত।
-            অসমৰ গুৰুত্বপূৰ্ণ খবৰ আৰু শেহতীয়া আপডেট একে ঠাইতে।
-          </p>
 
-          <div class="hero-meta">
-            আজি • Press Express Assam
-          </div>
+  <section
+    class="hero-grid"
+    id="heroGrid"
+  ></section>
 
-          <div class="share-bar">
-            <button class="share-btn" onclick="shareSite()">↗ Share</button>
-            <button class="share-btn" onclick="copySite()">Copy Link</button>
-          </div>
-        </div>
-      </article>
-
-      <div class="side-news">
-
-        <article class="side-card">
-          <div class="side-label">TOP UPDATE</div>
-          <h3>অসমৰ গুৰুত্বপূৰ্ণ সংবাদ আৰু নতুন আপডেট</h3>
-          <p>ৰাজ্যৰ বিভিন্ন প্ৰান্তৰ গুৰুত্বপূৰ্ণ খবৰ আৰু নতুন তথ্য।</p>
-        </article>
-
-        <article class="side-card">
-          <div class="side-label">ASSAM</div>
-          <h3>স্থানীয় সংবাদ আপোনাৰ কাষত</h3>
-          <p>অসম তথা গুৱাহাটীৰ শেহতীয়া সংবাদ সহজ আৰু সুলভভাৱে।</p>
-        </article>
-
-      </div>
-
-    </div>
-  </section>
 
   <!-- NEWS -->
-  <section id="newsSection">
 
-    <div class="section-head">
-      <h2 class="section-title">সংবাদ</h2>
-      <span class="section-sub">Latest Updates</span>
-    </div>
+  <div
+    class="section-head"
+    id="newsSection"
+  >
 
-    <div id="newsGrid" class="news-grid">
+    <h2 class="section-title">
+      সংবাদ
+    </h2>
 
-      <article class="news-card" data-category="অসম">
-        <div class="news-image"></div>
-        <div class="news-body">
-          <div class="news-category">অসম</div>
-          <h3>অসমৰ বিভিন্ন প্ৰান্তৰ পৰা গুৰুত্বপূৰ্ণ সংবাদ</h3>
-          <p>ৰাজ্যৰ শেহতীয়া ঘটনা আৰু গুৰুত্বপূৰ্ণ আপডেট পঢ়ক Press Express Assamত।</p>
-          <div class="news-meta">Press Express Assam • আজি</div>
-        </div>
-      </article>
+    <span class="section-sub">
+      Latest Updates
+    </span>
 
-      <article class="news-card" data-category="গুৱাহাটী">
-        <div class="news-image"></div>
-        <div class="news-body">
-          <div class="news-category">গুৱাহাটী</div>
-          <h3>গুৱাহাটীৰ শেহতীয়া খবৰ আৰু স্থানীয় আপডেট</h3>
-          <p>মহানগৰীৰ গুৰুত্বপূৰ্ণ ঘটনা, যান-বাহন আৰু স্থানীয় সংবাদ।</p>
-          <div class="news-meta">Press Express Assam • আজি</div>
-        </div>
-      </article>
+  </div>
 
-      <article class="news-card" data-category="ভাৰত">
-        <div class="news-image"></div>
-        <div class="news-body">
-          <div class="news-category">ভাৰত</div>
-          <h3>দেশৰ গুৰুত্বপূৰ্ণ খবৰ একে ঠাইতে</h3>
-          <p>ভাৰতৰ বিভিন্ন প্ৰান্তৰ গুৰুত্বপূৰ্ণ ৰাষ্ট্ৰীয় সংবাদ আৰু আপডেট।</p>
-          <div class="news-meta">Press Express Assam • আজি</div>
-        </div>
-      </article>
 
-      <article class="news-card" data-category="বিশ্ব">
-        <div class="news-image"></div>
-        <div class="news-body">
-          <div class="news-category">বিশ্ব</div>
-          <h3>বিশ্বৰ শেহতীয়া ঘটনাৰ গুৰুত্বপূৰ্ণ আপডেট</h3>
-          <p>আন্তঃৰাষ্ট্ৰীয় পৰ্যায়ৰ উল্লেখযোগ্য সংবাদ আৰু তথ্য।</p>
-          <div class="news-meta">Press Express Assam • আজি</div>
-        </div>
-      </article>
+  <section
+    class="news-grid"
+    id="newsGrid"
+  ></section>
 
-      <article class="news-card" data-category="ব্যৱসায়">
-        <div class="news-image"></div>
-        <div class="news-body">
-          <div class="news-category">ব্যৱসায়</div>
-          <h3>ব্যৱসায় আৰু অৰ্থনীতিৰ গুৰুত্বপূৰ্ণ সংবাদ</h3>
-          <p>বজাৰ, ব্যৱসায় আৰু অৰ্থনীতিৰ উল্লেখযোগ্য আপডেট।</p>
-          <div class="news-meta">Press Express Assam • আজি</div>
-        </div>
-      </article>
-
-      <article class="news-card" data-category="খেল">
-        <div class="news-image"></div>
-        <div class="news-body">
-          <div class="news-category">খেল</div>
-          <h3>ক্ৰীড়া জগতৰ শেহতীয়া সংবাদ</h3>
-          <p>ক্ৰীড়া জগতৰ গুৰুত্বপূৰ্ণ খবৰ, ফলাফল আৰু আপডেট।</p>
-          <div class="news-meta">Press Express Assam • আজি</div>
-        </div>
-      </article>
-
-      <article class="news-card" data-category="বিনোদন">
-        <div class="news-image"></div>
-        <div class="news-body">
-          <div class="news-category">বিনোদন</div>
-          <h3>বিনোদন জগতৰ নতুন খবৰ</h3>
-          <p>চলচ্চিত্ৰ, সংগীত আৰু বিনোদন জগতৰ শেহতীয়া সংবাদ।</p>
-          <div class="news-meta">Press Express Assam • আজি</div>
-        </div>
-      </article>
-
-      <article class="news-card" data-category="অসম">
-        <div class="news-image"></div>
-        <div class="news-body">
-          <div class="news-category">অসম</div>
-          <h3>অসমৰ স্থানীয় সংবাদ আৰু বিশেষ প্ৰতিবেদন</h3>
-          <p>স্থানীয় সমস্যা, জনজীৱন আৰু গুৰুত্বপূৰ্ণ ঘটনাৰ সংবাদ।</p>
-          <div class="news-meta">Press Express Assam • আজি</div>
-        </div>
-      </article>
-
-      <article class="news-card" data-category="গুৱাহাটী">
-        <div class="news-image"></div>
-        <div class="news-body">
-          <div class="news-category">গুৱাহাটী</div>
-          <h3>মহানগৰীৰ নতুন আপডেট আৰু গুৰুত্বপূৰ্ণ তথ্য</h3>
-          <p>গুৱাহাটীৰ জনজীৱনৰ সৈতে জড়িত বিভিন্ন গুৰুত্বপূৰ্ণ সংবাদ।</p>
-          <div class="news-meta">Press Express Assam • আজি</div>
-        </div>
-      </article>
-
-    </div>
-
-    <div id="noResult" class="no-result">
-      <h3>কোনো খবৰ পোৱা নগ'ল</h3>
-      <p>অন্য শব্দ বা category দি পুনৰ চেষ্টা কৰক।</p>
-    </div>
-
-  </section>
 
 </main>
 
-<!-- FOOTER -->
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer class="footer">
 
   <div class="footer-inner">
 
-    <div class="footer-top">
+    <div>
 
-      <div>
-        <div class="footer-logo">
-          Press <span>Express</span> Assam
-        </div>
+      <h2>
+        Press <span>Express</span> Assam
+      </h2>
 
-        <p>
-          অসমৰ স্থানীয়, ৰাজ্যিক, ৰাষ্ট্ৰীয় আৰু আন্তঃৰাষ্ট্ৰীয়
-          সংবাদৰ বাবে Press Express Assam।
-          সত্য, নিৰপেক্ষ আৰু দায়িত্বশীল সংবাদ আমাৰ লক্ষ্য।
-        </p>
-      </div>
-
-      <div>
-        <h4>শাখাসমূহ</h4>
-        <div class="footer-links">
-          <button onclick="filterNews('অসম')">অসম</button>
-          <button onclick="filterNews('গুৱাহাটী')">গুৱাহাটী</button>
-          <button onclick="filterNews('ভাৰত')">ভাৰত</button>
-          <button onclick="filterNews('বিশ্ব')">বিশ্ব</button>
-        </div>
-      </div>
-
-      <div>
-        <h4>অন্যান্য</h4>
-        <div class="footer-links">
-          <button onclick="filterNews('ব্যৱসায়')">ব্যৱসায়</button>
-          <button onclick="filterNews('খেল')">খেল</button>
-          <button onclick="filterNews('বিনোদন')">বিনোদন</button>
-          <button onclick="goTop()">ওপৰলৈ যাওক ↑</button>
-        </div>
-      </div>
+      <p>
+        অসমৰ স্থানীয়, গুৱাহাটী, ভাৰত, বিশ্ব,
+        ব্যৱসায়, খেল আৰু বিনোদনৰ সংবাদৰ বাবে
+        Press Express Assam।
+      </p>
 
     </div>
 
-    <div class="footer-bottom">
-      <span>© 2026 Press Express Assam. All Rights Reserved.</span>
-      <span>সত্য • নিৰপেক্ষ • দায়িত্বশীল</span>
+
+    <div>
+
+      <h4>
+        সংবাদ
+      </h4>
+
+      <p>
+        অসম<br>
+        গুৱাহাটী<br>
+        ভাৰত<br>
+        বিশ্ব
+      </p>
+
     </div>
+
+
+    <div>
+
+      <h4>
+        অন্যান্য
+      </h4>
+
+      <p>
+        ব্যৱসায়<br>
+        খেল<br>
+        বিনোদন<br>
+        যোগাযোগ
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    © 2026 Press Express Assam. All Rights Reserved.
 
   </div>
 
 </footer>
 
-<button class="admin" onclick="adminMessage()">⚙ Admin</button>
+
+<!-- =====================================================
+     ADMIN BUTTON
+===================================================== -->
+
+<button
+  class="admin-button"
+  onclick="openAdmin()"
+>
+  ⚙ Admin
+</button>
+
+
+<!-- =====================================================
+     ADMIN MODAL
+===================================================== -->
+
+<div
+  class="modal"
+  id="adminModal"
+>
+
+
+  <!-- LOGIN -->
+
+  <div
+    class="modal-box login-box"
+    id="loginBox"
+  >
+
+    <div class="modal-head">
+
+      <h2>
+        Admin Login
+      </h2>
+
+      <button
+        class="close"
+        onclick="closeAdmin()"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <p
+      style="
+        color:#777;
+        font-size:13px;
+        margin-bottom:15px;
+      "
+    >
+      News management panel
+    </p>
+
+
+    <input
+      id="adminPassword"
+      type="password"
+      placeholder="Admin Password"
+      style="
+        width:100%;
+        padding:12px;
+        border:1px solid #ddd;
+        border-radius:10px;
+        outline:none;
+      "
+    >
+
+
+    <br>
+    <br>
+
+
+    <button
+      class="primary"
+      onclick="loginAdmin()"
+    >
+      Login
+    </button>
+
+
+    <p
+      style="
+        color:#888;
+        font-size:11px;
+        margin-top:12px;
+      "
+    >
+      Default password: 1234
+    </p>
+
+  </div>
+
+
+  <!-- ADMIN PANEL -->
+
+  <div
+    class="modal-box"
+    id="adminPanel"
+    style="display:none"
+  >
+
+    <div class="modal-head">
+
+      <div>
+
+        <h2>
+          Admin Panel
+        </h2>
+
+        <p
+          style="
+            color:#777;
+            font-size:12px;
+          "
+        >
+          News Management
+        </p>
+
+      </div>
+
+
+      <button
+        class="close"
+        onclick="closeAdmin()"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <form
+      onsubmit="publishNews(event)"
+    >
+
+      <div class="form-grid">
+
+
+        <div class="field">
+
+          <label>
+            শিতান
+          </label>
+
+          <select id="newsCategory">
+
+          </select>
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            শিৰোনাম
+          </label>
+
+          <input
+            id="newsTitle"
+            required
+            placeholder="খবৰৰ শিৰোনাম"
+          >
+
+        </div>
+
+
+        <div class="field full">
+
+          <label>
+            খবৰৰ বিৱৰণ
+          </label>
+
+          <textarea
+            id="newsSummary"
+            required
+            placeholder="খবৰৰ সম্পূৰ্ণ বা সংক্ষিপ্ত বিৱৰণ লিখক"
+          ></textarea>
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            🖼️ News Photo
+          </label>
+
+          <input
+            id="newsImage"
+            type="file"
+            accept="image/*"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            সাংবাদিকৰ নাম
+          </label>
+
+          <input
+            id="newsAuthor"
+            value="Press Express Assam"
+            placeholder="সাংবাদিকৰ নাম"
+          >
+
+        </div>
+
+
+      </div>
+
+
+      <br>
+
+
+      <button
+        class="primary"
+        type="submit"
+      >
+        + Publish News
+      </button>
+
+
+    </form>
+
+
+    <div
+      class="admin-list"
+      id="adminList"
+    ></div>
+
+  </div>
+
+</div>
+
 
 <script>
 
-/* ================= FILTER ================= */
+/* =====================================================
+   DATA
+===================================================== */
 
-let currentFilter = "সকলো";
+const categories = [
+  "সকলো",
+  "অসম",
+  "গুৱাহাটী",
+  "ভাৰত",
+  "বিশ্ব",
+  "ব্যৱসায়",
+  "খেল",
+  "বিনোদন"
+];
 
-function filterNews(category){
 
-  currentFilter = category;
+/*
+  DEMO NEWS
+*/
 
-  document.querySelectorAll(".cat").forEach(btn=>{
-    btn.classList.toggle(
-      "active",
-      btn.dataset.filter === category
-    );
-  });
+const defaultNews = [
 
-  document.querySelectorAll(".main-nav button[data-category]").forEach(btn=>{
-    btn.classList.toggle(
-      "active",
-      btn.dataset.category === category
-    );
-  });
+  {
+    category:"অসম",
+    title:"অসমৰ গুৰুত্বপূৰ্ণ সংবাদ আৰু নতুন আপডেট",
+    summary:"ৰাজ্যৰ বিভিন্ন প্ৰান্তৰ গুৰুত্বপূৰ্ণ খবৰ আৰু নতুন তথ্য Press Express Assamত।",
+    image:createDemoImage(
+      "অসমৰ সংবাদ",
+      "ASSAM"
+    ),
+    date:"আজিৰ দিনটো",
+    author:"Press Express Assam"
+  },
 
-  document.getElementById("search").value = "";
 
-  applyFilters();
+  {
+    category:"গুৱাহাটী",
+    title:"গুৱাহাটীৰ শেহতীয়া খবৰ আৰু স্থানীয় আপডেট",
+    summary:"মহানগৰীৰ জনজীৱন আৰু স্থানীয় ঘটনাৰ গুৰুত্বপূৰ্ণ সংবাদ।",
+    image:createDemoImage(
+      "গুৱাহাটীৰ সংবাদ",
+      "GUWAHATI"
+    ),
+    date:"আজিৰ দিনটো",
+    author:"Press Express Assam"
+  },
 
-  document.getElementById("newsSection")
-    .scrollIntoView({behavior:"smooth"});
+
+  {
+    category:"ভাৰত",
+    title:"দেশৰ গুৰুত্বপূৰ্ণ খবৰ একে ঠাইতে",
+    summary:"ভাৰতৰ বিভিন্ন প্ৰান্তৰ উল্লেখযোগ্য ৰাষ্ট্ৰীয় সংবাদ আৰু আপডেট।",
+    image:createDemoImage(
+      "ভাৰতৰ সংবাদ",
+      "INDIA"
+    ),
+    date:"আজিৰ দিনটো",
+    author:"Press Express Assam"
+  },
+
+
+  {
+    category:"বিশ্ব",
+    title:"বিশ্বৰ শেহতীয়া সংবাদ আৰু গুৰুত্বপূৰ্ণ আপডেট",
+    summary:"আন্তঃৰাষ্ট্ৰীয় পৰ্যায়ৰ উল্লেখযোগ্য সংবাদ আৰু নতুন তথ্য।",
+    image:createDemoImage(
+      "বিশ্বৰ সংবাদ",
+      "WORLD"
+    ),
+    date:"আজিৰ দিনটো",
+    author:"Press Express Assam"
+  },
+
+
+  {
+    category:"ব্যৱসায়",
+    title:"ব্যৱসায় আৰু অৰ্থনীতিৰ গুৰুত্বপূৰ্ণ সংবাদ",
+    summary:"বজাৰ, ব্যৱসায় আৰু অৰ্থনীতিৰ শেহতীয়া আপডেট।",
+    image:createDemoImage(
+      "ব্যৱসায়",
+      "BUSINESS"
+    ),
+    date:"আজিৰ দিনটো",
+    author:"Press Express Assam"
+  },
+
+
+  {
+    category:"খেল",
+    title:"ক্ৰীড়া জগতৰ শেহতীয়া সংবাদ",
+    summary:"ক্ৰীড়া জগতৰ গুৰুত্বপূৰ্ণ খবৰ আৰু নতুন আপডেট।",
+    image:createDemoImage(
+      "ক্ৰীড়া সংবাদ",
+      "SPORTS"
+    ),
+    date:"আজিৰ দিনটো",
+    author:"Press Express Assam"
+  },
+
+
+  {
+    category:"বিনোদন",
+    title:"বিনোদন জগতৰ নতুন খবৰ",
+    summary:"চলচ্চিত্ৰ, সংগীত আৰু বিনোদন জগতৰ শেহতীয়া সংবাদ।",
+    image:createDemoImage(
+      "বিনোদন",
+      "ENTERTAINMENT"
+    ),
+    date:"আজিৰ দিনটো",
+    author:"Press Express Assam"
+  }
+
+];
+
+
+/* =====================================================
+   LOAD SAVED NEWS
+===================================================== */
+
+let newsData;
+
+try{
+
+  newsData =
+    JSON.parse(
+      localStorage.getItem(
+        "press_express_news"
+      )
+    ) || defaultNews;
+
+}catch(error){
+
+  newsData =
+    defaultNews;
+
 }
 
-/* CATEGORY BUTTONS */
 
-document.querySelectorAll(".cat").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    filterNews(btn.dataset.filter);
-  });
-});
+let currentCategory = "সকলো";
 
-document.querySelectorAll(".main-nav button[data-category]").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    filterNews(btn.dataset.category);
-  });
-});
 
-/* ================= SEARCH ================= */
+/* =====================================================
+   DATE
+===================================================== */
 
-function searchNews(){
+document.getElementById(
+  "todayDate"
+).textContent =
+  new Intl.DateTimeFormat(
+    "as-IN",
+    {
+      dateStyle:"full"
+    }
+  ).format(
+    new Date()
+  );
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+const nav =
+  document.getElementById(
+    "nav"
+  );
+
+
+categories
+  .slice(1)
+  .forEach(
+    function(category){
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+      button.textContent =
+        category;
+
+      button.onclick =
+        function(){
+
+          selectCategory(
+            category
+          );
+
+        };
+
+      nav.appendChild(
+        button
+      );
+
+    }
+  );
+
+
+/* =====================================================
+   CATEGORY BUTTONS
+===================================================== */
+
+const categoryBox =
+  document.getElementById(
+    "categories"
+  );
+
+
+categories.forEach(
+  function(category){
+
+    const button =
+      document.createElement(
+        "button"
+      );
+
+    button.className =
+      "category" +
+      (
+        category ===
+        "সকলো"
+          ? " active"
+          : ""
+      );
+
+    button.textContent =
+      category;
+
+    button.onclick =
+      function(){
+
+        selectCategory(
+          category
+        );
+
+      };
+
+    categoryBox.appendChild(
+      button
+    );
+
+  }
+);
+
+
+/* =====================================================
+   ADMIN CATEGORY
+===================================================== */
+
+const adminCategory =
+  document.getElementById(
+    "newsCategory"
+  );
+
+categories
+  .slice(1)
+  .forEach(
+    function(category){
+
+      const option =
+        document.createElement(
+          "option"
+        );
+
+      option.value =
+        category;
+
+      option.textContent =
+        category;
+
+      adminCategory.appendChild(
+        option
+      );
+
+    }
+  );
+
+
+/* =====================================================
+   SELECT CATEGORY
+===================================================== */
+
+function selectCategory(
+  category
+){
+
+  currentCategory =
+    category;
+
+
+  document
+    .querySelectorAll(
+      ".category"
+    )
+    .forEach(
+      function(button){
+
+        button.classList.toggle(
+          "active",
+          button.textContent.trim() ===
+          category
+        );
+
+      }
+    );
+
+
+  renderNews();
+
+}
+
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+function getFilteredNews(){
 
   const search =
-    document.getElementById("search")
+    document
+      .getElementById(
+        "search"
+      )
       .value
-      .toLowerCase()
+      .trim()
+      .toLowerCase();
+
+
+  return newsData.filter(
+    function(news){
+
+      const categoryMatch =
+        currentCategory ===
+        "সকলো" ||
+        news.category ===
+        currentCategory;
+
+
+      const text =
+        (
+          news.title +
+          " " +
+          news.summary +
+          " " +
+          news.category
+        ).toLowerCase();
+
+
+      const searchMatch =
+        !search ||
+        text.includes(
+          search
+        );
+
+
+      return (
+        categoryMatch &&
+        searchMatch
+      );
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   RENDER NEWS
+===================================================== */
+
+function renderNews(){
+
+  const data =
+    getFilteredNews();
+
+
+  const hero =
+    document.getElementById(
+      "heroGrid"
+    );
+
+  const grid =
+    document.getElementById(
+      "newsGrid"
+    );
+
+
+  if(
+    data.length === 0
+  ){
+
+    hero.innerHTML =
+      "";
+
+    grid.innerHTML =
+      `
+      <div class="empty">
+
+        <h3>
+          কোনো খবৰ পোৱা নগ'ল
+        </h3>
+
+        <p style="margin-top:6px">
+          অন্য শব্দ বা শিতান দি পুনৰ চেষ্টা কৰক।
+        </p>
+
+      </div>
+      `;
+
+    return;
+
+  }
+
+
+  const first =
+    data[0];
+
+
+  const side =
+    data.slice(
+      1,
+      3
+    );
+
+
+  hero.innerHTML =
+    `
+    <article class="hero">
+
+      <img
+        class="hero-image"
+        src="${first.image}"
+        alt="${escapeHtml(first.title)}"
+      >
+
+      <div class="hero-overlay">
+
+        <div class="hero-content">
+
+          <span class="badge">
+            ${escapeHtml(first.category)}
+          </span>
+
+          <h2>
+            ${escapeHtml(first.title)}
+          </h2>
+
+          <p>
+            ${escapeHtml(first.summary)}
+          </p>
+
+          <div class="hero-meta">
+            ${escapeHtml(first.date)}
+            •
+            ${escapeHtml(first.author)}
+          </div>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <div class="side-news">
+
+      ${side
+        .map(
+          function(item){
+
+            return `
+
+            <article class="side-card">
+
+              <img
+                src="${item.image}"
+                alt="${escapeHtml(item.title)}"
+              >
+
+              <div class="side-content">
+
+                <span class="badge">
+                  ${escapeHtml(item.category)}
+                </span>
+
+                <h3>
+                  ${escapeHtml(item.title)}
+                </h3>
+
+              </div>
+
+            </article>
+
+            `;
+
+          }
+        )
+        .join("")}
+
+    </div>
+    `;
+
+
+  grid.innerHTML =
+    data
+      .slice(3)
+      .map(
+        createCard
+      )
+      .join("");
+
+
+}
+
+
+/* =====================================================
+   NEWS CARD
+===================================================== */
+
+function createCard(
+  item
+){
+
+  return `
+
+  <article class="news-card">
+
+    <img
+      class="news-image"
+      src="${item.image}"
+      alt="${escapeHtml(item.title)}"
+      loading="lazy"
+    >
+
+    <div class="news-body">
+
+      <span class="badge">
+
+        ${escapeHtml(item.category)}
+
+      </span>
+
+
+      <h3>
+
+        ${escapeHtml(item.title)}
+
+      </h3>
+
+
+      <p>
+
+        ${escapeHtml(item.summary)}
+
+      </p>
+
+
+      <div class="meta">
+
+        ${escapeHtml(item.author)}
+        •
+        ${escapeHtml(item.date)}
+
+      </div>
+
+    </div>
+
+  </article>
+
+  `;
+
+}
+
+
+/* =====================================================
+   DEMO IMAGE
+===================================================== */
+
+function createDemoImage(
+  title,
+  label
+){
+
+  const svg = `
+
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="1200"
+    height="700"
+  >
+
+    <defs>
+
+      <linearGradient
+        id="background"
+        x1="0"
+        y1="0"
+        x2="1"
+        y2="1"
+      >
+
+        <stop
+          offset="0%"
+          stop-color="#111923"
+        />
+
+        <stop
+          offset="100%"
+          stop-color="#05070a"
+        />
+
+      </linearGradient>
+
+      <radialGradient id="red">
+
+        <stop
+          stop-color="#c8102e"
+          stop-opacity=".65"
+        />
+
+        <stop
+          offset="100%"
+          stop-color="#c8102e"
+          stop-opacity="0"
+        />
+
+      </radialGradient>
+
+    </defs>
+
+
+    <rect
+      width="1200"
+      height="700"
+      fill="url(#background)"
+    />
+
+
+    <circle
+      cx="1000"
+      cy="130"
+      r="370"
+      fill="url(#red)"
+    />
+
+
+    <path
+      d="M0 620 L560 0"
+      stroke="#c8102e"
+      stroke-width="10"
+      opacity=".2"
+    />
+
+
+    <text
+      x="65"
+      y="455"
+      fill="#c8102e"
+      font-family="Arial"
+      font-size="28"
+      font-weight="700"
+    >
+
+      ${label}
+
+    </text>
+
+
+    <text
+      x="65"
+      y="525"
+      fill="white"
+      font-family="Arial"
+      font-size="45"
+      font-weight="700"
+    >
+
+      ${title}
+
+    </text>
+
+
+    <text
+      x="65"
+      y="585"
+      fill="#c9cdd2"
+      font-family="Arial"
+      font-size="24"
+    >
+
+      PRESS EXPRESS ASSAM
+
+    </text>
+
+  </svg>
+
+  `;
+
+
+  return (
+    "data:image/svg+xml;base64," +
+    btoa(
+      unescape(
+        encodeURIComponent(
+          svg
+        )
+      )
+    )
+  );
+
+}
+
+
+/* =====================================================
+   ADMIN OPEN
+===================================================== */
+
+function openAdmin(){
+
+  document
+    .getElementById(
+      "adminModal"
+    )
+    .classList.add(
+      "show"
+    );
+
+
+  document
+    .getElementById(
+      "loginBox"
+    )
+    .style.display =
+    "block";
+
+
+  document
+    .getElementById(
+      "adminPanel"
+    )
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById(
+      "adminPassword"
+    )
+    .value =
+    "";
+
+}
+
+
+/* =====================================================
+   ADMIN LOGIN
+===================================================== */
+
+function loginAdmin(){
+
+  const password =
+    document
+      .getElementById(
+        "adminPassword"
+      )
+      .value;
+
+
+  if(
+    password !==
+    "1234"
+  ){
+
+    alert(
+      "❌ Admin Password ভুল।"
+    );
+
+    return;
+
+  }
+
+
+  document
+    .getElementById(
+      "loginBox"
+    )
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById(
+      "adminPanel"
+    )
+    .style.display =
+    "block";
+
+
+  renderAdminList();
+
+}
+
+
+/* =====================================================
+   CLOSE ADMIN
+===================================================== */
+
+function closeAdmin(){
+
+  document
+    .getElementById(
+      "adminModal"
+    )
+    .classList.remove(
+      "show"
+    );
+
+}
+
+
+/* =====================================================
+   PUBLISH NEWS
+===================================================== */
+
+function publishNews(
+  event
+){
+
+  event.preventDefault();
+
+
+  const title =
+    document
+      .getElementById(
+        "newsTitle"
+      )
+      .value
       .trim();
 
-  document.querySelectorAll(".cat").forEach(btn=>{
-    btn.classList.remove("active");
-  });
 
-  document.querySelector('.cat[data-filter="সকলো"]')
-    .classList.add("active");
+  const category =
+    document
+      .getElementById(
+        "newsCategory"
+      )
+      .value;
 
-  currentFilter = "সকলো";
 
-  applyFilters(search);
-}
+  const summary =
+    document
+      .getElementById(
+        "newsSummary"
+      )
+      .value
+      .trim();
 
-function applyFilters(search=""){
 
-  const cards =
-    document.querySelectorAll(".news-card");
+  const author =
+    document
+      .getElementById(
+        "newsAuthor"
+      )
+      .value
+      .trim() ||
+    "Press Express Assam";
 
-  let visible = 0;
 
-  cards.forEach(card=>{
+  const file =
+    document
+      .getElementById(
+        "newsImage"
+      )
+      .files[0];
 
-    const category =
-      card.dataset.category;
 
-    const text =
-      card.innerText.toLowerCase();
+  if(!title){
 
-    const categoryMatch =
-      currentFilter === "সকলো" ||
-      category === currentFilter;
+    alert(
+      "শিৰোনাম লিখক।"
+    );
 
-    const searchMatch =
-      !search || text.includes(search);
+    return;
 
-    if(categoryMatch && searchMatch){
-      card.style.display="";
-      visible++;
-    }else{
-      card.style.display="none";
+  }
+
+
+  if(!summary){
+
+    alert(
+      "খবৰৰ বিৱৰণ লিখক।"
+    );
+
+    return;
+
+  }
+
+
+  function finish(
+    image
+  ){
+
+    newsData.unshift({
+
+      category:category,
+
+      title:title,
+
+      summary:summary,
+
+      image:
+        image ||
+        createDemoImage(
+          title,
+          category
+        ),
+
+      date:
+        new Intl.DateTimeFormat(
+          "as-IN",
+          {
+            dateStyle:"medium"
+          }
+        ).format(
+          new Date()
+        ),
+
+      author:author
+
+    });
+
+
+    saveNews();
+
+
+    renderNews();
+
+
+    renderAdminList();
+
+
+    document
+      .querySelector(
+        "#adminPanel form"
+      )
+      .reset();
+
+
+    document
+      .getElementById(
+        "newsAuthor"
+      )
+      .value =
+      "Press Express Assam";
+
+
+    alert(
+      "✅ News সফলভাৱে Publish হৈছে।"
+    );
+
+  }
+
+
+  if(file){
+
+    if(
+      file.size >
+      900000
+    ){
+
+      alert(
+        "Photo 900KB-তকৈ সৰু দিয়ক।"
+      );
+
+      return;
+
     }
 
-  });
 
-  document.getElementById("noResult").style.display =
-    visible === 0 ? "block" : "none";
-}
+    const reader =
+      new FileReader();
 
-/* ================= SHARE ================= */
 
-function shareSite(){
+    reader.onload =
+      function(){
 
-  if(navigator.share){
+        finish(
+          reader.result
+        );
 
-    navigator.share({
-      title:"Press Express Assam",
-      text:"Press Express Assam — অসমৰ শেহতীয়া সংবাদ",
-      url:window.location.href
-    });
+      };
+
+
+    reader.readAsDataURL(
+      file
+    );
 
   }else{
 
-    copySite();
+    finish(
+      ""
+    );
 
   }
-}
-
-function copySite(){
-
-  navigator.clipboard.writeText(
-    window.location.href
-  ).then(()=>{
-
-    alert("Website link copy হৈছে।");
-
-  }).catch(()=>{
-
-    alert("Link: " + window.location.href);
-
-  });
 
 }
 
-/* ================= LIVE ================= */
 
-function showLive(){
+/* =====================================================
+   SAVE
+===================================================== */
 
-  alert(
-    "🔴 LIVE\n\nPress Express Assamৰ Live News section অতি সোনকালে উপলব্ধ হ'ব।"
+function saveNews(){
+
+  try{
+
+    localStorage.setItem(
+      "press_express_news",
+      JSON.stringify(
+        newsData
+      )
+    );
+
+  }catch(error){
+
+    alert(
+      "News save হোৱা নাই। Photo অলপ সৰু কৰি চেষ্টা কৰক।"
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   ADMIN LIST
+===================================================== */
+
+function renderAdminList(){
+
+  const list =
+    document.getElementById(
+      "adminList"
+    );
+
+
+  list.innerHTML =
+    "";
+
+
+  newsData.forEach(
+    function(item,index){
+
+      const row =
+        document.createElement(
+          "div"
+        );
+
+      row.className =
+        "admin-item";
+
+
+      row.innerHTML =
+        `
+        <div>
+
+          <strong>
+            ${escapeHtml(item.title)}
+          </strong>
+
+          <div
+            style="
+              color:#888;
+              font-size:11px;
+              margin-top:4px;
+            "
+          >
+
+            ${escapeHtml(item.category)}
+            •
+            ${escapeHtml(item.date)}
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="delete"
+          onclick="deleteNews(${index})"
+        >
+
+          Delete
+
+        </button>
+        `;
+
+
+      list.appendChild(
+        row
+      );
+
+    }
   );
 
 }
 
-/* ================= ADMIN ================= */
 
-function adminMessage(){
+/* =====================================================
+   DELETE
+===================================================== */
 
-  alert(
-    "Admin Panel\n\nএইটো demo control button।\nপৰৱৰ্তী সময়ত ইয়াত news management system সংযোগ কৰিব পাৰি।"
+function deleteNews(
+  index
+){
+
+  if(
+    !confirm(
+      "এই খবৰটো Delete কৰিবনে?"
+    )
+  ){
+
+    return;
+
+  }
+
+
+  newsData.splice(
+    index,
+    1
+  );
+
+
+  saveNews();
+
+
+  renderNews();
+
+
+  renderAdminList();
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHtml(
+  text
+){
+
+  return String(
+    text || ""
+  )
+  .replace(
+    /&/g,
+    "&amp;"
+  )
+  .replace(
+    /</g,
+    "&lt;"
+  )
+  .replace(
+    />/g,
+    "&gt;"
+  )
+  .replace(
+    /"/g,
+    "&quot;"
+  )
+  .replace(
+    /'/g,
+    "&#039;"
   );
 
 }
 
-/* ================= TOP ================= */
 
-function goTop(){
+/* =====================================================
+   GO NEWS
+===================================================== */
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+function goNews(){
+
+  document
+    .getElementById(
+      "newsSection"
+    )
+    .scrollIntoView({
+      behavior:"smooth"
+    });
 
 }
+
+
+/* =====================================================
+   INITIAL
+===================================================== */
+
+renderNews();
 
 </script>
 
 </body>
+
 </html>
