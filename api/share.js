@@ -10,8 +10,9 @@ const SUPABASE_KEY =
 const SITE =
   "https://press-express-assam-ryfd.vercel.app";
 
+
 function escapeHtml(value) {
-  return String(value || "")
+  return String(value ?? "")
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
@@ -19,16 +20,19 @@ function escapeHtml(value) {
     .replace(/'/g, "&#039;");
 }
 
+
 function escapeJson(value) {
-  return JSON.stringify(value || "")
+  return JSON.stringify(value ?? "")
     .replace(/</g, "\\u003c")
     .replace(/>/g, "\\u003e")
     .replace(/&/g, "\\u0026");
 }
 
-function addOrReplaceMeta(html, pattern, tag) {
-  if (pattern.test(html)) {
-    return html.replace(pattern, tag);
+
+function setMeta(html, regex, tag) {
+
+  if (regex.test(html)) {
+    return html.replace(regex, tag);
   }
 
   return html.replace(
@@ -37,134 +41,228 @@ function addOrReplaceMeta(html, pattern, tag) {
   );
 }
 
+
 module.exports = async function handler(req, res) {
+
   try {
 
-    // -----------------------------
-    // GET NEWS ID
-    // -----------------------------
+    /* =========================
+       GET NEWS ID
+    ========================= */
 
-    let id = req.query && req.query.id;
+    let id =
+      req.query &&
+      req.query.id;
+
+    /*
+      If Vercel rewrite gives:
+      /api/share?id=26
+      the above works.
+
+      Also supports:
+      /news/26
+    */
 
     if (!id && req.url) {
-      const match = req.url.match(/\/news\/([^/?]+)/);
+
+      const match =
+        req.url.match(
+          /\/news\/([^/?#]+)/
+        );
 
       if (match) {
         id = match[1];
       }
+
     }
 
+
     if (!id) {
+
       return res
         .status(400)
         .send("News ID missing");
+
     }
 
-    // -----------------------------
-    // LOAD ARTICLE FROM SUPABASE
-    // -----------------------------
 
-    const response = await fetch(
-      `${SUPABASE_URL}/rest/v1/articles?id=eq.${encodeURIComponent(id)}&select=*`,
-      {
-        headers: {
-          apikey: SUPABASE_KEY,
-          Authorization: `Bearer ${SUPABASE_KEY}`
+    id = String(id);
+
+
+    /* =========================
+       LOAD NEWS
+    ========================= */
+
+    const apiUrl =
+      `${SUPABASE_URL}/rest/v1/articles` +
+      `?id=eq.${encodeURIComponent(id)}` +
+      `&select=*`;
+
+
+    const response =
+      await fetch(
+        apiUrl,
+        {
+          method: "GET",
+          headers: {
+            apikey: SUPABASE_KEY,
+            Authorization:
+              `Bearer ${SUPABASE_KEY}`
+          }
         }
-      }
-    );
+      );
+
 
     if (!response.ok) {
+
+      console.error(
+        "Supabase:",
+        response.status
+      );
+
       return res
         .status(500)
         .send("News load failed");
+
     }
 
-    const articles = await response.json();
 
-    if (!articles.length) {
+    const articles =
+      await response.json();
+
+
+    if (
+      !Array.isArray(articles) ||
+      articles.length === 0
+    ) {
+
       return res
         .status(404)
         .send("News not found");
+
     }
 
-    const article = articles[0];
 
-    // -----------------------------
-    // NEWS DATA
-    // -----------------------------
+    const article =
+      articles[0];
+
+
+    /* =========================
+       NEWS DATA
+    ========================= */
 
     const title =
       article.title ||
       "Press Express Assam";
 
+
     const description =
       article.excerpt ||
+      article.description ||
       article.content ||
       "অসমৰ শেহতীয়া স্থানীয়, ৰাজ্যিক, ৰাষ্ট্ৰীয় আৰু আন্তঃৰাষ্ট্ৰীয় সংবাদ।";
+
 
     const cleanDescription =
       String(description)
         .replace(/\s+/g, " ")
+        .trim()
         .substring(0, 160);
 
+
     const canonical =
-      `${SITE}/news/${encodeURIComponent(article.id)}`;
+      `${SITE}/news/${encodeURIComponent(
+        article.id
+      )}`;
+
 
     const image =
       article.image_url ||
       `${SITE}/logo2.png`;
 
+
     const category =
       article.category ||
       "অসম";
+
 
     const datePublished =
       article.created_at ||
       new Date().toISOString();
 
-    // -----------------------------
-    // NEWS ARTICLE SCHEMA
-    // -----------------------------
+
+    const dateModified =
+      article.updated_at ||
+      datePublished;
+
+
+    /* =========================
+       JSON-LD
+    ========================= */
 
     const articleSchema = {
-      "@context": "https://schema.org",
-      "@type": "NewsArticle",
 
-      headline: title,
+      "@context":
+        "https://schema.org",
 
-      description: cleanDescription,
+      "@type":
+        "NewsArticle",
 
-      image: [image],
+      headline:
+        title,
 
-      datePublished: datePublished,
+      description:
+        cleanDescription,
 
-      dateModified:
-        article.updated_at ||
+      image: [
+        image
+      ],
+
+      datePublished:
         datePublished,
 
-      articleSection: category,
+      dateModified:
+        dateModified,
+
+      articleSection:
+        category,
 
       mainEntityOfPage: {
-        "@type": "WebPage",
-        "@id": canonical
+
+        "@type":
+          "WebPage",
+
+        "@id":
+          canonical
+
       },
 
       publisher: {
-        "@type": "Organization",
 
-        name: "Press Express Assam",
+        "@type":
+          "Organization",
+
+        name:
+          "Press Express Assam",
 
         logo: {
-          "@type": "ImageObject",
-          url: `${SITE}/logo2.png`
+
+          "@type":
+            "ImageObject",
+
+          url:
+            `${SITE}/logo2.png`
+
         }
+
       }
+
     };
 
-    // -----------------------------
-    // LOAD INDEX.HTML
-    // -----------------------------
+
+    /* =========================
+       LOAD INDEX
+    ========================= */
 
     const indexPath =
       path.join(
@@ -172,98 +270,106 @@ module.exports = async function handler(req, res) {
         "index.html"
       );
 
+
     let html =
       fs.readFileSync(
         indexPath,
         "utf8"
       );
 
-    // -----------------------------
-    // TITLE
-    // -----------------------------
+
+    /* =========================
+       TITLE
+    ========================= */
 
     html = html.replace(
       /<title>[\s\S]*?<\/title>/i,
-      `<title>${escapeHtml(title)} | Press Express Assam</title>`
+
+      `<title>${escapeHtml(
+        title
+      )} | Press Express Assam</title>`
     );
 
-    // -----------------------------
-    // DESCRIPTION
-    // -----------------------------
 
-    html = addOrReplaceMeta(
+    /* =========================
+       DESCRIPTION
+    ========================= */
+
+    html = setMeta(
       html,
 
       /<meta\s+name=["']description["'][^>]*>/i,
 
-      `<meta name="description" content="${escapeHtml(cleanDescription)}">`
+      `<meta name="description" content="${escapeHtml(
+        cleanDescription
+      )}">`
     );
 
-    // -----------------------------
-    // CANONICAL
-    // -----------------------------
 
-    html = addOrReplaceMeta(
+    /* =========================
+       CANONICAL
+    ========================= */
+
+    html = setMeta(
       html,
 
       /<link\s+rel=["']canonical["'][^>]*>/i,
 
-      `<link rel="canonical" href="${escapeHtml(canonical)}">`
+      `<link rel="canonical" href="${escapeHtml(
+        canonical
+      )}">`
     );
 
-    // -----------------------------
-    // OG TITLE
-    // -----------------------------
 
-    html = addOrReplaceMeta(
+    /* =========================
+       OPEN GRAPH
+    ========================= */
+
+    html = setMeta(
       html,
 
       /<meta\s+property=["']og:title["'][^>]*>/i,
 
-      `<meta property="og:title" content="${escapeHtml(title)}">`
+      `<meta property="og:title" content="${escapeHtml(
+        title
+      )}">`
     );
 
-    // -----------------------------
-    // OG DESCRIPTION
-    // -----------------------------
 
-    html = addOrReplaceMeta(
+    html = setMeta(
       html,
 
       /<meta\s+property=["']og:description["'][^>]*>/i,
 
-      `<meta property="og:description" content="${escapeHtml(cleanDescription)}">`
+      `<meta property="og:description" content="${escapeHtml(
+        cleanDescription
+      )}">`
     );
 
-    // -----------------------------
-    // OG URL
-    // -----------------------------
 
-    html = addOrReplaceMeta(
+    html = setMeta(
       html,
 
       /<meta\s+property=["']og:url["'][^>]*>/i,
 
-      `<meta property="og:url" content="${escapeHtml(canonical)}">`
+      `<meta property="og:url" content="${escapeHtml(
+        canonical
+      )}">`
     );
 
-    // -----------------------------
-    // OG IMAGE
-    // -----------------------------
 
-    html = addOrReplaceMeta(
+    html = setMeta(
       html,
 
       /<meta\s+property=["']og:image["'][^>]*>/i,
 
-      `<meta property="og:image" content="${escapeHtml(image)}">`
+      `<meta property="og:image" content="${escapeHtml(
+        image
+      )}">`
     );
 
-    // -----------------------------
-    // OG TYPE
-    // -----------------------------
 
-    html = addOrReplaceMeta(
+    html = setMeta(
       html,
 
       /<meta\s+property=["']og:type["'][^>]*>/i,
@@ -271,112 +377,10 @@ module.exports = async function handler(req, res) {
       `<meta property="og:type" content="article">`
     );
 
-    // -----------------------------
-    // OG SITE NAME
-    // -----------------------------
 
-    html = addOrReplaceMeta(
+    html = setMeta(
       html,
 
       /<meta\s+property=["']og:site_name["'][^>]*>/i,
 
-      `<meta property="og:site_name" content="Press Express Assam">`
-    );
-
-    // -----------------------------
-    // TWITTER CARD
-    // -----------------------------
-
-    html = addOrReplaceMeta(
-      html,
-
-      /<meta\s+name=["']twitter:card["'][^>]*>/i,
-
-      `<meta name="twitter:card" content="summary_large_image">`
-    );
-
-    // -----------------------------
-    // TWITTER TITLE
-    // -----------------------------
-
-    html = addOrReplaceMeta(
-      html,
-
-      /<meta\s+name=["']twitter:title["'][^>]*>/i,
-
-      `<meta name="twitter:title" content="${escapeHtml(title)}">`
-    );
-
-    // -----------------------------
-    // TWITTER DESCRIPTION
-    // -----------------------------
-
-    html = addOrReplaceMeta(
-      html,
-
-      /<meta\s+name=["']twitter:description["'][^>]*>/i,
-
-      `<meta name="twitter:description" content="${escapeHtml(cleanDescription)}">`
-    );
-
-    // -----------------------------
-    // TWITTER IMAGE
-    // -----------------------------
-
-    html = addOrReplaceMeta(
-      html,
-
-      /<meta\s+name=["']twitter:image["'][^>]*>/i,
-
-      `<meta name="twitter:image" content="${escapeHtml(image)}">`
-    );
-
-    // -----------------------------
-    // JSON-LD
-    // -----------------------------
-
-    html = html.replace(
-      /<\/head>/i,
-
-      `
-<script type="application/ld+json">
-${escapeJson(articleSchema)}
-</script>
-</head>
-`
-    );
-
-    // -----------------------------
-    // HEADERS
-    // -----------------------------
-
-    res.setHeader(
-      "Content-Type",
-      "text/html; charset=utf-8"
-    );
-
-    res.setHeader(
-      "Cache-Control",
-      "public, s-maxage=300, stale-while-revalidate=600"
-    );
-
-    // -----------------------------
-    // SEND HTML
-    // -----------------------------
-
-    return res
-      .status(200)
-      .send(html);
-
-  } catch (error) {
-
-    console.error(
-      "Share API Error:",
-      error
-    );
-
-    return res
-      .status(500)
-      .send("Server error");
-  }
-};
+      `<
