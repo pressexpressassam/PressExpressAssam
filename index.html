@@ -2583,6 +2583,51 @@ footer a{
 
     font-size:20px !important;
   }
+/* ===== PRESS EXPRESS SIDEBAR LOGO SIZE ===== */
+
+.latest-news img,
+.latest-card img,
+.side-news img,
+.sidebar img {
+  width: 135px !important;
+  height: 135px !important;
+  max-width: 135px !important;
+  object-fit: contain !important;
+  margin: auto !important;
+}
+
+/* Sidebar news cards */
+.latest-news,
+.latest-card,
+.side-news {
+  overflow: hidden !important;
+}
+
+/* Keep the right-side cards neat */
+.latest-news img,
+.latest-card img,
+.side-news img {
+  flex-shrink: 0 !important;
+}
+
+/* Footer logo */
+footer img,
+.footer img {
+  max-width: 120px !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
+
+/* Mobile/tablet */
+@media (max-width: 768px) {
+  .latest-news img,
+  .latest-card img,
+  .side-news img,
+  .sidebar img {
+    width: 100px !important;
+    height: 100px !important;
+    max-width: 100px !important;
+  }
 }
 </style>
 </head>
