@@ -3745,11 +3745,8 @@ function renderShareButton(
     async function(){
 
       const shareUrl =
-        window.location.origin +
-        "/?news=" +
-        encodeURIComponent(
-          article.id
-        );
+  "https://press-express-assam-ryfd.vercel.app/?news=" +
+  encodeURIComponent(article.id);
 
 
       const shareText =
