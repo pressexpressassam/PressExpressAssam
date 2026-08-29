@@ -3021,35 +3021,28 @@ function filterNews(){
 function createNewsCard(article){
 
   const grid =
-    document.getElementById(
-      "newsGrid"
-    );
-
+    document.getElementById("newsGrid");
 
   const card =
-    document.createElement(
-      "article"
-    );
+    document.createElement("article");
 
-  card.className =
-    "newsCard";
+  card.className = "newsCard";
 
+
+  /* NEWS IMAGE */
 
   const img =
-    document.createElement(
-      "img"
-    );
-
+    document.createElement("img");
 
   img.src =
     article.image_url ||
     "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1000&q=80";
 
-
   img.alt =
     article.title ||
     "Press Express Assam";
 
+  img.loading = "lazy";
 
   img.onerror =
     function(){
@@ -3059,68 +3052,64 @@ function createNewsCard(article){
     };
 
 
+  /* NEWS BODY */
+
   const body =
-    document.createElement(
-      "div"
-    );
+    document.createElement("div");
 
-  body.className =
-    "newsBody";
+  body.className = "newsBody";
 
+
+  /* CATEGORY */
 
   const badge =
-    document.createElement(
-      "span"
-    );
+    document.createElement("span");
 
-  badge.className =
-    "badge";
+  badge.className = "badge";
 
   badge.textContent =
-    article.category ||
-    "অসম";
+    article.category || "অসম";
 
+
+  /* DATE */
 
   const date =
-    document.createElement(
-      "div"
-    );
+    document.createElement("div");
 
-  date.className =
-    "date";
+  date.className = "date";
 
   date.textContent =
     new Date(
       article.created_at
-    ).toLocaleString(
-      "as-IN"
-    );
-const views =
-  document.createElement(
-    "span"
-  );
+    ).toLocaleString("as-IN");
 
-views.className =
-  "views";
 
-views.textContent =
-  "👁️ " +
-  Number(article.views || 0) +
-  " views";
+  /* VIEWS */
+
+  const views =
+    document.createElement("span");
+
+  views.className = "views";
+
+  views.textContent =
+    "👁️ " +
+    Number(article.views || 0) +
+    " views";
+
+
+  /* TITLE */
 
   const title =
-    document.createElement(
-      "h3"
-    );
+    document.createElement("h3");
 
   title.textContent =
     article.title || "";
 
 
+  /* EXCERPT */
+
   const text =
-    document.createElement(
-      "p"
-    );
+    document.createElement("p");
 
   text.textContent =
     article.excerpt ||
@@ -3128,62 +3117,76 @@ views.textContent =
     "";
 
 
-  const read =
-    document.createElement(
-      "span"
-    );
+  /*
+   * IMPORTANT:
+   * Real HTML link for Google crawling
+   */
 
-  read.className =
-    "read";
+  const readLink =
+    document.createElement("a");
 
-  read.textContent =
+  readLink.href =
+    "/news/" +
+    encodeURIComponent(article.id);
+
+  readLink.className = "read";
+
+  readLink.textContent =
     "সম্পূৰ্ণ খবৰ →";
 
+  readLink.setAttribute(
+    "aria-label",
+    "সম্পূৰ্ণ খবৰ: " +
+    (article.title || "News")
+  );
 
-  read.onclick =
-    function(){
 
-      showDetails(
-        article
+  /*
+   * Keep JavaScript modal also working
+   */
+
+  readLink.onclick =
+    function(event){
+
+      event.preventDefault();
+
+      showDetails(article);
+
+      /*
+       * URL update without page reload
+       */
+
+      history.pushState(
+        {},
+        "",
+        "/news/" +
+        encodeURIComponent(article.id)
       );
     };
 
 
-  body.appendChild(
-    badge
-  );
+  /* APPEND BODY */
 
-  body.appendChild(
-    date
-  );
-body.appendChild(
-    views
-  );
-  body.appendChild(
-    title
-  );
+  body.appendChild(badge);
 
-  body.appendChild(
-    text
-  );
+  body.appendChild(date);
 
-  body.appendChild(
-    read
-  );
+  body.appendChild(views);
+
+  body.appendChild(title);
+
+  body.appendChild(text);
+
+  body.appendChild(readLink);
 
 
-  card.appendChild(
-    img
-  );
+  /* APPEND CARD */
 
-  card.appendChild(
-    body
-  );
+  card.appendChild(img);
 
+  card.appendChild(body);
 
-  grid.appendChild(
-    card
-  );
+  grid.appendChild(card);
 }
 
 
