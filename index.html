@@ -3372,7 +3372,34 @@ function createNewsCard(article){
   body.appendChild(text);
 
   body.appendChild(readLink);
+/* NEXT NEWS BUTTON */
 
+const nextLink = document.createElement("button");
+
+nextLink.className = "nextNews";
+
+nextLink.textContent = "পৰৱৰ্তী বাতৰি →";
+
+nextLink.onclick = function(){
+
+    const currentIndex = articles.findIndex(
+        a => String(a.id) === String(article.id)
+    );
+
+    const nextArticle = articles[currentIndex + 1];
+
+    if(nextArticle){
+        showDetails(nextArticle);
+        history.pushState(
+            {},
+            "",
+            "/news/" + encodeURIComponent(nextArticle.id)
+        );
+    }
+
+};
+
+body.appendChild(nextLink);
 
   /* APPEND CARD */
 
