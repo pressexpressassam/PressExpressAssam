@@ -5030,6 +5030,41 @@ function enablePushNotifications(){
 
   });
 }
+  function enablePushNotifications(){
+
+  OneSignalDeferred.push(async function(OneSignal){
+
+    try{
+
+      await OneSignal.Notifications.requestPermission();
+
+      if(OneSignal.Notifications.permission){
+
+        const btn = document.getElementById("notifyBtn");
+
+        if(btn){
+          btn.textContent = "✅ Notification চালু হৈছে";
+        }
+
+        alert("✅ Push Notification চালু হৈছে!");
+
+      }else{
+
+        alert("❌ Notification Allow কৰা হোৱা নাই।");
+
+      }
+
+    }catch(error){
+
+      console.error(error);
+
+      alert("❌ OneSignal Error: " + error.message);
+
+    }
+
+  });
+
+}
 </script>
 
 </body>
