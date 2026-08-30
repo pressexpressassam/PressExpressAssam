@@ -587,10 +587,24 @@ nav a:hover{
    ========================================================= */
 
 .newsGrid{
-  display:grid;
-  grid-template-columns:minmax(0, 2fr) minmax(300px, 1fr);
-  gap:24px;
-  align-items:start;
+    display:grid;
+    grid-template-columns:minmax(0, 2fr) minmax(300px, 1fr);
+    gap:24px;
+    align-items:start;
+}
+
+.newsGrid .newsCard:first-child{
+    grid-row:span 2;
+}
+
+.newsGrid .newsCard:first-child img{
+    height:420px;
+    object-fit:cover;
+}
+
+.newsGrid .newsCard:not(:first-child) img{
+    height:220px;
+    object-fit:cover;
 }
 
 .newsGrid .newsCard:first-child{
