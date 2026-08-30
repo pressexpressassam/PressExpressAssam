@@ -587,13 +587,22 @@ nav a:hover{
    ========================================================= */
 
 .newsGrid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:22px;
+    align-items:start;
+}
 
-  display:grid;
+.newsGrid .newsCard:first-child{
+    grid-row:span 2;
+}
 
-  grid-template-columns:
-    repeat(2,1fr);
+.newsGrid .newsCard:first-child img{
+    height:420px;
+}
 
-  gap:22px;
+.newsGrid .newsCard:not(:first-child) img{
+    height:220px;
 }
 
 
@@ -646,6 +655,19 @@ nav a:hover{
   color:#777;
   font-size:13px;
   font-weight:600;
+}
+  /* DESKTOP NEWS LAYOUT */
+
+@media(min-width:701px){
+
+    .newsGrid .newsCard:first-child img{
+        height:420px;
+    }
+
+    .newsGrid .newsCard:not(:first-child) img{
+        height:200px;
+    }
+
 }
 /* NEWS BODY */
 
