@@ -2123,7 +2123,25 @@ body.article-page .details > p{
 
 
 <body>
-
+<!-- PUSH NOTIFICATION BUTTON -->
+<div style="text-align:center;margin:15px 0;">
+  <button
+    id="notifyBtn"
+    onclick="enablePushNotifications()"
+    style="
+      background:#d71936;
+      color:#fff;
+      border:0;
+      padding:12px 20px;
+      border-radius:25px;
+      font-size:16px;
+      font-weight:bold;
+      cursor:pointer;
+    "
+  >
+    🔔 Notification চালু কৰক
+  </button>
+</div>
 
 <!-- =========================================================
      HEADER
@@ -4966,7 +4984,52 @@ document.addEventListener(
 
   }
 );
+/* =========================================================
+   ONE SIGNAL PUSH PERMISSION
+   ========================================================= */
 
+function enablePushNotifications(){
+
+  if(!window.OneSignalDeferred){
+    alert("OneSignal এতিয়াও load হোৱা নাই। অলপ অপেক্ষা কৰি আকৌ চেষ্টা কৰক।");
+    return;
+  }
+
+  OneSignalDeferred.push(async function(OneSignal){
+
+    try{
+
+      await OneSignal.Notifications.requestPermission();
+
+      const permission =
+        await OneSignal.Notifications.permission;
+
+      if(permission){
+
+        document.getElementById("notifyBtn").textContent =
+          "✅ Notification চালু হৈছে";
+
+        alert("✅ Push Notification সফলভাৱে চালু হৈছে!");
+
+      }else{
+
+        alert("❌ Notification permission Allow কৰা হোৱা নাই।");
+
+      }
+
+    }catch(error){
+
+      console.error("OneSignal Error:", error);
+
+      alert(
+        "❌ Notification চালু কৰিব পৰা নগ'ল।\n" +
+        error.message
+      );
+
+    }
+
+  });
+}
 </script>
 
 </body>
