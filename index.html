@@ -587,22 +587,24 @@ nav a:hover{
    ========================================================= */
 
 .newsGrid{
-    display:grid;
-    grid-template-columns:2fr 1fr;
-    gap:22px;
-    align-items:start;
+  display:grid;
+  grid-template-columns:minmax(0, 2fr) minmax(300px, 1fr);
+  gap:24px;
+  align-items:start;
 }
 
 .newsGrid .newsCard:first-child{
-    grid-row:span 2;
+  grid-row:span 2;
 }
 
 .newsGrid .newsCard:first-child img{
-    height:420px;
+  height:420px;
+  object-fit:cover;
 }
 
 .newsGrid .newsCard:not(:first-child) img{
-    height:220px;
+  height:220px;
+  object-fit:cover;
 }
 
 
@@ -1767,7 +1769,322 @@ footer a:hover{
   }
 
 }
+/* =========================================================
+   PRESS EXPRESS ASSAM — PROFESSIONAL NEWS LAYOUT
+   NDTV-INSPIRED CLEAN NEWS STYLE
+   ========================================================= */
 
+/* PAGE */
+body{
+  background:#f3f4f6 !important;
+  color:#171717;
+}
+
+/* MAIN CONTENT */
+main,
+.container,
+.section{
+  width:min(1440px,96%) !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+
+/* HEADER */
+.header{
+  width:96% !important;
+  min-height:76px !important;
+  margin:12px auto !important;
+  padding:8px 18px !important;
+  border-radius:12px !important;
+  background:#111 !important;
+  box-shadow:0 4px 18px rgba(0,0,0,.12) !important;
+}
+
+/* LATEST NEWS */
+.latest-news{
+  width:96% !important;
+  margin:14px auto 20px !important;
+  border-radius:12px !important;
+  overflow:hidden !important;
+  background:#fff !important;
+  box-shadow:0 3px 14px rgba(0,0,0,.08) !important;
+}
+
+/* SEARCH */
+.search{
+  width:96% !important;
+  margin:18px auto !important;
+  min-height:54px !important;
+  border-radius:10px !important;
+  border:1px solid #ddd !important;
+  background:#fff !important;
+  font-size:17px !important;
+  padding:0 18px !important;
+}
+
+/* BREAKING NEWS */
+.breaking-news{
+  width:96% !important;
+  margin:16px auto !important;
+  min-height:54px !important;
+  border-radius:8px !important;
+  overflow:hidden !important;
+  background:#d71936 !important;
+  box-shadow:0 3px 10px rgba(0,0,0,.12) !important;
+}
+
+/* CATEGORY BUTTONS */
+.category,
+.categories,
+.category-buttons{
+  width:96% !important;
+  margin:14px auto !important;
+  display:flex !important;
+  gap:10px !important;
+  overflow-x:auto !important;
+  scrollbar-width:none !important;
+}
+
+.category::-webkit-scrollbar,
+.categories::-webkit-scrollbar,
+.category-buttons::-webkit-scrollbar{
+  display:none;
+}
+
+/* NEWS SECTION TITLE */
+.sectionTitle{
+  width:96% !important;
+  margin:28px auto 16px !important;
+  padding-left:14px !important;
+  border-left:6px solid #d71936 !important;
+  font-size:28px !important;
+  font-weight:800 !important;
+}
+
+/* =========================================================
+   MAIN NEWS GRID
+   ========================================================= */
+
+.newsGrid{
+  width:96% !important;
+  max-width:1440px !important;
+  margin:20px auto 30px !important;
+
+  display:grid !important;
+  grid-template-columns:minmax(0,2fr) minmax(300px,1fr) !important;
+  gap:22px !important;
+  align-items:start !important;
+}
+
+/* MAIN FEATURED NEWS */
+.newsGrid .newsCard:first-child{
+  grid-row:span 2 !important;
+  min-height:100% !important;
+}
+
+.newsGrid .newsCard:first-child img{
+  width:100% !important;
+  height:430px !important;
+  object-fit:cover !important;
+}
+
+/* SIDE NEWS */
+.newsGrid .newsCard:not(:first-child) img{
+  width:100% !important;
+  height:210px !important;
+  object-fit:cover !important;
+}
+
+/* NEWS CARD */
+.newsCard{
+  background:#fff !important;
+  border:1px solid #e4e4e4 !important;
+  border-radius:12px !important;
+  overflow:hidden !important;
+  box-shadow:0 3px 14px rgba(0,0,0,.08) !important;
+  transition:transform .2s ease,box-shadow .2s ease !important;
+}
+
+.newsCard:hover{
+  transform:translateY(-3px) !important;
+  box-shadow:0 8px 24px rgba(0,0,0,.13) !important;
+}
+
+/* NEWS IMAGE */
+.newsCard img{
+  display:block !important;
+  width:100% !important;
+  object-fit:cover !important;
+}
+
+/* NEWS BODY */
+.newsBody{
+  padding:16px !important;
+}
+
+.newsBody h3{
+  margin:8px 0 !important;
+  font-size:21px !important;
+  line-height:1.35 !important;
+  font-weight:800 !important;
+  color:#171717 !important;
+}
+
+.newsBody p{
+  margin:8px 0 !important;
+  font-size:15px !important;
+  line-height:1.65 !important;
+  color:#555 !important;
+}
+
+/* BADGE */
+.badge{
+  display:inline-block !important;
+  background:#d71936 !important;
+  color:#fff !important;
+  padding:5px 11px !important;
+  border-radius:5px !important;
+  font-size:12px !important;
+  font-weight:700 !important;
+}
+
+/* VIEWS */
+.views{
+  color:#777 !important;
+  font-size:13px !important;
+  margin:8px 0 !important;
+}
+
+/* READ MORE */
+.newsCard a{
+  color:#c51230 !important;
+  font-weight:700 !important;
+  text-decoration:underline !important;
+}
+
+/* =========================================================
+   OTHER NEWS GRIDS
+   ========================================================= */
+
+.newsGrid:not(:first-of-type){
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+}
+
+.newsGrid:not(:first-of-type) .newsCard:first-child{
+  grid-row:auto !important;
+}
+
+.newsGrid:not(:first-of-type) .newsCard img{
+  height:210px !important;
+}
+
+/* GALLERY */
+.gallery-images{
+  gap:12px !important;
+}
+
+.gallery-images img{
+  border-radius:10px !important;
+  object-fit:cover !important;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:700px){
+
+  body{
+    overflow-x:hidden !important;
+  }
+
+  .header{
+    width:94% !important;
+    min-height:64px !important;
+    padding:7px 10px !important;
+    margin:8px auto !important;
+  }
+
+  .latest-news{
+    width:94% !important;
+    margin:10px auto 14px !important;
+  }
+
+  .search{
+    width:94% !important;
+    margin:12px auto !important;
+    min-height:50px !important;
+  }
+
+  .breaking-news{
+    width:94% !important;
+    margin:12px auto !important;
+    min-height:48px !important;
+  }
+
+  .sectionTitle{
+    width:94% !important;
+    margin:22px auto 12px !important;
+    font-size:23px !important;
+  }
+
+  /* MOBILE = SINGLE COLUMN */
+  .newsGrid,
+  .newsGrid:not(:first-of-type){
+    width:94% !important;
+    margin:15px auto 25px !important;
+
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:16px !important;
+  }
+
+  .newsGrid .newsCard:first-child{
+    grid-row:auto !important;
+  }
+
+  .newsGrid .newsCard:first-child img{
+    height:250px !important;
+  }
+
+  .newsGrid .newsCard:not(:first-child) img,
+  .newsGrid:not(:first-of-type) .newsCard img{
+    height:190px !important;
+  }
+
+  .newsBody{
+    padding:14px !important;
+  }
+
+  .newsBody h3{
+    font-size:19px !important;
+    line-height:1.4 !important;
+  }
+
+  .newsBody p{
+    font-size:14px !important;
+  }
+}
+
+/* SMALL PHONES */
+@media(max-width:400px){
+
+  .newsGrid{
+    width:92% !important;
+  }
+
+  .newsGrid .newsCard:first-child img{
+    height:220px !important;
+  }
+
+  .newsGrid .newsCard:not(:first-child) img{
+    height:175px !important;
+  }
+
+  .newsBody h3{
+    font-size:18px !important;
+  }
+}
 </style>
 
 <!-- ONE SIGNAL PUSH NOTIFICATION -->
