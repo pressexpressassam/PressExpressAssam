@@ -45,10 +45,21 @@
   content="https://press-express-assam-ryfd.vercel.app/"
 >
 
-<meta
-  property="og:image"
-  content="https://press-express-assam-ryfd.vercel.app/logo2.png"
->
+<meta id="ogImage"
+      property="og:image"
+      content="https://press-express-assam-ryfd.vercel.app/logo2.png">
+
+<meta id="ogTitle"
+      property="og:title"
+      content="Press Express Assam">
+
+<meta id="ogDescription"
+      property="og:description"
+      content="অসমৰ শেহতীয়া সংবাদ">
+
+<meta id="ogUrl"
+      property="og:url"
+      content="https://press-express-assam-ryfd.vercel.app/">
 
 <meta property="og:site_name" content="Press Express Assam">
 
@@ -3547,7 +3558,68 @@ function createNewsCard(article){
    ========================================================= */
 
 async function showDetails(article){
+  /* ===== UPDATE SHARE PREVIEW ===== */
 
+  const ogImage =
+    document.getElementById("ogImage");
+
+  const ogTitle =
+    document.getElementById("ogTitle");
+
+  const ogDescription =
+    document.getElementById("ogDescription");
+
+  const ogUrl =
+    document.getElementById("ogUrl");
+
+
+  const articleUrl =
+    "https://press-express-assam-ryfd.vercel.app/news/" +
+    encodeURIComponent(article.id);
+
+
+  if(ogImage){
+
+    ogImage.setAttribute(
+      "content",
+      article.image_url ||
+      "https://press-express-assam-ryfd.vercel.app/logo2.png"
+    );
+
+  }
+
+
+  if(ogTitle){
+
+    ogTitle.setAttribute(
+      "content",
+      article.title ||
+      "Press Express Assam"
+    );
+
+  }
+
+
+  if(ogDescription){
+
+    ogDescription.setAttribute(
+      "content",
+      article.excerpt ||
+      article.content ||
+      "Press Express Assam"
+    );
+
+  }
+
+
+  if(ogUrl){
+
+    ogUrl.setAttribute(
+      "content",
+      articleUrl
+    );
+
+  }
   /* INCREMENT VIEW COUNTER */
 
   let newViewCount = null;
