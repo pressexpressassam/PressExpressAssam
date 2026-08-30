@@ -1825,33 +1825,6 @@ footer a:hover{
 
 /* ===== MOBILE ===== */
 
-@media (max-width:700px){
-
-    .newsGrid{
-        grid-template-columns:1fr !important;
-        gap:18px !important;
-    }
-
-    .newsGrid .newsCard:first-child{
-        grid-row:auto !important;
-    }
-
-    .newsGrid .newsCard:first-child img{
-        height:270px !important;
-    }
-
-    .newsGrid .newsCard:not(:first-child) img{
-        height:210px !important;
-    }
-
-    .newsGrid .newsCard:first-child .newsBody h3{
-        font-size:22px !important;
-    }
-
-    .newsGrid .newsCard:not(:first-child) .newsBody h3{
-        font-size:19px !important;
-    }
-}
   /* ===== FINAL TV NEWS LAYOUT ===== */
 
 .newsGrid{
@@ -1869,7 +1842,7 @@ footer a:hover{
 .newsGrid .newsCard:not(:first-child){
   width:100% !important;
   max-width:100% !important;
-  grid-column:1 / -1 !important;
+  grid-column:auto !important;
   grid-row:auto !important;
   margin:0 !important;
 }
@@ -1904,7 +1877,7 @@ footer a:hover{
 @media(max-width:700px){
 
   .newsGrid{
-    grid-template-columns:1fr !important;
+    grid-template-columns:repeat(4,minmax(0,1fr)) !important;
     gap:16px !important;
     width:100% !important;
   }
@@ -3389,24 +3362,6 @@ function createNewsCard(article){
    * Keep JavaScript modal also working
    */
 
-  readLink.onclick =
-    function(event){
-
-      event.preventDefault();
-
-      showDetails(article);
-
-      /*
-       * URL update without page reload
-       */
-
-      history.pushState(
-        {},
-        "",
-        "/news/" +
-        encodeURIComponent(article.id)
-      );
-    };
 
 
   /* APPEND BODY */
