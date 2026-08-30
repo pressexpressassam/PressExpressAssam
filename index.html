@@ -1990,6 +1990,102 @@ footer a:hover{
   }
 
 }
+  /* =========================================================
+   FULL NEWS PAGE - NO POPUP
+   ========================================================= */
+
+body.article-page{
+  background:#f4f5f7;
+}
+
+/* Article page-ত homepage content নেদেখুৱাব */
+body.article-page .latest-news,
+body.article-page #news,
+body.article-page footer,
+body.article-page .adminBtn{
+  display:none !important;
+}
+
+/* Details modal-ক full page কৰা */
+body.article-page #detailsModal{
+  display:block !important;
+  position:static !important;
+  inset:auto !important;
+  background:#f4f5f7 !important;
+  padding:20px 0 !important;
+  overflow:visible !important;
+  z-index:auto !important;
+}
+
+/* Full article box */
+body.article-page #detailsModal .box{
+  width:94% !important;
+  max-width:1200px !important;
+  margin:20px auto !important;
+  padding:30px !important;
+  background:#fff !important;
+  border-radius:16px !important;
+  box-shadow:0 3px 15px rgba(0,0,0,.08) !important;
+}
+
+/* Popup close button নেদেখাব */
+body.article-page #detailsModal .close{
+  display:none !important;
+}
+
+/* Article title */
+body.article-page .details h1{
+  font-size:36px !important;
+  line-height:1.4 !important;
+  margin:15px 0 !important;
+}
+
+/* Article main image */
+body.article-page .details > img{
+  width:100% !important;
+  max-height:520px !important;
+  object-fit:cover !important;
+  border-radius:14px !important;
+  margin:20px 0 !important;
+}
+
+/* Full content */
+body.article-page .details > p{
+  font-size:18px !important;
+  line-height:2 !important;
+  color:#333 !important;
+}
+
+/* Mobile */
+@media(max-width:700px){
+
+  body.article-page #detailsModal{
+    padding:10px 0 !important;
+  }
+
+  body.article-page #detailsModal .box{
+    width:94% !important;
+    padding:18px !important;
+    margin:10px auto !important;
+    border-radius:14px !important;
+  }
+
+  body.article-page .details h1{
+    font-size:25px !important;
+    line-height:1.4 !important;
+  }
+
+  body.article-page .details > img{
+    max-height:350px !important;
+    margin:15px 0 !important;
+    border-radius:10px !important;
+  }
+
+  body.article-page .details > p{
+    font-size:16px !important;
+    line-height:1.9 !important;
+  }
+}
 </style>
 
 <!-- ONE SIGNAL PUSH NOTIFICATION -->
@@ -2087,13 +2183,11 @@ footer a:hover{
 
     <nav>
 
-      <a href="#">হোম</a>
+      <a href="/">হোম</a>
 
-      <a href="#news">অসম</a>
-
-      <a href="#news">ভাৰত</a>
-
-      <a href="#news">বিশ্ব</a>
+      <a href="/#news">অসম</a>
+<a href="/#news">ভাৰত</a>
+<a href="/#news">বিশ্ব</a>
 
       <a href="about.html">আমাৰ বিষয়ে</a>
 
@@ -3107,14 +3201,13 @@ if (!sharedId) {
           String(sharedId)
       );
 
-
     if(sharedArticle){
 
-      showDetails(
-        sharedArticle
-      );
+      /* FULL NEWS PAGE */
+      document.body.classList.add("article-page");
+
+      showDetails(sharedArticle);
     }
-  }
 }
 
 
@@ -3372,34 +3465,6 @@ function createNewsCard(article){
   body.appendChild(text);
 
   body.appendChild(readLink);
-/* NEXT NEWS BUTTON */
-
-const nextLink = document.createElement("button");
-
-nextLink.className = "nextNews";
-
-nextLink.textContent = "পৰৱৰ্তী বাতৰি →";
-
-nextLink.onclick = function(){
-
-    const currentIndex = articles.findIndex(
-        a => String(a.id) === String(article.id)
-    );
-
-    const nextArticle = articles[currentIndex + 1];
-
-    if(nextArticle){
-        showDetails(nextArticle);
-        history.pushState(
-            {},
-            "",
-            "/news/" + encodeURIComponent(nextArticle.id)
-        );
-    }
-
-};
-
-body.appendChild(nextLink);
 
   /* APPEND CARD */
 
@@ -3748,13 +3813,23 @@ if(
 
   /* SHOW MODAL */
 
+  if(
+  window.location.pathname.startsWith("/news/")
+){
+
+  document.body.classList.add(
+    "article-page"
+  );
+
   document
-    .getElementById(
-      "detailsModal"
-    )
-    .classList.add(
-      "show"
-    );
+    .getElementById("detailsModal")
+    .classList.add("show");
+
+}else{
+
+  document
+    .getElementById("detailsModal")
+    .classList.add("show");
 }
   
 
