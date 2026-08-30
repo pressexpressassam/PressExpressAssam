@@ -2124,24 +2124,54 @@ body.article-page .details > p{
 
 <body>
 <!-- PUSH NOTIFICATION BUTTON -->
-<div style="text-align:center;margin:15px 0;">
+<div style="text-align:center;padding:15px;">
   <button
     id="notifyBtn"
-    onclick="enablePushNotifications()"
-    style="
-      background:#d71936;
-      color:#fff;
-      border:0;
-      padding:12px 20px;
-      border-radius:25px;
-      font-size:16px;
-      font-weight:bold;
-      cursor:pointer;
-    "
+    style="background:#d71936;color:white;border:0;padding:12px 20px;border-radius:25px;font-size:16px;font-weight:bold;"
   >
     🔔 Notification চালু কৰক
   </button>
 </div>
+
+<script>
+document.getElementById("notifyBtn").addEventListener("click", function(){
+
+  const btn = this;
+
+  btn.textContent = "⏳ অপেক্ষা কৰক...";
+
+  if (!window.OneSignalDeferred) {
+    btn.textContent = "❌ OneSignal load হোৱা নাই";
+    alert("OneSignal load হোৱা নাই।");
+    return;
+  }
+
+  window.OneSignalDeferred.push(async function(OneSignal){
+
+    try {
+
+      await OneSignal.Notifications.requestPermission();
+
+      if (OneSignal.Notifications.permission) {
+        btn.textContent = "✅ Notification চালু হৈছে";
+        alert("✅ Push Notification চালু হৈছে!");
+      } else {
+        btn.textContent = "🔔 Notification চালু কৰক";
+        alert("❌ Notification permission Allow হোৱা নাই।");
+      }
+
+    } catch(error) {
+
+      console.error(error);
+      btn.textContent = "🔔 Notification চালু কৰক";
+
+      alert("OneSignal Error: " + error.message);
+    }
+
+  });
+
+});
+</script>
 
 <!-- =========================================================
      HEADER
