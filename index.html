@@ -3194,22 +3194,23 @@ if (!sharedId) {
 
   if(sharedId){
 
-    const sharedArticle =
-      allNews.find(
-        article =>
-          String(article.id) ===
-          String(sharedId)
-      );
+  const sharedArticle =
+    allNews.find(
+      article =>
+        String(article.id) ===
+        String(sharedId)
+    );
 
-    if(sharedArticle){
+  if(sharedArticle){
 
-      /* FULL NEWS PAGE */
-      document.body.classList.add("article-page");
+    document.body.classList.add("article-page");
 
-      showDetails(sharedArticle);
-    }
+    showDetails(sharedArticle);
+  }
 }
 
+/* CLOSE LOAD NEWS */
+}
 
 /* =========================================================
    CATEGORY
@@ -3831,6 +3832,14 @@ if(
     .getElementById("detailsModal")
     .classList.add("show");
 }
+
+/* CLOSE SHOW DETAILS */
+}
+  
+
+/* =========================================================
+   RELATED NEWS
+   ========================================================= */
   
 
 
