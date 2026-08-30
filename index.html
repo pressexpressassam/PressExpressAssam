@@ -2103,10 +2103,19 @@ body.article-page .details > p{
   window.OneSignalDeferred = window.OneSignalDeferred || [];
 
   OneSignalDeferred.push(async function(OneSignal) {
+
     await OneSignal.init({
       appId: "53152aa9-7fe5-4e39-9c7c-a2b93a9a9973"
     });
-    
+
+    if (OneSignal.Notifications.isPushSupported()) {
+
+      if (!OneSignal.Notifications.permission) {
+        await OneSignal.Notifications.requestPermission();
+      }
+
+    }
+
   });
 </script>
 
