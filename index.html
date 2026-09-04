@@ -2120,12 +2120,16 @@ body.article-page .details > p{
     });
 
     if (OneSignal.Notifications.isPushSupported()) {
+  if (OneSignal.Notifications.permission !== "granted") {
 
-      if (!OneSignal.Notifications.permission) {
-        await OneSignal.Notifications.requestPermission();
+    setTimeout(() => {
+      if (confirm("🔔 Press Express Assam-ৰ নতুন খবৰ Notification-ত পাবলৈ OK কৰক।")) {
+        OneSignal.Notifications.requestPermission();
       }
+    }, 1500);
 
-    }
+  }
+}
 
   });
 </script>
