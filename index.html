@@ -2107,31 +2107,36 @@ body.article-page .details > p{
 }
 </style>
 
-<!-- ONE SIGNAL PUSH NOTIFICATION -->
+<!-- OneSignal Push Notification -->
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 
 <script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
+window.OneSignalDeferred = window.OneSignalDeferred || [];
 
-  OneSignalDeferred.push(async function(OneSignal) {
+OneSignalDeferred.push(async function(OneSignal) {
 
-    await OneSignal.init({
-      appId: "53152aa9-7fe5-4e39-9c7c-a2b93a9a9973"
-    });
-
-    if (OneSignal.Notifications.isPushSupported()) {
-  if (OneSignal.Notifications.permission !== "granted") {
-
-    setTimeout(() => {
-      if (confirm("🔔 Press Express Assam-ৰ নতুন খবৰ Notification-ত পাবলৈ OK কৰক।")) {
-        OneSignal.Notifications.requestPermission();
-      }
-    }, 1500);
-
-  }
-}
-
+  await OneSignal.init({
+    appId: "53152aa9-7fe5-4e39-9c7c-a2b93a9a9973"
   });
+
+  setTimeout(async function() {
+
+    if (OneSignal.Notifications.permission === false) {
+
+      const allowNotification = confirm(
+        "🔔 Press Express Assam-ৰ নতুন খবৰ Notification-ত পাবলৈ OK কৰক।"
+      );
+
+      if (allowNotification) {
+        await OneSignal.Notifications.requestPermission();
+      }
+
+    }
+
+  }, 2000);
+
+});
+</script>
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8017540776888518"
      crossorigin="anonymous"></script>
