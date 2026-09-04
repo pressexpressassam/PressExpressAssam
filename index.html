@@ -2119,23 +2119,11 @@ OneSignalDeferred.push(async function(OneSignal) {
     appId: "53152aa9-7fe5-4e39-9c7c-a2b93a9a9973"
   });
 
-  setTimeout(async function() {
-
-    if (OneSignal.Notifications.permission === false) {
-
-      const allowNotification = confirm(
-        "🔔 Press Express Assam-ৰ নতুন খবৰ Notification-ত পাবলৈ OK কৰক।"
-      );
-
-      if (allowNotification) {
-        await OneSignal.Notifications.requestPermission();
-      }
-
-    }
-
-  }, 2000);
-
-});
+  setTimeout(async function () {
+  if (OneSignal.Notifications.permission === false) {
+    await OneSignal.Notifications.requestPermission();
+  }
+}, 2000);
 </script>
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8017540776888518"
