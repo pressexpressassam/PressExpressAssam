@@ -3181,16 +3181,11 @@ async function loadNews(){
     '<div class="noNews">খবৰ লোড হৈ আছে...</div>';
 
 
-  const result =
-    await db
-      .from("articles")
-      .select("*")
-      .eq("published",true)
-      .order(
-        "created_at",
-        {ascending:false}
-      )
-      .limit(100);
+  const result = await db
+    .from("articles")
+    .select("*")
+    .order("created_at", { ascending: false })
+    .limit(100);
 
 
   if(result.error){
