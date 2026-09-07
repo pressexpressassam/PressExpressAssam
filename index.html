@@ -2111,6 +2111,7 @@ body.article-page .details > p{
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 
 <script>
+<script>
 window.OneSignalDeferred = window.OneSignalDeferred || [];
 
 OneSignalDeferred.push(async function(OneSignal) {
@@ -2120,11 +2121,16 @@ OneSignalDeferred.push(async function(OneSignal) {
   });
 
   setTimeout(async function () {
-  if (OneSignal.Notifications.permission === false) {
-    await OneSignal.Notifications.requestPermission();
-  }
-}, 2000);
-</script>
+
+    if (OneSignal.Notifications.permission === false) {
+
+      await OneSignal.Notifications.requestPermission();
+
+    }
+
+  }, 2000);
+
+});
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8017540776888518"
      crossorigin="anonymous"></script>
