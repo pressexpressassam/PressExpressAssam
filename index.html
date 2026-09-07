@@ -3166,9 +3166,9 @@ async function loadLatestNews(){
 async function loadNews(){
 
   if(!db){
-
-    if(!connect()) return;
-  }
+  const connected = await connect();
+  if(!connected) return;
+}
 
 
   const grid =
